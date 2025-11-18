@@ -1,17 +1,31 @@
 import HouseSchema from "./HouseSchema.js";
 import express from "express"
+import multer from "multer";
 
 const route = express.Router();
 
-route.post('/add', async(req, res) => {
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "House_Image/");
+    }, 
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+});
+
+const uploads = multer({ storage });
+
+route.post('/add', uploads.single("image"), async(req, res) => {
     const { title, description, price, location, bathrooms, size, yearBuilt, parkingSpace, hasGarden, PropertyType, isAvailable, image, video } = req.body;
+    const imagePath = req.file ? req.file.filename : null;
 
     try {
         if (!req.session.userInfo) {
             return res.status(401).json({message: 'Login first' });
         }
-
+      
         const owner = req.session.userInfo.user_id;
+        
         if (!title || !description || !price || !location || !bathrooms || !size || yearBuilt) {
 
             await HouseSchema.create({
@@ -27,7 +41,7 @@ route.post('/add', async(req, res) => {
                  PropertyType,
                  owner: owner,
                  isAvailable,
-                 image,
+                 image: imagePath,
                  video
             });
 
