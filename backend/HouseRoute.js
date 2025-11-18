@@ -15,8 +15,11 @@ const storage = multer.diskStorage({
 
 const uploads = multer({ storage });
 
-route.post('/add', uploads.single("image"), async(req, res) => {
-    const { title, description, price, bathrooms, size, yearBuilt, location, parkingSpace, hasGarden, PropertyType, isAvailable, video } = req.body;
+route.post('/add', uploads.fields([
+    { name: 'image', maxCount: 10 },
+    { name: 'video', maxCount: 5 }
+]), async(req, res) => {
+    const { title, description, price, bathrooms, size, yearBuilt, location, parkingSpace, hasGarden, PropertyType, isAvailable } = req.body;
 
     const imagePath = req.file ? req.file.filename : null;
     const videoPath = req.files?.video ? req.files?.video.map((file) => file.filename) : [];
@@ -24,13 +27,16 @@ route.post('/add', uploads.single("image"), async(req, res) => {
 
     try {
         if (!req.session.userInfo) {
-            return res.status(401).json({message: 'Login first' });
+            return res.status(401).json({error: 'Login first' });
+        }
+        if (req.session.userInfo.role !== "seller") {
+            return res.status(400).json({error: "you are not seller" });
         }
       
         const owner = req.session.userInfo.user_id;
         
         if (!title || !description || !price || !location || !bathrooms || !size || !yearBuilt) {
-            return res.status(400).json({ message: "Some fileld is missing" });
+            return res.status(400).json({ error: "Some fileld is missing" });
         }
 
             await HouseSchema.create({
@@ -53,7 +59,7 @@ route.post('/add', uploads.single("image"), async(req, res) => {
             return res.status(201).json({ message: 'House inserted successfully' });
     
     } catch (error) {
-        return res.status(500).json({ message: error });
+        return res.status(500).json({ error: error });
     }
 })
 
