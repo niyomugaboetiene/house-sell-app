@@ -111,7 +111,7 @@ const HouseComponent = () => {
     
             <div>
                 <label>Is Available</label>
-                <input type="checkbox"  onChange={(e) => setIsAvailable(true)} />
+                <input type="checkbox"  onChange={(e) => setIsAvailable(e.target.checked)} />
             </div>
         </div>
     </div>
