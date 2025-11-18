@@ -4,7 +4,7 @@ import express from "express"
 const route = express.Router();
 
 route.post('/add', async(req, res) => {
-    const { title, description, price, location, bathrooms, size, yearBuilt, parkingSpace, hasGarden, PropertyType } = req.body;
+    const { title, description, price, location, bathrooms, size, yearBuilt, parkingSpace, hasGarden, PropertyType, isAvailable } = req.body;
 
     try {
         if (!req.session.userInfo) {
@@ -21,8 +21,15 @@ route.post('/add', async(req, res) => {
                  location,
                  bathrooms,
                  size,
-                 yearBuilt
-            })
+                 yearBuilt,
+                 parkingSpace,
+                 hasGarden,
+                 PropertyType,
+                 owner,
+                 isAvailable
+            });
         }
+    } catch (error) {
+        return res.status(500).json({ message: 'Server error' });
     }
 })
