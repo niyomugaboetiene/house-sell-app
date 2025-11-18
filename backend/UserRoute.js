@@ -34,6 +34,11 @@ router.post('/login', async(req, res) => {
         if (isExist) {
             const isPasswordMatch = await User.findOne({password});
             if (isPasswordMatch) {
+                req.session.userInfo = {
+                    user_id: _id,
+                    user_name: user_name,
+                    role: role
+                }
                 return res.status(200).json({message: 'Logged in successfully' });
             } else {
                 return res.status(400).json({ message: 'Password mismatching' })

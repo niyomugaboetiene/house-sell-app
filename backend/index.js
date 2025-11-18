@@ -7,6 +7,19 @@ import session from "express-session"
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.use(session({
+    secret: 'my-secret-key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24,
+        sameSite: 'lax'
+    }
+}));
+
+
 app.use('/user', userRoute);
 
 
