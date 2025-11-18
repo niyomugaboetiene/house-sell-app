@@ -21,8 +21,6 @@ route.post('/add', uploads.fields([
 ]), async(req, res) => {
     const { title, description, price, bathrooms, size, yearBuilt, location, parkingSpace, hasGarden, PropertyType, isAvailable } = req.body;
 
-    const imagePath = req.file ? req.file.filename : null;
-    const videoPath = req.files?.video ? req.files?.video.map((file) => file.filename) : [];
     const locationData = JSON.parse(location);
 
     try {
@@ -32,6 +30,8 @@ route.post('/add', uploads.fields([
         if (req.session.userInfo.role !== "seller") {
             return res.status(400).json({error: "you are not seller" });
         }
+       const imagePath = req.file ? req.file.filename : null;
+       const videoPath = req.files?.video ? req.files?.video.map((file) => file.filename) : [];
       
         const owner = req.session.userInfo.user_id;
         
