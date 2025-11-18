@@ -19,7 +19,42 @@ const HouseSchema = new mongoose.Schema({
             city: String,
             district: String,
             sector: String,
-            street: String
+            street: String,
+        },
+        
+        bathrooms: {
+            type: true,
+            required: true
+        },
+
+        size: {
+            type: Number
+        },
+
+        image: [
+            {
+            type: String
         }
-    
+    ],
+
+    isAvailable: {
+        type: Boolean,
+        default: true
+    },
+
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    },
+
+    yearBuilt: Number,
+    parkingSpace: Number,
+    hasGarden: Boolean,
+    PropertyType: {
+        type: String
+    },
+    owner: {
+        type: Number
+    }
 })
+
