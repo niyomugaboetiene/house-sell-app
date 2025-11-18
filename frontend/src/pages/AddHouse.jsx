@@ -66,23 +66,23 @@ const HouseComponent = () => {
                 <h1>location</h1>
                 <div>
                     <label>Country</label>
-                    <input type="text"  onChange={(e) => setLocation({...prev, country: e.target.value })} />
+                    <input type="text"  onChange={(e) => setLocation({...location, country: e.target.value })} />
                 </div>
                 <div>
                     <label>City</label>
-                    <input type="text"  onChange={(e) => setLocation({...prev, city: e.target.value })} />
+                    <input type="text"  onChange={(e) => setLocation({...location, city: e.target.value })} />
                 </div>
                 <div>
                     <label>District</label>
-                    <input type="text"  onChange={(e) => setLocation({...prev, district: e.target.value })} />
+                    <input type="text"  onChange={(e) => setLocation({...location, district: e.target.value })} />
                 </div>
                 <div>
                     <label>Sector</label>
-                    <input type="text"  onChange={(e) => setLocation({...prev, sector: e.target.value })} />
+                    <input type="text"  onChange={(e) => setLocation({...location, sector: e.target.value })} />
                 </div>
                 <div>
                     <label>Street</label>
-                    <input type="text"  onChange={(e) => setLocation({...prev, street: e.target.value })} />
+                    <input type="text"  onChange={(e) => setLocation({...location, street: e.target.value })} />
                 </div>
             </div>
             <div>
@@ -94,26 +94,38 @@ const HouseComponent = () => {
                 <input type="text"  onChange={(e) => setParkingSpace(e.target.value)} />
             </div>
             <div>
+                <label>Size (sq ft)</label>
+                <input type="text"  onChange={(e) => setSize(e.target.value)} />
+            </div>
+            <div>
+                <label>Year Built</label>
+                <input type="text"  onChange={(e) => setYearBuilt(e.target.value)} />
+            </div>
+            <div>
             <div>
                 <label>Choose Property Type</label>
                 <select onChange={(e) => setPropertyType(e.target.value)}>
                     <option value="House">House</option>
-                    <option value="Office">House</option>
-                    <option value="Industry">House</option>
-                    <option value="Apartment">House</option>
-                    <option value="Land">House</option>
+                    <option value="Office">Office</option>
+                    <option value="Industry">Industry</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Land">Land</option>
                 </select>
             </div>
             <div>
                 <label>Image</label>
-                <input type="text"  onChange={(e) => setImage(e.target.files[0])} accept="image/*" />
+                <input type="file"  onChange={(e) => setImage(e.target.files[0])} accept="image/*" />
             </div>
     
             <div>
                 <label>Is Available</label>
                 <input type="checkbox"  onChange={(e) => setIsAvailable(e.target.checked)} />
             </div>
+
+            <button onClick={AddHouse}>Add New </button>
         </div>
     </div>
     )
 }
+
+export default HouseComponent
