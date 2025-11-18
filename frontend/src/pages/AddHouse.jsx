@@ -16,7 +16,7 @@ const HouseComponent = () => {
     const [PropertyType, setPropertyType] = useState("House");
     const [isAvailable, setIsAvailable] = useState(true);
     const [image, setImage] = useState(null); 
-    const [video, setVideo] = useState("");
+    const [video, setVideo] = useState(null);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
@@ -42,7 +42,9 @@ const HouseComponent = () => {
             formData.append("hasGarden", hasGarden);
             formData.append("PropertyType", PropertyType);
             formData.append("isAvailable", isAvailable);
-            formData.append("video", video);
+            if (video) {
+                formData.append("video", video);
+            }
             
             if (image) {
                 formData.append("image", image); 
@@ -159,8 +161,8 @@ const HouseComponent = () => {
             </div>
             
             <div>
-                <label>Video URL (Optional)</label>
-                <input type="text" value={video} onChange={(e) => setVideo(e.target.value)} />
+                <label>Video (Optional)</label>
+                <input type="file" onChange={(e) => setVideo(e.target.files[0])} accept="video/*"/>
             </div>
             
             <div>
