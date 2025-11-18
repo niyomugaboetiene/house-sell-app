@@ -17,12 +17,13 @@ const UserSchema = new mongoose.Schema({
     },
 
     role: {
+        type: String,
         enum: ['admin', 'seller', 'customer'],
-        default: 'customer'
+        default: "customer"
     },
 
     createdAt: {
-        type: Date(),
+        type: Date,
         default: Date.now()
     },
     image: [
