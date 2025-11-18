@@ -37,9 +37,10 @@ router.post('/login', async(req, res) => {
                 req.session.userInfo = {
                     user_id: _id,
                     user_name: user_name,
-                    role: role
+                    role: role,
+                    image: image
                 }
-                return res.status(200).json({message: 'Logged in successfully' });
+                return res.status(200).json({message: 'Logged in successfully', user: userInfo });
             } else {
                 return res.status(400).json({ message: 'Password mismatching' })
             }
