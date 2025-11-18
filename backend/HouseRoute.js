@@ -16,8 +16,11 @@ const storage = multer.diskStorage({
 const uploads = multer({ storage });
 
 route.post('/add', uploads.single("image"), async(req, res) => {
-    const { title, description, price, location, bathrooms, size, yearBuilt, parkingSpace, hasGarden, PropertyType, isAvailable, image, video } = req.body;
+    const { title, description, price, bathrooms, size, yearBuilt, location, parkingSpace, hasGarden, PropertyType, isAvailable, video } = req.body;
+
     const imagePath = req.file ? req.file.filename : null;
+    const videoPath = req.files?.video ? req.files?.video.map((file) => file.filename) : [];
+    const locationData = JSON.parse(location);
 
     try {
         if (!req.session.userInfo) {
@@ -26,7 +29,7 @@ route.post('/add', uploads.single("image"), async(req, res) => {
       
         const owner = req.session.userInfo.user_id;
         
-        if (!title || !description || !price || !location || !bathrooms || !size || yearBuilt) {
+        if (!title || !description || !price || !location || !bathrooms || !size || !yearBuilt) {
             return res.status(400).json({ message: "Some fileld is missing" });
         }
 
@@ -34,7 +37,7 @@ route.post('/add', uploads.single("image"), async(req, res) => {
                  title,
                  description,
                  price,
-                 location,
+                 location: locationData,
                  bathrooms,
                  size,
                  yearBuilt,
@@ -44,7 +47,7 @@ route.post('/add', uploads.single("image"), async(req, res) => {
                  owner: owner,
                  isAvailable,
                  image: imagePath,
-                 video
+                 video: videoPath
             });
 
             return res.status(201).json({ message: 'House inserted successfully' });
