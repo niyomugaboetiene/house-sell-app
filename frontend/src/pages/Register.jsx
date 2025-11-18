@@ -20,7 +20,7 @@ const RegisterComponent = () => {
              await axios.post('http://localhost:5000/user/register', {
                 full_name, user_name, password, role
              }, { withCredentials: true });
-             setSuccess("Loggin successfully");
+             setSuccess("Account created successfully successfully");
              setError("");
         } catch (error) {
             console.error(error);
