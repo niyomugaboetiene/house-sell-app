@@ -1,17 +1,17 @@
-import HouseSchema from "./HouseSchema";
+import HouseSchema from "./HouseSchema.js";
 import express from "express"
 
 const route = express.Router();
 
 route.post('/add', async(req, res) => {
-    const { title, description, price, location, bathrooms, size, yearBuilt, parkingSpace, hasGarden, PropertyType, isAvailable } = req.body;
+    const { title, description, price, location, bathrooms, size, yearBuilt, parkingSpace, hasGarden, PropertyType, isAvailable, image, video } = req.body;
 
     try {
         if (!req.session.userInfo) {
             return res.status(401).json({message: 'Login first' });
         }
 
-        const owner = req.session.userInfo._id;
+        const owner = req.session.userInfo.user_id;
         if (!title || !description || !price || !location || !bathrooms || !size || yearBuilt) {
 
             await HouseSchema.create({
@@ -25,11 +25,17 @@ route.post('/add', async(req, res) => {
                  parkingSpace,
                  hasGarden,
                  PropertyType,
-                 owner,
-                 isAvailable
+                 owner: owner,
+                 isAvailable,
+                 image,
+                 video
             });
+
+            return res.status(201).json({ message: 'House inserted successfully' });
         }
     } catch (error) {
-        return res.status(500).json({ message: 'Server error' });
+        return res.status(500).json({ message: error });
     }
 })
+
+export default route;

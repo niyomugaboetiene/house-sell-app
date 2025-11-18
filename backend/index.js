@@ -3,6 +3,7 @@ import express from "express"
 import cors from "cors"
 import userRoute from "./UserRoute.js"
 import session from "express-session"
+import HouseRoute from "./HouseRoute.js"
 
 const app = express();
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use(session({
 
 
 app.use('/user', userRoute);
+app.use('/house', HouseRoute);
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/house-selling', {})

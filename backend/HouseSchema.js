@@ -24,7 +24,7 @@ const HouseSchema = new mongoose.Schema({
         },
         
         bathrooms: {
-            type: true,
+            type: Number,
             required: true
         },
 
