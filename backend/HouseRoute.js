@@ -14,6 +14,7 @@ const HouseSchema = new mongoose.Schema({
             type: Number,
             required: true
         },
+
         location: {
             country: String,
             city: String,
@@ -36,7 +37,13 @@ const HouseSchema = new mongoose.Schema({
             type: String
         }
     ],
-
+    
+         video: [
+            {
+                type: String
+            }
+         ],
+         
     isAvailable: {
         type: Boolean,
         default: true
@@ -50,11 +57,16 @@ const HouseSchema = new mongoose.Schema({
     yearBuilt: Number,
     parkingSpace: Number,
     hasGarden: Boolean,
+
     PropertyType: {
         type: String
     },
+
     owner: {
-        type: Number
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
 })
 
+export default mongoose.model("House", HouseSchema);
