@@ -2,9 +2,10 @@ import mongoose from "mongoose"
 import express from "express"
 import cors from "cors"
 import userRoute from "./UserRoute.js"
-
+import session from "express-session"
 
 const app = express();
+app.use(express.json());
 app.use(cors());
 app.use('/user', userRoute);
 
