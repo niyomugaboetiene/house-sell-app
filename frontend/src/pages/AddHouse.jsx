@@ -114,5 +114,6 @@ const HouseComponent = () => {
                 <input type="checkbox"  onChange={(e) => setIsAvailable(true)} />
             </div>
         </div>
+    </div>
     )
 }
