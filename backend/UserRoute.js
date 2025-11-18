@@ -1,29 +1,22 @@
-import mongoose from "mongoose";
+import User from "./UserSchema.js"
+import express from "express"
 
-const User = new mongoose.Schema({
-    full_name: {
-        type: String,
-        required: true
-    },
-  
-    user_name: {
-        type: String,
-        required: true
-    },
+const router = express.Router();
 
-    password: {
-        type: String,
-        required: true
-    },
+router.post('/register', async(req, res) => {
+    const { full_name, user_name, password, role } = req.body;
+   try {
+       if (!full_name || !user_name || !password || !role) {
+            return res.status(500).json({message: "Missing fileds"});
+       } 
+       User.create({
+        full_name, user_name, password, role
+       });
 
-    role: {
-        enum: ['admin', 'seller', 'customer'],
-        default: 'customer'
-    },
+       return res.status(201).json({message: 'User registered successfully' });
+   } catch (err) {
+    return res.status(500).json({message: err.message });
+   }
+});
 
-    createdAt: {
-        type: Date(),
-        default: Date.now()
-    }
-
-})
+export default router;
