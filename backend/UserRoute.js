@@ -31,14 +31,15 @@ router.post('/login', async(req, res) => {
         }
 
         const isExist = await User.findOne({user_name});
+        const user = isExist;
         if (isExist) {
             const isPasswordMatch = await User.findOne({password});
             if (isPasswordMatch) {
                 req.session.userInfo = {
-                    user_id: _id,
-                    user_name: user_name,
-                    role: role,
-                    image: image
+                    user_id: user._id,
+                    user_name: user.user_name,
+                    role: user.role,
+                    image: user.image
                 }
                 return res.status(200).json({message: 'Logged in successfully', user: userInfo });
             } else {
