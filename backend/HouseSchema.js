@@ -59,7 +59,9 @@ const HouseSchema = new mongoose.Schema({
     hasGarden: Boolean,
 
     PropertyType: {
-        type: String
+        type: String,
+        enum: ["Office", "House", "Industry", "Apartment", "Land"],
+        default: "House"
     },
 
     owner: {
