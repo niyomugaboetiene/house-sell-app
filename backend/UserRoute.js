@@ -1,6 +1,6 @@
 import User from "./UserSchema.js"
 import express from "express"
-import bcyrpt from "bcrypt";
+import bcrypt from "bcrypt";
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.post('/register', async(req, res) => {
             return res.status(500).json({message: "Missing fileds"});
        } 
 
-       const hashedPassword = await bcyrpt.hash(password, 10);
+       const hashedPassword = await bcrypt.hash(password, 10);
 
       await User.create({
         full_name, user_name, password: hashedPassword, role
@@ -36,7 +36,7 @@ router.post('/login', async(req, res) => {
         const isExist = await User.findOne({user_name});
         const user = isExist;
         if (isExist) {
-            const isPasswordMatch = await bcyrpt.compare(password, user.password);
+            const isPasswordMatch = await bcrypt.compare(password, user.password);
             if (isPasswordMatch) {
                 req.session.userInfo = {
                     user_id: user._id,
