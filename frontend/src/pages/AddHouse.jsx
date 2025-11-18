@@ -74,7 +74,8 @@ const HouseComponent = () => {
             
         } catch (err) {
             console.error("Error", err.response?.data || err.message);
-            setError("Error during adding house");
+            const errorMessage = err.response?.error;
+            setError(errorMessage);
         } finally {
             setLoading(false);
         }
