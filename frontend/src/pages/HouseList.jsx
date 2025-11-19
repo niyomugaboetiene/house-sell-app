@@ -68,7 +68,7 @@ const HouseListComponent = () => {
                                            {house.title}
                                         </h3>
                                         <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
-                                           {house.title}
+                                           b: {house.bathrooms}
                                         </h3>
                                        </div>
 
