@@ -8,7 +8,8 @@ const HouseListComponent = () => {
     
     const HouseList = async() => {
         const res = await axios.get('http://localhost:5000/house/houses', { withCredentials: true });
-        setHouse(res);
+        
+        setHouse(res.data.houses);
     }
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const HouseListComponent = () => {
         <div>
             <div>
                 <h1>House list</h1>
-                {house.map((idx, item) => (
+                {house.map((item, idx) => (
                     <div key={idx}>
                         <p>{item.title}</p>
                     </div>
