@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { FaHeart } from "react-icons/fa"
 import { useEffect, useState } from "react";
 
 const HouseListComponent = () => {
@@ -35,11 +36,16 @@ const HouseListComponent = () => {
             <div className="bg-white shadow-sm border-b">
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {houses.map((house, idx) => (
                         <div key={idx} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
                             <div className="relative h-80 bg-gray-200">
+                                <div className="relative">
+                                     <button className="absolute top-0 right-3 bg-white">
+                                        <FaHeart />
+                                     </button>
+                                </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 
                                         src={`http://localhost:5000/House_Images/${house.image}`} 
