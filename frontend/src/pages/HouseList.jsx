@@ -1,56 +1,85 @@
 import React from "react";
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const HouseListComponent = () => {
-    const [house, setHouse] = useState([]);
+    const [houses, setHouses] = useState([]);
+    const [loading, setLoading] = useState(true);
     
-    const HouseList = async() => {
-        const res = await axios.get('http://localhost:5000/house/houses', { withCredentials: true });
-        
-        setHouse(res.data.houses);
+    const fetchHouses = async () => {
+        try {
+            const res = await axios.get('http://localhost:5000/house/houses', { withCredentials: true });
+            setHouses(res.data.houses);
+        } catch (error) {
+            console.error("Error fetching houses:", error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     useEffect(() => {
-        HouseList();
+        fetchHouses();
     }, []);
 
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            </div>
+        );
+    }
+
     return (
-        <div>
-            <div>
-                <h1>House list</h1>
-                {house.map((item, idx) => (
-                    <div key={idx}>
+        <div className="min-h-screen bg-gray-50">
+            <div className="bg-white shadow-sm border-b">
+            </div>
 
-                        <p>{item.title}</p>
-                        <p>{item.description}</p>
-                        <p>{item.price}</p>
-                        {item.location && (
-                            `Location: ${item.location.country}, 
-                             City: ${item.location.city},
-                             District: ${item.location.district}, 
-                             Sector: ${item.location.sector}, 
-                             Street: ${item.location.street}`
-                        )}
-                        <p>Bathrooms: {item.bathrooms}</p>
-                        <p>Size: {item.size}</p>
-                        <p>Year Built: {item.size}</p>
-                        <p>Has Garden: {item.hasGarden ? "Yes": "No"}</p>
-                        <p>Property Type: {item.PropertyType}</p>
-                        <p>Available: {item.isAvailable ? "Yes": "No" }</p>
-                        <img src={`http://localhost:5000/House_Images/${item.image }`} alt="" />
-                        
-                        {item.video.length !== 0 ? (
-                           <video controls>
-                               <source src={`http://localhost:5000/House_Images/${item.video}`}/>
-                           </video>
-                        ): (
-                            <p>No video uploaded</p>
-                        )}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {houses.map((house, idx) => (
+                        <div key={idx} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                            <div className="relative h-80 bg-gray-200">
+                                {house.image && house.image.length > 0 ? (
+                                    <img 
+                                        src={`http://localhost:5000/House_Images/${house.image}`} 
+                                        alt={house.title}
+                                        className="w-full h-full object-cover"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full flex items-center justify-center bg-gray-100">
+                                        <p className="text-gray-500 text-sm">No Image Available</p>
+                                    </div>
+                                )}
+                            </div>
 
+                            <div className="p-6">
+                                <div className="mb-4">
+                                    <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
+                                        {house.title}
+                                    </h3>
+                                    <p className="text-2xl font-bold text-blue-600">
+                                        ${(house.price)}
+                                    </p>
+                                </div>
+
+                                <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-blue-700 transition-colors">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {houses.length === 0 && (
+                    <div className="text-center py-12">
+                        <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                        <h3 className="mt-2 text-sm font-medium text-gray-900">No properties found</h3>
+                        <p className="mt-1 text-sm text-gray-500">Get started by adding a new property listing.</p>
                     </div>
-                ))}
+                )}
             </div>
         </div>
     )
