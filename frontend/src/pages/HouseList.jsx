@@ -41,10 +41,12 @@ const HouseListComponent = () => {
                     {houses.map((house, idx) => (
                         <div key={idx} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
                             <div className="relative h-80 bg-gray-200">
-                                <div className="relative">
-                                     <button className="absolute top-0 right-3 bg-white">
-                                        <FaHeart />
-                                     </button>
+                              <div className="relative">
+                                  <button
+                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                  >
+                                     <FaHeart className="text-red-500 text-xl" />
+                                 </button>
                                 </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 
@@ -61,9 +63,15 @@ const HouseListComponent = () => {
 
                             <div className="p-6">
                                 <div className="mb-4">
-                                    <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
-                                        {house.title}
-                                    </h3>
+                                    <div className="flex justify-between">
+                                        <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
+                                           {house.title}
+                                        </h3>
+                                        <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
+                                           {house.title}
+                                        </h3>
+                                       </div>
+
                                     <p className="text-2xl font-bold text-blue-600">
                                         ${(house.price)}
                                     </p>
