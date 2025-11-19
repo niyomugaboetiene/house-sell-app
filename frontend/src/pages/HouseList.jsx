@@ -23,20 +23,7 @@ const HouseListComponent = () => {
                 <h1>House list</h1>
                 {house.map((item, idx) => (
                     <div key={idx}>
-                        {/*            title,
-                 description,
-                 price,
-                 location: locationData,
-                 bathrooms,
-                 size,
-                 yearBuilt,
-                 parkingSpace,
-                 hasGarden,
-                 PropertyType,
-                 owner: owner,
-                 isAvailable,
-                 image: imagePath,
-                 video: videoPath */}
+
                         <p>{item.title}</p>
                         <p>{item.description}</p>
                         <p>{item.price}</p>
@@ -54,7 +41,15 @@ const HouseListComponent = () => {
                         <p>Property Type: {item.PropertyType}</p>
                         <p>Available: {item.isAvailable ? "Yes": "No" }</p>
                         <img src={`http://localhost:5000/House_Images/${item.image }`} alt="" />
-                        <video src={`http://localhost:5000/House_Images/${item.video}`}></video>
+                        
+                        {item.video.length !== 0 ? (
+                           <video controls>
+                               <source src={`http://localhost:5000/House_Images/${item.video}`}/>
+                           </video>
+                        ): (
+                            <p>No video uploaded</p>
+                        )}
+
                     </div>
                 ))}
             </div>
