@@ -9,6 +9,7 @@ const HouseComponent = () => {
         country: '', city: '', district: '', sector: '', street: ''
     });
     const [bathrooms, setBathrooms] = useState("");
+    const [bedrooms, setBedrooms] = useState("");
     const [size, setSize] = useState("");
     const [yearBuilt, setYearBuilt] = useState("");
     const [parkingSpace, setParkingSpace] = useState("");
@@ -125,6 +126,10 @@ const HouseComponent = () => {
             <div>
                 <label>Number of Bathrooms</label>
                 <input type="number" value={bathrooms} onChange={(e) => setBathrooms(e.target.value)} />
+            </div>
+            <div>
+                <label>Number of Bedrooms</label>
+                <input type="number" value={bedrooms} onChange={(e) => setBedrooms(e.target.value)} />
             </div>
             <div>
                 <label>Size (sq ft)</label>

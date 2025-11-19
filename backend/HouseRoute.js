@@ -45,6 +45,7 @@ route.post('/add', uploads.fields([
                  price,
                  location: locationData,
                  bathrooms,
+                 bedrooms,
                  size,
                  yearBuilt,
                  parkingSpace,
