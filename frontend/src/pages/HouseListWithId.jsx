@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const HouseListComponent = () => {
+const HouseListComponentWithId = () => {
     const [house, setHouse] = useState([]);
     
     const HouseList = async() => {
@@ -56,4 +56,4 @@ const HouseListComponent = () => {
     )
 }
 
-export default HouseListComponent;
+export default HouseListComponentWithId;
