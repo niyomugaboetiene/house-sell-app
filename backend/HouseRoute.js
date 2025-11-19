@@ -71,7 +71,7 @@ route.get('/houses', async(req ,res) => {
        } 
        return res.status(404).json({ message: 'No house found' })
     } catch(error) {
-        
+        return res.status(500).json({ error: error.message })
     }
 
 })
