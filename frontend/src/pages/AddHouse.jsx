@@ -23,7 +23,7 @@ const HouseComponent = () => {
     const [error, setError] = useState("");
 
     const AddHouse = async () => {
-        if (!title || !description || !price || !bathrooms || !size || !yearBuilt) {
+        if (!title || !description || !price || !bathrooms  || !bedrooms || !size || !yearBuilt) {
             alert("Missing some fields");
             return;
         }
@@ -37,6 +37,7 @@ const HouseComponent = () => {
             formData.append("price", price);
             formData.append("location", JSON.stringify(location));
             formData.append("bathrooms", bathrooms);
+            formData.append("bedrooms", bedrooms);
             formData.append("size", size);
             formData.append("yearBuilt", yearBuilt);
             formData.append("parkingSpace", parkingSpace);
@@ -66,6 +67,7 @@ const HouseComponent = () => {
             setPrice("");
             setLocation({ country: '', city: '', district: '', sector: '', street: '' });
             setBathrooms("");
+            setBedrooms("");
             setSize("");
             setYearBuilt("");
             setParkingSpace("");

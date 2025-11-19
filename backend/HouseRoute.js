@@ -19,7 +19,7 @@ route.post('/add', uploads.fields([
     { name: 'image', maxCount: 10 },
     { name: 'video', maxCount: 5 }
 ]), async(req, res) => {
-    const { title, description, price, bathrooms, size, yearBuilt, location, parkingSpace, hasGarden, PropertyType, isAvailable } = req.body;
+    const { title, description, price, bathrooms, bedrooms, size, yearBuilt, location, parkingSpace, hasGarden, PropertyType, isAvailable } = req.body;
 
     const locationData = JSON.parse(location);
 
