@@ -33,8 +33,8 @@ const HouseListComponent = () => {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <div className="bg-white shadow-sm border-b">
-            </div>
+               <p className="ms-10 mt-4 underline text-2xl font-bold text-blue-500">Quick Buy </p> 
+
 
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -63,12 +63,15 @@ const HouseListComponent = () => {
 
                             <div className="p-6">
                                 <div className="mb-4">
-                                    <div className="flex justify-between">
-                                        <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
+                                       <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
                                            {house.title}
                                         </h3>
-                                        <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
-                                           b: {house.bathrooms}
+                                    <div className="flex  space-x-2">
+                                        <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
+                                           bath: <span className="font-bold">{house.bathrooms}</span>
+                                        </h3>
+                                        <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
+                                           bed: <span className="font-bold">{house.bedrooms} </span>
                                         </h3>
                                        </div>
 
