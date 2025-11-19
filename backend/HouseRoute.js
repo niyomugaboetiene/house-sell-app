@@ -65,7 +65,7 @@ route.post('/add', uploads.fields([
 
 route.get('/houses', async(req ,res) => {
     try {
-        const houses = await HouseSchema.find();
+        const houses = await HouseSchema.find().populate("owner", "full_name user_name _id role");
         if (houses.length > 0) {
            return res.status(200).json({ houses: houses });
        } 
