@@ -20,10 +20,11 @@ const HouseComponent = () => {
     const [video, setVideo] = useState(null);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
+    const [Activity, setActivity] = useState("");
     const [error, setError] = useState("");
 
     const AddHouse = async () => {
-        if (!title || !description || !price || !bathrooms  || !bedrooms || !size || !yearBuilt) {
+        if (!title || !description || !price || !bathrooms  || !bedrooms || !size || !yearBuilt || !Activity) {
             alert("Missing some fields");
             return;
         }
@@ -39,6 +40,7 @@ const HouseComponent = () => {
             formData.append("bathrooms", bathrooms);
             formData.append("bedrooms", bedrooms);
             formData.append("size", size);
+            formData.append("Activity", Activity);
             formData.append("yearBuilt", yearBuilt);
             formData.append("parkingSpace", parkingSpace);
             formData.append("hasGarden", hasGarden);
@@ -159,6 +161,13 @@ const HouseComponent = () => {
                     <option value="Industry">Industry</option>
                     <option value="Apartment">Apartment</option>
                     <option value="Land">Land</option>
+                </select>
+            </div>
+            <div>
+                <label>Activity</label>
+                <select value={PropertyType} onChange={(e) => setActivity(e.target.value)}>
+                    <option value="Sell">Sell</option>
+                    <option value="Rent">Rent</option>
                 </select>
             </div>
             
