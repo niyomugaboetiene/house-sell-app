@@ -1,6 +1,7 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import logo from "../assets/House_Images/logo.png"
 
 const Navs = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -8,15 +9,18 @@ const Navs = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-4 flex items-center justify-between">
+      <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-gray-50 px-6 py-4 flex items-center justify-between">
+        
+        <div>
+            <img src={logo} className="h-14 w-18"/>
+        </div>
         <button
-          className="text-2xl font-bold text-green-500"
+          className="text-2xl font-bold text-blue-500 absolute left-25"
           onClick={() => navigate("/")}
         >
-          Shop Sphere
+          HomeFinder
         </button>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8 font-medium text-gray-700">
           <Link to="/" className="hover:underline transition-colors hover:text-green-500">
             Home
@@ -32,7 +36,6 @@ const Navs = () => {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="flex items-center space-x-4 md:hidden">
           <button
             className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition"
@@ -48,7 +51,6 @@ const Navs = () => {
           </button>
         </div>
 
-        {/* Desktop Cart Button */}
         <div className="hidden md:block">
           <button
             className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition"
@@ -59,7 +61,6 @@ const Navs = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="fixed top-16 left-0 w-full bg-white shadow-md flex flex-col items-center space-y-6 py-6 md:hidden z-40">
           <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-green-500 text-lg">
