@@ -34,7 +34,7 @@ const HouseListComponent = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 mt-20">
                <p className="ms-10 mt-4 underline text-2xl font-bold text-blue-500">Quick Buy </p> 
 
 

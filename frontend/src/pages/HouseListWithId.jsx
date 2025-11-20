@@ -35,7 +35,7 @@ const HouseListComponentWithId = () => {
     );
 
     return (
-        <div className="min-h-screen bg-blue-50 py-8">
+        <div className="min-h-screen bg-blue-50 py-8 mt-10">
            <button onClick={() => navigate(-1)} className="bg-gray-200 ms-13 px-3 py-1 hover:bg-gray-300 transition-colors">&larr; Back</button>
             <div className="max-w-7xl mx-auto px-4">
                 <h1 className="text-3xl font-bold text-blue-500 mb-8">House Details</h1>
