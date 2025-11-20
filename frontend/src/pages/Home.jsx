@@ -162,12 +162,13 @@ const HomePage = () => {
                     <img src={Lottien1} 
                       className="w-54 h-40 ms-20"
                     />
-                    <h1 className="text-center text-xl font-bold">Buy a home</h1>
+                    <h1 className="text-center text-xl font-bold">Rent a home</h1>
                     <p className="p-5 text-sm text-gray-700">
-                         Take the first step toward building your legacy.
-                         Homeownership isn't just about having a roof over your head - it's
-                         about creating a space that's truly yours, where every wall holds your
-                         memories and every room reflects your journey.
+                           Experience the freedom to explore new neighborhoods
+                           and lifestyles without long-term commitment. 
+                           Renting gives you the flexibility to adapt to life's
+                           changes - whether it's a career move, 
+                           relationship shift, or simply the desire for a fresh start
                     </p>
 
                     <button className="bg-blue-500 px-6 py-3 text-white rounded-lg ms-24 hover:bg-blue-600 transition-colors">Buy House</button>
@@ -177,12 +178,10 @@ const HomePage = () => {
                     <img src={Lottien1} 
                       className="w-54 h-40 ms-20"
                     />
-                    <h1 className="text-center text-xl font-bold">Buy a home</h1>
+                    <h1 className="text-center text-xl font-bold">Sell a Home</h1>
                     <p className="p-5 text-sm text-gray-700">
-                         Take the first step toward building your legacy.
-                         Homeownership isn't just about having a roof over your head - it's
-                         about creating a space that's truly yours, where every wall holds your
-                         memories and every room reflects your journey.
+                              Your home has been more than just a house - it's been your sanctuary, 
+                              your memory-maker, and now it's time to turn those cherished moments into financial success
                     </p>
 
                     <button className="bg-blue-500 px-6 py-3 text-white rounded-lg ms-24 hover:bg-blue-600 transition-colors">Buy House</button>
