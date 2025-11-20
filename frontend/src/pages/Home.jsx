@@ -120,8 +120,8 @@ const HomePage = () => {
         </p>
     </div>
 
-    <div className="absolute bg-blue-50 p-2 rounded mt-2 top-5 right-2"> 
-        <p className="text-sm">{house.Activity ? `For ${house.Activity}` : '' }</p>
+    <div className="absolute bg-blue-100 p-2 mt-2 top-5 right-2 rounded-full"> 
+        <p className="text-sm text-gray-700">{house.Activity ? `For ${house.Activity}` : 'For: Not specified' }</p>
     </div>
 
                     <button 
