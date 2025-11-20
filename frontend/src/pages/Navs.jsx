@@ -28,11 +28,14 @@ const Navs = () => {
           <Link to="/contact" className="hover:underline transition-colors hover:text-blue-500">
             Rent
           </Link>
-          <Link to="/about" className="hover:underline transition-colors hover:text-green-500">
+          <Link to="/about" className="hover:underline transition-colors hover:text-blue-500">
             Sell
           </Link>
-          <Link to="/sign-up" className="hover:underline transition-colors hover:text-green-500">
-            
+          <Link to="/sign-up" className="hover:underline transition-colors hover:text-blue-500">
+            Saved
+          </Link>
+          <Link to="/sign-up" className="hover:underline transition-colors hover:text-blue-500">
+            Properties
           </Link>
         </div>
 
@@ -49,16 +52,28 @@ const Navs = () => {
           >
             {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
+
         </div>
 
-        <div className="hidden md:block">
-          <button
-            className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition"
-            onClick={() => navigate("/cart")}
-          >
-            <FaShoppingCart className="text-gray-700" />
-          </button>
-        </div>
+<div className="hidden md:flex items-center space-x-3">
+  <button
+    className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition"
+    onClick={() => navigate("/cart")}
+  >
+    <FaShoppingCart className="text-gray-700" />
+  </button>
+
+  <Link className="hover:underline transition-colors hover:text-blue-500">Get Help</Link>
+  
+  <div className="flex items-center">
+    <Link className="bg-blue-500 text-white px-4 py-2 rounded-l-full hover:bg-blue-600 transition-colors">
+      SignUp
+    </Link>
+    <Link className="border border-blue-500 border-l-0 text-blue-500 px-4 py-2 rounded-r-full hover:bg-blue-50 transition-colors">
+      Login
+    </Link>
+  </div>
+</div>
       </div>
 
       {isMobileMenuOpen && (
