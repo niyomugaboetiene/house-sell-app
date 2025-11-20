@@ -158,12 +158,12 @@ const HomePage = () => {
                     <button className="bg-blue-500 hover:bg-blue-600 transition-colors px-6 py-3 text-white rounded-lg ms-24">Buy House</button>
                  </div>
                  
-                 <div className="bg-white shadow-2xl rounded-2xl ms-9">
-                    <img src={Lottien1} 
+                 <div className="bg-white shadow-2xl rounded-2xl ms-9 p-5">
+                    <img src={Lottien3} 
                       className="w-54 h-40 ms-20"
                     />
                     <h1 className="text-center text-xl font-bold">Rent a home</h1>
-                    <p className="p-5 text-sm text-gray-700">
+                    <p className="text-sm text-gray-700">
                            Experience the freedom to explore new neighborhoods
                            and lifestyles without long-term commitment. 
                            Renting gives you the flexibility to adapt to life's
@@ -174,17 +174,17 @@ const HomePage = () => {
                     <button className="bg-blue-500 px-6 py-3 text-white rounded-lg ms-24 hover:bg-blue-600 transition-colors">Buy House</button>
                  </div>
 
-                 <div className="bg-white shadow-2xl rounded-2xl ms-9">
-                    <img src={Lottien1} 
+                 <div className="bg-white shadow-2xl rounded-2xl ms-9 p-5 ">
+                    <img src={Lottien2} 
                       className="w-54 h-40 ms-20"
                     />
-                    <h1 className="text-center text-xl font-bold">Sell a Home</h1>
-                    <p className="p-5 text-sm text-gray-700">
+                    <h1 className="text-center text-xl font-bold text-blue-500">Sell a Home</h1>
+                    <p className="text-sm text-gray-700">
                               Your home has been more than just a house - it's been your sanctuary, 
                               your memory-maker, and now it's time to turn those cherished moments into financial success
                     </p>
 
-                    <button className="bg-blue-500 px-6 py-3 text-white rounded-lg ms-24 hover:bg-blue-600 transition-colors">Buy House</button>
+                    <button className="bg-blue-500 px-6 py-3 text-white rounded-lg ms-24 hover:bg-blue-600 transition-colors mt-4">Buy House</button>
                  </div>
             </div>
         </div>
