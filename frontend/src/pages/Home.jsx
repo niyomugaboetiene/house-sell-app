@@ -121,7 +121,7 @@ const HomePage = () => {
     </div>
 
     <div className="absolute bg-blue-50 p-2 rounded mt-2 top-5 right-2"> 
-        <p className="text-sm">For: {house.Activity}</p>
+        <p className="text-sm">{house.Activity ? `For ${house.Activity}` : '' }</p>
     </div>
 
                     <button 
