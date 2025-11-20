@@ -1,11 +1,10 @@
-import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const HouseListComponentWithId = () => {
     const { _id } = useParams();
-    const [house, setHouse] = useState(null);
+    const [house, setHouse] = useState([]);
     
 
     const fetchHouse = async () => {
@@ -15,7 +14,8 @@ const HouseListComponentWithId = () => {
                 { withCredentials: true }
             );
 
-            setHouse(res.data.house); 
+            setHouse(res.data.houses); 
+            console.log('Data received', res.data.houses);
         } catch (error) {
             console.error(error);
         }

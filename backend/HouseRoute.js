@@ -80,9 +80,9 @@ route.get('/houses', async(req ,res) => {
 route.get('/houses/:_id', async(req ,res) => {
     const { _id } = req.params;
     try {
-        const houses = await HouseSchema.findById(_id).populate("owner", "full_name user_name _id role");
-        if (houses) {
-           return res.status(200).json({ house: houses });
+        const house = await HouseSchema.findById(_id).populate("owner", "full_name user_name _id role");
+        if (house) {
+           return res.status(200).json({ houses: house });
        } 
        return res.status(404).json({ message: 'No house found' })
     } catch(error) {
