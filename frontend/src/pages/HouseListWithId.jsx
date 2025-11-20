@@ -26,63 +26,124 @@ const HouseListComponentWithId = () => {
         fetchHouse();
     }, [_id]);
 
-    if (!house) return <p>Loading...</p>
+    if (!house) return (
+        <div className="h-screen flex items-center justify-center">
+            <p className="text-xl text-gray-600">Loading...</p>
+        </div>
+    );
+
     return (
-        <div className="h-screen ">
-            <h1 className="text-bold text-2xl  mt-5 font-medium text-blue-500">House Details</h1>
-            <div className="ms-5 p-4 flex flex-1">
-          <div className="p-4">
-                 <img src={`http://localhost:5000/House_Images/${house.image }`} 
-                   className="w-[740px] object-cover h-[850px] rounded-xl shadow-2xl"
-                 />
+        <div className="min-h-screen bg-gray-50 py-8">
+            <div className="max-w-7xl mx-auto px-4">
+                <h1 className="text-3xl font-bold text-gray-900 mb-8">House Details</h1>
+                
+                <div className="flex flex-col lg:flex-row gap-8">
+                    <div className="lg:w-1/2">
+                        <img 
+                            src={`http://localhost:5000/House_Images/${house.image}`} 
+                            className="w-full h-[600px] lg:h-[700px] object-cover rounded-2xl shadow-xl"
+                            alt={house.title}
+                        />
+                    </div>
 
-           </div>
-           <div className="ms-3 p-4">
-                       <p className="text-2xl">Title: {house.title}</p>
-                        <p className="text-2xl">{house.description}</p>
-            <div>
-                        <p className="text-2xl">
+                    <div className="lg:w-1/2 bg-white rounded-2xl shadow-xl p-8">
+                        <div className="mb-8">
+                            <h2 className="text-2xl font-bold text-gray-900 mb-2">{house.title}</h2>
+                            <p className="text-lg text-gray-600 mb-4">{house.description}</p>
+                            <p className="text-3xl font-bold text-blue-600">${house.price.toLocaleString()}</p>
+                        </div>
+
                         {house.location && (
-                            <>
-                                 <p className="font-medium mt-2">Location Details</p>
-                                 <p>Country: {house.location.country}</p>
-                                 City: {house.location.city}
-                                 District: {house.location.district}
-                                 Sector: {house.location.sector}
-                                 Street: {house.location.street}
-                            </>
-
+                            <div className="mb-8 p-6 bg-gray-100 shadow-inner shadow-sky-500xl rounded-xl">
+                                <h3 className="text-xl font-serif text-blue-500 mb-4 text-center">Location Details</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <p className="text-gray-700"><span className="font-medium">Country:</span> {house.location.country}</p>
+                                        <p className="text-gray-700"><span className="font-medium">City:</span> {house.location.city}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-gray-700"><span className="font-medium">District:</span> {house.location.district}</p>
+                                        <p className="text-gray-700"><span className="font-medium">Sector:</span> {house.location.sector}</p>
+                                    </div>
+                                    <p className="text-gray-700 md:col-span-2"><span className="font-medium">Street:</span> {house.location.street}</p>
+                                </div>
+                            </div>
                         )}
-                        </p>
-            </div>
-                        <p className="text-2xl">${house.price}</p>
 
+                        <div className="mb-8">
+                            <h3 className="text-xl font-semibold text-blue-500 mb-4">Property Features</h3>
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl">
+                                    <p className="text-sm text-gray-600">Bedrooms</p>
+                                    <p className="text-lg font-semibold text-gray-900">{house.bedrooms}</p>
+                                </div>
+                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl">
+                                    <p className="text-sm text-gray-600">Bathrooms</p>
+                                    <p className="text-lg font-semibold text-gray-900">{house.bathrooms}</p>
+                                </div>
+                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl">
+                                    <p className="text-sm text-gray-600">Size</p>
+                                    <p className="text-lg font-semibold text-gray-900">{house.size} sqft</p>
+                                </div>
+                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl">
+                                    <p className="text-sm text-gray-600">Year Built</p>
+                                    <p className="text-lg font-semibold text-gray-900">{house.yearBuilt}</p>
+                                </div>
+                                <div className="bg-gray-100 p-4 rounded-lg">
+                                    <p className="text-sm text-gray-600">Garden</p>
+                                    <p className="text-lg font-semibold text-gray-900">{house.hasGarden ? "Yes" : "No"}</p>
+                                </div>
+                                <div className="bg-gray-100 p-4 rounded-lg">
+                                    <p className="text-sm text-gray-600">Type</p>
+                                    <p className="text-lg font-semibold text-gray-900">{house.PropertyType}</p>
+                                </div>
+                            </div>
+                        </div>
 
-                        <p className="text-2xl">Bathrooms: {house.bathrooms}</p>
-                        <p className="text-2xl">Bedrooms: {house.bedrooms}</p>
-                        <p className="text-2xl">Size: {house.size}</p>
-                        <p className="text-2xl">Year Built: {house.yearBuilt}</p>
-                        <p className="text-2xl">Has Garden: {house.hasGarden ? "Yes": "No"}</p>
-                        <p className="text-2xl">Property Type: {house.PropertyType}</p>
-                        <p className="text-2xl"> Available: {house.isAvailable ? "Yes": "No" }</p>
-                        <button onClick={() => setWatchVideo(true)} className="mt-3 bg-red-500 px-6 py-3 text-white rounded-xl hover:bg-red-400 transition duration-100 hover:scale-105">Watch Video</button>
-           </div>
-                       </div>
+                        <div className="mb-8">
+                            <div className={`inline-flex items-center px-4 py-2 rounded-full ${house.isAvailable ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                                <span className="font-medium">Available: {house.isAvailable ? "Yes" : "No"}</span>
+                            </div>
+                        </div>
 
-                        {watchVideo && (
-                            <>
-                              {house.video.length !== 0 ? (
-                                 <video controls>
-                                     <source src={`http://localhost:5000/House_Images/${house.video}`}/>
+                        <button 
+                            onClick={() => setWatchVideo(true)} 
+                            className="w-full bg-red-500 px-6 py-4 text-white text-lg font-semibold rounded-xl hover:bg-red-400 transition duration-200 hover:scale-105 shadow-lg"
+                        >
+                            Watch Video
+                        </button>
+                    </div>
+                </div>
+
+                {watchVideo && (
+                    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+                        <div className="bg-white rounded-2xl p-6 max-w-4xl w-full">
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="text-xl font-semibold">Property Video</h3>
+                                <button 
+                                    onClick={() => setWatchVideo(false)}
+                                    className="text-gray-500 hover:text-gray-700 text-2xl"
+                                >
+                                    ×
+                                </button>
+                            </div>
+                            {house.video && house.video.length !== 0 ? (
+                                <video 
+                                    controls 
+                                    className="w-full h-auto rounded-lg"
+                                >
+                                    <source src={`http://localhost:5000/House_Images/${house.video}`}/>
+                                    Your browser does not support the video tag.
                                 </video>
-                              ): (
-                                 <p>No video uploaded</p>
-                             )}
-                            </>
-
-                        )}
-
-
+                            ) : (
+                                <div className="text-center py-8">
+                                    <p className="text-gray-600 text-lg">No video uploaded for this property</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
