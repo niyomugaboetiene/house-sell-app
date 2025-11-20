@@ -25,16 +25,19 @@ const HouseSchema = new mongoose.Schema({
         
         bathrooms: {
             type: Number,
-            required: true
+            required: true,
+            default: 0
         },
         
         bedrooms: {
             type: Number,
-            required: true
+            required: true,
+            default: 0
         },
 
         size: {
-            type: Number
+            type: Number,
+            default: 0
         },
 
         image: [
