@@ -60,9 +60,15 @@ const HomePage = () => {
                 />
 
                 <div className="absolute top-50 left-11">
-                    <h1 className="from-black to-blue-500 via-white bg-linear-120 bg-clip-text text-[50px]">Search your desired House</h1>
-                    <input type="text" className="border" />
-                    <FaSearch />
+                    <h1 className=" text-white font-medium text-[50px]">Search your desired House</h1>
+                    <div className="flex justify-between w-110 bg-gray-50 rounded-xl">
+                        <input type="text" className="py-4 placeholder:text-blue-500 placeholder:font-light ps-2 w-full focus:outline-2 focus:outline-blue-500 rounded-lg bg-gray-100" 
+                           placeholder="Search by address, type of house, country, district, ..."
+                        />
+                        <div className="p-5 bg-gray-100 rounded-e-2xl active:border border-blue-500">
+                           <FaSearch className="text-blue-500 "/>
+                        </div>
+                    </div>
                 </div>
             </div>
             <p className="ms-10 mt-4 underline text-2xl font-bold text-blue-500">Recent House</p> 
