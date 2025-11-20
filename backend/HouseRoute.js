@@ -19,7 +19,7 @@ route.post('/add', uploads.fields([
     { name: 'image', maxCount: 10 },
     { name: 'video', maxCount: 5 }
 ]), async(req, res) => {
-    const { title, description, price, bathrooms, bedrooms, size, yearBuilt, location, parkingSpace, hasGarden, PropertyType, isAvailable } = req.body;
+    const { title, description, price, bathrooms, bedrooms, size, yearBuilt, location, parkingSpace, hasGarden, PropertyType, isAvailable, Activity } = req.body;
 
     const locationData = JSON.parse(location);
 
@@ -35,7 +35,7 @@ route.post('/add', uploads.fields([
       
         const owner = req.session.userInfo.user_id;
         
-        if (!title || !description || !price || !location || !bathrooms || !size || !yearBuilt) {
+        if (!title || !description || !price || !location || !bathrooms || !size || !yearBuilt || !Activity) {
             return res.status(400).json({ error: "Some fileld is missing" });
         }
 
@@ -54,7 +54,8 @@ route.post('/add', uploads.fields([
                  owner: owner,
                  isAvailable,
                  image: imagePath,
-                 video: videoPath
+                 video: videoPath,
+                 Activity
             });
 
             return res.status(201).json({ message: 'House inserted successfully' });

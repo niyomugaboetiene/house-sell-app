@@ -72,6 +72,12 @@ const HouseSchema = new mongoose.Schema({
 
     },
 
+    Activity: {
+       type: String,
+       enum: ['Sell', 'Rent'],
+       required: true
+    },
+
     buyer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
