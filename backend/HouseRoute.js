@@ -103,7 +103,7 @@ route.get('/houses/:_id', async(req ,res) => {
 
 });
 
-route.post('/BuyHouse/:_id', async(req, res) => {
+route.post('/AddToCart/:_id', async(req, res) => {
    const { _id } = req.params;
    try {
     const IsHouseExist = await HouseSchema.findById(_id);

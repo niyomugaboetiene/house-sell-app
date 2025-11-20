@@ -33,7 +33,7 @@ const HouseListComponentWithId = () => {
 
     const AddToCart = async(_id) => {
         try {
-            await axios.post(`http://localhost:5000/house/BuyHouse/${_id}`, {}, { withCredentials: true });
+            await axios.post(`http://localhost:5000/house/AddToCart/${_id}`, {}, { withCredentials: true });
             setMessage("House Added to cart successfully");
         } catch (error) {
             console.error(error.message);
@@ -48,6 +48,9 @@ const HouseListComponentWithId = () => {
 
     return (
         <div className="min-h-screen bg-blue-50 py-8 mt-10">
+            {message && (
+                <p>{message}</p>
+            )}
            <button onClick={() => navigate(-1)} className="bg-gray-200 ms-13 px-3 py-1 hover:bg-gray-300 transition-colors">&larr; Back</button>
             <div className="max-w-7xl mx-auto px-4">
                 <h1 className="text-3xl font-bold text-blue-500 mb-8">House Details</h1>
