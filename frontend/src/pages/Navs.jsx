@@ -22,10 +22,10 @@ const Navs = () => {
         </button>
 
         <div className="hidden md:flex space-x-8 font-medium text-gray-700">
-          <Link to="/" className="hover:underline transition-colors hover:text-green-500">
+          <Link to="/" className="hover:underline transition-colors hover:text-blue-500">
             Buy
           </Link>
-          <Link to="/contact" className="hover:underline transition-colors hover:text-green-500">
+          <Link to="/contact" className="hover:underline transition-colors hover:text-blue-500">
             Rent
           </Link>
           <Link to="/about" className="hover:underline transition-colors hover:text-green-500">
