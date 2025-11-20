@@ -38,7 +38,7 @@ const HomePage = () => {
         <div className="min-h-screen bg-gray-50">
             <div>
                 <img src={House1} 
-                  className="w-full h-auto"
+                  className="w-full h-130"
                 />
             </div>
             <p className="ms-10 mt-4 underline text-2xl font-bold text-blue-500">Recent House</p> 
