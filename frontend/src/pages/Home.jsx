@@ -124,12 +124,12 @@ const HomePage = () => {
         <p className="text-sm text-gray-700">{house.Activity ? `For ${house.Activity}` : 'For: Not specified' }</p>
     </div>
 
-                    <button 
-                        className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
-                        onClick={() => navigate(`/allHouse/${house._id}`)}
-                    >
-                        View Details
-                    </button>
+         <button 
+             className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+             onClick={() => navigate(`/allHouse/${house._id}`)}
+          >
+               View Details
+                 </button>
                 </div>
             </div>
         ))}
