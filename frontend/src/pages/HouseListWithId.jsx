@@ -30,38 +30,35 @@ const HouseListComponentWithId = () => {
         <div>
             <div>
                 <h1>House list</h1>
-                {house.map((item, idx) => (
-                    <div key={idx}>
 
-                        <p>{item.title}</p>
-                        <p>{item.description}</p>
-                        <p>{item.price}</p>
-                        {item.location && (
-                            `Location: ${item.location.country}, 
-                             City: ${item.location.city},
-                             District: ${item.location.district}, 
-                             Sector: ${item.location.sector}, 
-                             Street: ${item.location.street}`
+                        <p>{house.title}</p>
+                        <p>{house.description}</p>
+                        <p>{house.price}</p>
+                        {house.location && (
+                            `Location: ${house.location.country}, 
+                             City: ${house.location.city},
+                             District: ${house.location.district}, 
+                             Sector: ${house.location.sector}, 
+                             Street: ${house.location.street}`
                         )}
-                        <p>Bathrooms: {item.bathrooms}</p>
-                        <p>Size: {item.size}</p>
-                        <p>Year Built: {item.size}</p>
-                        <p>Has Garden: {item.hasGarden ? "Yes": "No"}</p>
-                        <p>Property Type: {item.PropertyType}</p>
-                        <p>Available: {item.isAvailable ? "Yes": "No" }</p>
-                        <img src={`http://localhost:5000/House_Images/${item.image }`} alt="" />
+                        <p>Bathrooms: {house.bathrooms}</p>
+                        <p>Bathrooms: {house.bedrooms}</p>
+                        <p>Size: {house.size}</p>
+                        <p>Year Built: {house.size}</p>
+                        <p>Has Garden: {house.hasGarden ? "Yes": "No"}</p>
+                        <p>Property Type: {house.PropertyType}</p>
+                        <p>Available: {house.isAvailable ? "Yes": "No" }</p>
+                        <img src={`http://localhost:5000/House_Images/${house.image }`} alt="" />
                         
-                        {item.video.length !== 0 ? (
+                        {house.video.length !== 0 ? (
                            <video controls>
-                               <source src={`http://localhost:5000/House_Images/${item.video}`}/>
+                               <source src={`http://localhost:5000/House_Images/${house.video}`}/>
                            </video>
                         ): (
                             <p>No video uploaded</p>
                         )}
 
                     </div>
-                ))}
-            </div>
         </div>
     )
 }
