@@ -1,4 +1,5 @@
 import React from "react";
+import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import { FaHeart } from "react-icons/fa"
 import { useEffect, useState } from "react";
@@ -55,8 +56,14 @@ const HomePage = () => {
                 <img 
                    src={Images[imageIndex]} 
                    key={imageIndex}
-                  className="w-full h-130 fade"
+                  className="w-full h-140 fade"
                 />
+
+                <div className="absolute top-50 left-11">
+                    <h1 className="from-black to-blue-500 via-white bg-linear-120 bg-clip-text text-[50px]">Search your desired House</h1>
+                    <input type="text" className="border" />
+                    <FaSearch />
+                </div>
             </div>
             <p className="ms-10 mt-4 underline text-2xl font-bold text-blue-500">Recent House</p> 
 
