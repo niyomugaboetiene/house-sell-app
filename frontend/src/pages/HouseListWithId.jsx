@@ -39,12 +39,12 @@ const HouseListComponentWithId = () => {
            </div>
            <div className="ms-3 p-4">
                        <p className="text-2xl">Title: {house.title}</p>
-                        <p className="text-xl">{house.description}</p>
+                        <p className="text-2xl">{house.description}</p>
             <div>
                         <p className="text-2xl">
                         {house.location && (
                             <>
-                                 <p className="">Location:</p>
+                                 <p className="font-medium mt-2">Location Details</p>
                                  <p>Country: {house.location.country}</p>
                                  City: {house.location.city}
                                  District: {house.location.district}
