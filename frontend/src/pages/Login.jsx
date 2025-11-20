@@ -21,7 +21,7 @@ const LoginComponent = () => {
     }
 
     return (
-        <div>
+        <div className="mt-15">
             <div>
                 <label>User name</label>
                 <input type="text" onChange={(e) => setUsername(e.target.value)} /> <br />

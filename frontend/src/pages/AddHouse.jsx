@@ -87,7 +87,7 @@ const HouseComponent = () => {
     }
 
     return (
-        <div>
+        <div className="mt-15">
             <div>
                 <label>Title</label>
                 <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
