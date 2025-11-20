@@ -10,6 +10,10 @@ import House3 from "../assets/House_Images/house3.jpg"
 import House4 from "../assets/House_Images/house4.jpg"
 import House5 from "../assets/House_Images/house5.jpg"
 
+import Lottien1 from "../assets/House_Images/lottie1.png"
+import Lottien2 from "../assets/House_Images/lottie2.png"
+import Lottien3 from "../assets/House_Images/lottie3.png"
+
 const Images = [House1, House2, House3, House4, House5];
 
 const HomePage = () => {
@@ -98,7 +102,6 @@ const HomePage = () => {
                                 )}
                             </div>
 
-                            {/* Content Section - Reduced Padding */}
                             <div className="p-4">
                                 <div className="mb-3">
                                     <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 mb-1">
@@ -137,6 +140,15 @@ const HomePage = () => {
                         <p className="mt-1 text-sm text-gray-500">Get started by adding a new property listing.</p>
                     </div>
                 )}
+            </div>
+
+            <div className="grid grid-cols-3 w-[65%]">
+                 <div className="bg-white shadow-2xl rounded-2xl ms-9">
+                    <img src={Lottien1} 
+                      className="w-54 h-40 ms-20"
+                    />
+                    <p>Buy a home</p>
+                 </div>
             </div>
         </div>
     )
