@@ -139,7 +139,7 @@ route.get('/myCart', async(req, res) => {
         });
 
         if (userCart.length > 0) {
-            return res.status(200).json({Your_cart: userCart });
+            return res.status(200).json({my_cart: userCart });
         } else {
               return res.status(401).json({ message: 'Login first' });
         }
