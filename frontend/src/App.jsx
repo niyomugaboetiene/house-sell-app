@@ -13,7 +13,7 @@ function App() {
            <Route path="/register" element={<RegisterComponent />}/>
            <Route path="/addHouse" element={<HouseComponent />}/>
            <Route path="/allHouse" element={<HouseListComponent />} />
-           <Route path="/allHouse/:house_id" element={<HouseListComponentWithId />} />
+           <Route path="/allHouse/:_id" element={<HouseListComponentWithId />} />
          </Routes>
      </BrowserRouter>
   )

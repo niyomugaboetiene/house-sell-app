@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { FaHeart } from "react-icons/fa"
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const HouseListComponent = () => {
     const [houses, setHouses] = useState([]);
@@ -80,7 +81,9 @@ const HouseListComponent = () => {
                                     </p>
                                 </div>
 
-                                <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-blue-700 transition-colors">
+                                <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-blue-700 transition-colors"
+                                   onClick={() => }
+                                >
                                     View Details
                                 </button>
                             </div>
