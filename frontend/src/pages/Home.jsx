@@ -142,12 +142,50 @@ const HomePage = () => {
                 )}
             </div>
 
-            <div className="grid grid-cols-3 w-[65%]">
+            <div className="grid grid-cols-3 w-[65%] p-2 mt-12 items-center ">
                  <div className="bg-white shadow-2xl rounded-2xl ms-9">
                     <img src={Lottien1} 
                       className="w-54 h-40 ms-20"
                     />
-                    <p>Buy a home</p>
+                    <h1 className="text-center text-xl font-bold">Buy a home</h1>
+                    <p className="p-5 text-sm text-gray-700">
+                         Take the first step toward building your legacy.
+                         Homeownership isn't just about having a roof over your head - it's
+                         about creating a space that's truly yours, where every wall holds your
+                         memories and every room reflects your journey.
+                    </p>
+
+                    <button className="bg-blue-500 hover:bg-blue-600 transition-colors px-6 py-3 text-white rounded-lg ms-24">Buy House</button>
+                 </div>
+                 
+                 <div className="bg-white shadow-2xl rounded-2xl ms-9">
+                    <img src={Lottien1} 
+                      className="w-54 h-40 ms-20"
+                    />
+                    <h1 className="text-center text-xl font-bold">Buy a home</h1>
+                    <p className="p-5 text-sm text-gray-700">
+                         Take the first step toward building your legacy.
+                         Homeownership isn't just about having a roof over your head - it's
+                         about creating a space that's truly yours, where every wall holds your
+                         memories and every room reflects your journey.
+                    </p>
+
+                    <button className="bg-blue-500 px-6 py-3 text-white rounded-lg ms-24 hover:bg-blue-600 transition-colors">Buy House</button>
+                 </div>
+
+                 <div className="bg-white shadow-2xl rounded-2xl ms-9">
+                    <img src={Lottien1} 
+                      className="w-54 h-40 ms-20"
+                    />
+                    <h1 className="text-center text-xl font-bold">Buy a home</h1>
+                    <p className="p-5 text-sm text-gray-700">
+                         Take the first step toward building your legacy.
+                         Homeownership isn't just about having a roof over your head - it's
+                         about creating a space that's truly yours, where every wall holds your
+                         memories and every room reflects your journey.
+                    </p>
+
+                    <button className="bg-blue-500 px-6 py-3 text-white rounded-lg ms-24 hover:bg-blue-600 transition-colors">Buy House</button>
                  </div>
             </div>
         </div>
