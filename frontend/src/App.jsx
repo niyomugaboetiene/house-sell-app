@@ -6,6 +6,7 @@ import { Link, BrowserRouter, Routes, Route } from "react-router-dom"
 import HomePage from "./pages/Home"
 import Navs from "./pages/Navs"
 import HouseListComponentWithId from "./pages/HouseListWithId"
+import MyCart from "./pages/MyCart"
 function App() {
 
   return (
@@ -18,7 +19,7 @@ function App() {
               <Route path="/addHouse" element={<HouseComponent />}/>
               <Route path="/allHouse" element={<HouseListComponent />} />
               <Route path="/allHouse/:_id" element={<HouseListComponentWithId />} />
-              <Route path="/navs" element={<Navs />} />
+              <Route path="/myCart" element={<MyCart />}/>
           </Route>
          </Routes>
      </BrowserRouter>
