@@ -110,7 +110,7 @@ route.post('/BuyHouse/:_id', async(req, res) => {
     const Buyer_id = req.session.userInfo.user_id;
 
     if (IsHouseExist) {
-        const BuyHOuse = await HouseSchema.findByIdAndUpdate({
+        const BuyHOuse = await HouseSchema.findByIdAndUpdate(_id, {
             buyer: Buyer_id,
             AddedToCart: true
         }, {

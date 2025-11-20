@@ -77,6 +77,11 @@ const HouseSchema = new mongoose.Schema({
         ref: 'User',
         default: null
     },
+    
+    isBuyed: {
+        type: Boolean,
+        default: false
+    },
 
     PropertyType: {
         type: String,

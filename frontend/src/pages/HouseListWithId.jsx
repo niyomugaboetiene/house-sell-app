@@ -7,6 +7,7 @@ const HouseListComponentWithId = () => {
     const { _id } = useParams();
     const [house, setHouse] = useState(null);
     const [watchVideo, setWatchVideo] = useState(false);
+    const [message, setMessage] = useState("");
     const navigate = useNavigate();
     
 
@@ -24,9 +25,20 @@ const HouseListComponentWithId = () => {
         }
     };
 
+
     useEffect(() => {
         fetchHouse();
     }, [_id]);
+
+
+    const AddToCart = async(_id) => {
+        try {
+            await axios.post(`http://localhost:5000/house/BuyHouse/${_id}`, {}, { withCredentials: true });
+            setMessage("House Added to cart successfully");
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
     if (!house) return (
         <div className="h-screen flex items-center justify-center">
@@ -131,6 +143,7 @@ const HouseListComponentWithId = () => {
                           </button>
                          <button
                            className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                           onClick={() => AddToCart(house._id)}
                           >
                             <FaShoppingCart /> Add to Cart
                           </button>
