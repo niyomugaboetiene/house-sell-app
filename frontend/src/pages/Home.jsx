@@ -5,8 +5,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import House1 from "../assets/House_Images/house-1.jpg"
 import House2 from "../assets/House_Images/house2.jpg"
+import House3 from "../assets/House_Images/house3.jpg"
+import House4 from "../assets/House_Images/house4.jpg"
+import House5 from "../assets/House_Images/house5.jpg"
+
+const Images = [House1, House2, House3, House4, House5];
 
 const HomePage = () => {
+
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -37,7 +43,7 @@ const HomePage = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             <div>
-                <img src={House1} 
+                <img src={House4} 
                   className="w-full h-130"
                 />
             </div>
