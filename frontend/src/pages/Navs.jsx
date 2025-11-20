@@ -23,16 +23,16 @@ const Navs = () => {
 
         <div className="hidden md:flex space-x-8 font-medium text-gray-700">
           <Link to="/" className="hover:underline transition-colors hover:text-green-500">
-            Home
+            Buy
           </Link>
           <Link to="/contact" className="hover:underline transition-colors hover:text-green-500">
-            Contact
+            Rent
           </Link>
           <Link to="/about" className="hover:underline transition-colors hover:text-green-500">
-            About
+            Sell
           </Link>
           <Link to="/sign-up" className="hover:underline transition-colors hover:text-green-500">
-            Sign Up
+            
           </Link>
         </div>
 
