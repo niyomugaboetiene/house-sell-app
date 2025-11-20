@@ -38,18 +38,25 @@ const HouseListComponentWithId = () => {
 
            </div>
            <div className="ms-3 p-4">
-                     <p className="text-2xl">Title: {house.title}</p>
-                        <p className="text-2xl">{house.description}</p>
-                        <p className="text-2xl">{house.price}</p>
+                       <p className="text-2xl">Title: {house.title}</p>
+                        <p className="text-xl">{house.description}</p>
+            <div>
                         <p className="text-2xl">
                         {house.location && (
-                            `Location: ${house.location.country}, 
-                             City: ${house.location.city},
-                             District: ${house.location.district}, 
-                             Sector: ${house.location.sector}, 
-                             Street: ${house.location.street}`
+                            <>
+                                 <p className="">Location:</p>
+                                 <p>Country: {house.location.country}</p>
+                                 City: {house.location.city}
+                                 District: {house.location.district}
+                                 Sector: {house.location.sector}
+                                 Street: {house.location.street}
+                            </>
+
                         )}
                         </p>
+            </div>
+                        <p className="text-2xl">${house.price}</p>
+
 
                         <p className="text-2xl">Bathrooms: {house.bathrooms}</p>
                         <p className="text-2xl">Bedrooms: {house.bedrooms}</p>
@@ -60,7 +67,8 @@ const HouseListComponentWithId = () => {
                         <p className="text-2xl"> Available: {house.isAvailable ? "Yes": "No" }</p>
                         <button onClick={() => setWatchVideo(true)} className="mt-3 bg-red-500 px-6 py-3 text-white rounded-xl hover:bg-red-400 transition duration-100 hover:scale-105">Watch Video</button>
            </div>
-   
+                       </div>
+
                         {watchVideo && (
                             <>
                               {house.video.length !== 0 ? (
@@ -75,7 +83,6 @@ const HouseListComponentWithId = () => {
                         )}
 
 
-                    </div>
         </div>
     )
 }
