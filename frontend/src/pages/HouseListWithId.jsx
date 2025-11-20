@@ -35,7 +35,7 @@ const HouseListComponentWithId = () => {
     return (
         <div className="min-h-screen bg-gray-50 py-8">
             <div className="max-w-7xl mx-auto px-4">
-                <h1 className="text-3xl font-bold text-gray-900 mb-8">House Details</h1>
+                <h1 className="text-3xl font-bold text-blue-500 mb-8">House Details</h1>
                 
                 <div className="flex flex-col lg:flex-row gap-8">
                     <div className="lg:w-1/2">
@@ -54,7 +54,7 @@ const HouseListComponentWithId = () => {
                         </div>
 
                         {house.location && (
-                            <div className="mb-8 p-6 bg-gray-100 shadow-inner shadow-sky-500xl rounded-xl">
+                            <div className="mb-8 p-6 bg-gray-100 shadow-inner shadow-sky-500xl rounded-xl hover:-translate-y-1 transition duration-200">
                                 <h3 className="text-xl font-serif text-blue-500 mb-4 text-center">Location Details</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
@@ -73,27 +73,27 @@ const HouseListComponentWithId = () => {
                         <div className="mb-8">
                             <h3 className="text-xl font-semibold text-blue-500 mb-4">Property Features</h3>
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl">
+                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl hover:-translate-y-1 transition duration-200">
                                     <p className="text-sm text-gray-600">Bedrooms</p>
                                     <p className="text-lg font-semibold text-gray-900">{house.bedrooms}</p>
                                 </div>
-                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl">
+                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl hover:-translate-y-1 transition duration-200">
                                     <p className="text-sm text-gray-600">Bathrooms</p>
                                     <p className="text-lg font-semibold text-gray-900">{house.bathrooms}</p>
                                 </div>
-                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl">
+                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl hover:-translate-y-1 transition duration-200">
                                     <p className="text-sm text-gray-600">Size</p>
                                     <p className="text-lg font-semibold text-gray-900">{house.size} sqft</p>
                                 </div>
-                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl">
+                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl hover:-translate-y-1 transition duration-200">
                                     <p className="text-sm text-gray-600">Year Built</p>
                                     <p className="text-lg font-semibold text-gray-900">{house.yearBuilt}</p>
                                 </div>
-                                <div className="bg-gray-100 p-4 rounded-lg">
+                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl hover:-translate-y-1 transition duration-200">
                                     <p className="text-sm text-gray-600">Garden</p>
                                     <p className="text-lg font-semibold text-gray-900">{house.hasGarden ? "Yes" : "No"}</p>
                                 </div>
-                                <div className="bg-gray-100 p-4 rounded-lg">
+                                <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl hover:-translate-y-1 transition duration-200">
                                     <p className="text-sm text-gray-600">Type</p>
                                     <p className="text-lg font-semibold text-gray-900">{house.PropertyType}</p>
                                 </div>
@@ -101,7 +101,7 @@ const HouseListComponentWithId = () => {
                         </div>
 
                         <div className="mb-8">
-                            <div className={`inline-flex items-center px-4 py-2 rounded-full ${house.isAvailable ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                            <div className={`inline-flex items-center px-4 py-2 rounded-full hover:translate-y-1 transition duration-200 ho ${house.isAvailable ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                                 <span className="font-medium">Available: {house.isAvailable ? "Yes" : "No"}</span>
                             </div>
                         </div>
