@@ -12,10 +12,10 @@ import House5 from "../assets/House_Images/house5.jpg"
 const Images = [House1, House2, House3, House4, House5];
 
 const HomePage = () => {
-
+    const [imageIndex, setImageIndex] = useState()
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+    const navigate = useNavigate(0);
     
     const fetchHouses = async () => {
         try {
@@ -27,6 +27,16 @@ const HomePage = () => {
             setLoading(false);
         }
     }
+
+    useEffect(() => {
+        
+        const interval = setInterval(() => {
+            setImageIndex((prev) => prev === Images.length - 1 ? 0 : prev + 1)
+        }, 2000);
+
+        return () => clearInterval(interval)
+    },)
+
 
     useEffect(() => {
         fetchHouses();
@@ -43,7 +53,7 @@ const HomePage = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             <div>
-                <img src={House4} 
+                <img src={Images[imageIndex]} 
                   className="w-full h-130"
                 />
             </div>
