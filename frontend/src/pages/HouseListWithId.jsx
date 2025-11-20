@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import {FaChevronLeft, FaChevronRight} from "react-icons/fa"
 
 const HouseListComponentWithId = () => {
     const { _id } = useParams();
@@ -42,11 +43,20 @@ const HouseListComponentWithId = () => {
                 <div className="flex flex-col lg:flex-row gap-8">
                     <div className="lg:w-1/2">
                     {house.image ? (
-                        <img 
-                            src={`http://localhost:5000/House_Images/${house.image}`} 
-                            className="w-full h-[600px] lg:h-[700px] object-cover rounded-2xl shadow-xl"
-                            alt={house.title}
+                        <div>
+                           <img 
+                               src={`http://localhost:5000/House_Images/${house.image}`} 
+                               className="w-full h-[800px] lg:h-[820px] object-cover rounded-2xl shadow-xl"
+                               alt={house.title}
                         />
+                        <button className="absolute top-130 left-84 bg-blue-50 p-2 rounded-full hover:bg-blue-100 transition duration-200 hover:scale-105">
+                            <FaChevronLeft className="text-gray-500 text-2xl"/>
+                        </button>
+                        <button className="absolute top-130 left-222 bg-blue-50 p-2 rounded-full  hover:bg-blue-100 transition duration-200 hover:scale-105">
+                            <FaChevronRight className="text-gray-500 text-2xl" />
+                        </button>
+                        </div>
+
                     ) : (
                         <p className="rounded-2xl shadow-xl w-full h-full text-2xl ">No image uploaded</p>
                     )}
