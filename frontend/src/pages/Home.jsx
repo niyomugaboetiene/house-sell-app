@@ -12,7 +12,7 @@ import House5 from "../assets/House_Images/house5.jpg"
 const Images = [House1, House2, House3, House4, House5];
 
 const HomePage = () => {
-    const [imageIndex, setImageIndex] = useState()
+    const [imageIndex, setImageIndex] = useState(0)
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate(0);
@@ -29,13 +29,12 @@ const HomePage = () => {
     }
 
     useEffect(() => {
-        
         const interval = setInterval(() => {
             setImageIndex((prev) => prev === Images.length - 1 ? 0 : prev + 1)
-        }, 2000);
+        }, 10000);
 
         return () => clearInterval(interval)
-    },)
+    }, [])
 
 
     useEffect(() => {
@@ -53,8 +52,10 @@ const HomePage = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             <div>
-                <img src={Images[imageIndex]} 
-                  className="w-full h-130"
+                <img 
+                   src={Images[imageIndex]} 
+                   key={imageIndex}
+                  className="w-full h-130 fade"
                 />
             </div>
             <p className="ms-10 mt-4 underline text-2xl font-bold text-blue-500">Recent House</p> 
