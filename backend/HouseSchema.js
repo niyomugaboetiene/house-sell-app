@@ -75,6 +75,7 @@ const HouseSchema = new mongoose.Schema({
     Activity: {
        type: String,
        enum: ['Sell', 'Rent'],
+       default: 'Sell',
        required: true
     },
 
