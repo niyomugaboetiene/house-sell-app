@@ -102,23 +102,27 @@ const HomePage = () => {
                     )}
                 </div>
 
-                <div className="p-4">
-                    <div className="mb-3">
-                        <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 mb-1">
-                            {house.title}
-                        </h3>
-                        <div className="flex space-x-3">
-                            <h3 className="text-sm font-light text-gray-900">
-                               bath: <span className="font-bold">{house.bathrooms}</span>
-                            </h3>
-                            <h3 className="text-sm font-light text-gray-900">
-                               bed: <span className="font-bold">{house.bedrooms}</span>
-                            </h3>
-                        </div>
-                        <p className="text-xl font-bold text-blue-600 mt-1">
-                            ${house.price}
-                        </p>
-                    </div>
+<div className="p-4 relative"> 
+    <div className="mb-3">
+        <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 mb-1">
+            {house.title}
+        </h3>
+        <div className="flex space-x-3">
+            <p className="text-sm font-light text-gray-900">
+                bath: <span className="font-bold">{house.bathrooms}</span>
+            </p>
+            <p className="text-sm font-light text-gray-900"> 
+                bed: <span className="font-bold">{house.bedrooms}</span>
+            </p>
+        </div>
+        <p className="text-xl font-bold text-blue-600 mt-1">
+            ${house.price}
+        </p>
+    </div>
+
+    <div className="absolute bg-blue-50 p-2 rounded mt-2 top-5 right-2"> 
+        <p className="text-sm">For: {house.Activity}</p>
+    </div>
 
                     <button 
                         className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"

@@ -70,7 +70,7 @@ const MyCart = () => {
                                 <button 
                                    className="bg-blue-500 px-10 py-2 ms-3 text-white rounded-lg hover:bg-blue-600 transition-colors mb-4"
                                    >
-                                    {house.Activity === "Rent" ? "Rent" : "Buy"}
+                                    {house.Activity === "Rent" ? "Rent" : "Buy" }
                                 </button>
                             </div>
                         </div>
