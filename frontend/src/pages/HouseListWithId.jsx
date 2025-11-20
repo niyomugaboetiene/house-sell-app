@@ -4,18 +4,26 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const HouseListComponentWithId = () => {
-    const [house, setHouse] = useState(null);
     const { _id } = useParams();
+    const [house, setHouse] = useState(null);
     
-    const HouseList = async() => {
-        const res = await axios.get(`http://localhost:5000/house/houses/${_id}`, { withCredentials: true });
-        
-        setHouse(res.data.house);
-    }
+
+    const fetchHouse = async () => {
+        try {
+            const res = await axios.get(
+                `http://localhost:5000/house/houses/${_id}`,
+                { withCredentials: true }
+            );
+
+            setHouse(res.data.house); 
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
-        HouseList();
-    }, []);
+        fetchHouse();
+    }, [_id]);
 
     return (
         <div>
