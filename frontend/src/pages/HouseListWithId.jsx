@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const HouseListComponentWithId = () => {
     const { _id } = useParams();
     const [house, setHouse] = useState(null);
     const [watchVideo, setWatchVideo] = useState(false);
+    const navigate = useNavigate();
     
 
     const fetchHouse = async () => {
@@ -33,17 +34,23 @@ const HouseListComponentWithId = () => {
     );
 
     return (
-        <div className="min-h-screen bg-gray-50 py-8">
+        <div className="min-h-screen bg-blue-50 py-8">
+           <button onClick={() => navigate(-1)} className="bg-gray-200 ms-13 px-3 py-1 hover:bg-gray-300 transition-colors">&larr; Back</button>
             <div className="max-w-7xl mx-auto px-4">
                 <h1 className="text-3xl font-bold text-blue-500 mb-8">House Details</h1>
                 
                 <div className="flex flex-col lg:flex-row gap-8">
                     <div className="lg:w-1/2">
+                    {item.image ? (
                         <img 
                             src={`http://localhost:5000/House_Images/${house.image}`} 
                             className="w-full h-[600px] lg:h-[700px] object-cover rounded-2xl shadow-xl"
                             alt={house.title}
                         />
+                    ) : (
+                        <p>No image</p>
+                    )}
+
                     </div>
 
                     <div className="lg:w-1/2 bg-white rounded-2xl shadow-xl p-8">
