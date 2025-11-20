@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 const HouseListComponentWithId = () => {
     const { _id } = useParams();
     const [house, setHouse] = useState(null);
+    const [watchVideo, setWatchVideo] = useState(false);
     
 
     const fetchHouse = async () => {
@@ -27,9 +28,9 @@ const HouseListComponentWithId = () => {
 
     if (!house) return <p>Loading...</p>
     return (
-        <div>
+        <div className="h-screen ">
             <div>
-                <h1>House list</h1>
+                <h1 className="text-bold">House list</h1>
 
                         <p>{house.title}</p>
                         <p>{house.description}</p>
@@ -50,13 +51,20 @@ const HouseListComponentWithId = () => {
                         <p>Available: {house.isAvailable ? "Yes": "No" }</p>
                         <img src={`http://localhost:5000/House_Images/${house.image }`} alt="" />
                         
-                        {house.video.length !== 0 ? (
-                           <video controls>
-                               <source src={`http://localhost:5000/House_Images/${house.video}`}/>
-                           </video>
-                        ): (
-                            <p>No video uploaded</p>
+                        <button onClick={() => setWatchVideo(true)}>Watch Video</button>
+                        {watchVideo && (
+                            <>
+                              {house.video.length !== 0 ? (
+                                 <video controls>
+                                     <source src={`http://localhost:5000/House_Images/${house.video}`}/>
+                                </video>
+                              ): (
+                                 <p>No video uploaded</p>
+                             )}
+                            </>
+
                         )}
+
 
                     </div>
         </div>
