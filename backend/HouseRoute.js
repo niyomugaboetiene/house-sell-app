@@ -76,6 +76,18 @@ route.get('/houses', async(req ,res) => {
     }
 
 });
+route.get('/recentlyAdded', async(req ,res) => {
+    try {
+        const houses = await HouseSchema.find().sort({ createdAt: -1 }).limit(12).populate("owner", "full_name user_name _id role");
+        if (houses.length > 0) {
+           return res.status(200).json({ houses: houses });
+       } 
+       return res.status(404).json({ message: 'No house found' })
+    } catch(error) {
+        return res.status(500).json({ error: error.message })
+    }
+
+});
 
 route.get('/houses/:_id', async(req ,res) => {
     const { _id } = req.params;
