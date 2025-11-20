@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
 const HouseSchema = new mongoose.Schema({
     title: {
@@ -65,6 +65,18 @@ const HouseSchema = new mongoose.Schema({
     yearBuilt: Number,
     parkingSpace: Number,
     hasGarden: Boolean,
+
+    AddedToCart: {
+        type: Boolean,
+        default: false
+
+    },
+
+    buyer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        default: null
+    },
 
     PropertyType: {
         type: String,

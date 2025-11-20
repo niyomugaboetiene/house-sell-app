@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import {FaChevronLeft, FaChevronRight} from "react-icons/fa"
+import {FaChevronLeft, FaChevronRight, FaShoppingCart} from "react-icons/fa"
 
 const HouseListComponentWithId = () => {
     const { _id } = useParams();
@@ -121,13 +121,20 @@ const HouseListComponentWithId = () => {
                                 <span className="font-medium">Available: {house.isAvailable ? "Yes" : "No"}</span>
                             </div>
                         </div>
-
-                        <button 
-                            onClick={() => setWatchVideo(true)} 
-                            className="w-full bg-red-500 px-6 py-4 text-white text-lg font-semibold rounded-xl hover:bg-red-400 transition duration-200 hover:scale-105 shadow-lg"
-                        >
-                            Watch Video
-                        </button>
+                        
+                        <div className="justify-between flex">
+                           <button 
+                              onClick={() => setWatchVideo(true)} 
+                              className="bg-red-500 px-6 py-4 text-white text-lg font-semibold rounded-xl hover:bg-red-400 transition duration-200 hover:scale-105 shadow-lg"
+                          >
+                              Watch Video
+                          </button>
+                         <button
+                           className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                          >
+                            <FaShoppingCart /> Add to Cart
+                          </button>
+                        </div>
                     </div>
                 </div>
 
