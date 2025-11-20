@@ -6,6 +6,7 @@ import { Link, BrowserRouter, Routes, Route } from "react-router-dom"
 import HomePage from "./pages/Home"
 import Navs from "./pages/Navs"
 import HouseListComponentWithId from "./pages/HouseListWithId"
+import HouseForRent from "./pages/HouseForRent"
 import MyCart from "./pages/MyCart"
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
               <Route path="/allHouse" element={<HouseListComponent />} />
               <Route path="/allHouse/:_id" element={<HouseListComponentWithId />} />
               <Route path="/myCart" element={<MyCart />}/>
+              <Route path="/rent" element={<HouseForRent />}/>
           </Route>
          </Routes>
      </BrowserRouter>
