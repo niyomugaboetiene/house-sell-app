@@ -41,14 +41,14 @@ const HouseListComponentWithId = () => {
                 
                 <div className="flex flex-col lg:flex-row gap-8">
                     <div className="lg:w-1/2">
-                    {item.image ? (
+                    {house.image ? (
                         <img 
                             src={`http://localhost:5000/House_Images/${house.image}`} 
                             className="w-full h-[600px] lg:h-[700px] object-cover rounded-2xl shadow-xl"
                             alt={house.title}
                         />
                     ) : (
-                        <p>No image</p>
+                        <p className="rounded-2xl shadow-xl w-full h-full text-2xl ">No image uploaded</p>
                     )}
 
                     </div>
