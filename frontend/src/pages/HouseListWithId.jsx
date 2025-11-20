@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 const HouseListComponentWithId = () => {
     const { _id } = useParams();
-    const [house, setHouse] = useState([]);
+    const [house, setHouse] = useState(null);
     
 
     const fetchHouse = async () => {
@@ -25,6 +25,7 @@ const HouseListComponentWithId = () => {
         fetchHouse();
     }, [_id]);
 
+    if (!house) return <p>Loading...</p>
     return (
         <div>
             <div>
