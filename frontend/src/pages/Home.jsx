@@ -24,7 +24,6 @@ const HomePage = () => {
         fetchHouses();
     }, []);
 
-
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -35,55 +34,56 @@ const HomePage = () => {
 
     return (
         <div className="min-h-screen bg-gray-50">
-               <p className="ms-10 mt-4 underline text-2xl font-bold text-blue-500">Quick Buy </p> 
-
+            
+            <p className="ms-10 mt-4 underline text-2xl font-bold text-blue-500">Recent House</p> 
 
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div className="max-w-6xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {houses.map((house, idx) => (
-                        <div key={idx} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
-                            <div className="relative h-80 bg-gray-200">
-                              <div className="relative">
-                                  <button
-                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
-                                  >
-                                     <FaHeart className="text-red-500 text-xl" />
-                                 </button>
+                        <div key={idx} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                            <div className="relative bg-gray-200">
+                                <div className="relative">
+                                    <button
+                                        className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition z-10"
+                                    >
+                                        <FaHeart className="text-red-500 text-lg" />
+                                    </button>
                                 </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 
                                         src={`http://localhost:5000/House_Images/${house.image}`} 
                                         alt={house.title}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-48 object-cover"
                                     />
                                 ) : (
-                                    <div className="w-full h-full flex items-center justify-center bg-gray-100">
+                                    <div className="w-full h-48 flex items-center justify-center bg-gray-100">
                                         <p className="text-gray-500 text-sm">No Image Available</p>
                                     </div>
                                 )}
                             </div>
 
-                            <div className="p-6">
-                                <div className="mb-4">
-                                       <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
-                                           {house.title}
-                                        </h3>
-                                    <div className="flex  space-x-2">
-                                        <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
+                            {/* Content Section - Reduced Padding */}
+                            <div className="p-4">
+                                <div className="mb-3">
+                                    <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 mb-1">
+                                        {house.title}
+                                    </h3>
+                                    <div className="flex space-x-3">
+                                        <h3 className="text-sm font-light text-gray-900">
                                            bath: <span className="font-bold">{house.bathrooms}</span>
                                         </h3>
-                                        <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
-                                           bed: <span className="font-bold">{house.bedrooms} </span>
+                                        <h3 className="text-sm font-light text-gray-900">
+                                           bed: <span className="font-bold">{house.bedrooms}</span>
                                         </h3>
-                                       </div>
-
-                                    <p className="text-2xl font-bold text-blue-600">
-                                        ${(house.price)}
+                                    </div>
+                                    <p className="text-xl font-bold text-blue-600 mt-1">
+                                        ${house.price}
                                     </p>
                                 </div>
 
-                                <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-blue-700 transition-colors"
-                                   onClick={() => navigate(`/allHouse/${house._id}`)}
+                                <button 
+                                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+                                    onClick={() => navigate(`/allHouse/${house._id}`)}
                                 >
                                     View Details
                                 </button>
