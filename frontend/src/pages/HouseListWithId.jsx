@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom";
 
 const HouseListComponentWithId = () => {
     const [house, setHouse] = useState([]);
-    const { _id } = useParams();
+    const { id } = useParams();
     
     const HouseList = async() => {
-        const res = await axios.get(`http://localhost:5000/house/houses/${_id}`, { withCredentials: true });
+        const res = await axios.get(`http://localhost:5000/house/houses/${id}`, { withCredentials: true });
         
         setHouse(res.data.houses);
     }
