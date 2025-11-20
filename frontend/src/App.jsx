@@ -24,7 +24,7 @@ function App() {
               <Route path="/allHouse/:_id" element={<HouseListComponentWithId />} />
               <Route path="/myCart" element={<MyCart />}/>
               <Route path="/rent" element={<HouseForRent />}/>
-              <Route path="/sell" element={<HouseForSell />}/>
+              <Route path="/buy" element={<HouseForSell />}/>
           </Route>
          </Routes>
      </BrowserRouter>
