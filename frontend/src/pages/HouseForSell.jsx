@@ -4,7 +4,7 @@ import { FaHeart } from "react-icons/fa"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const HouseForRent = () => {
+const HouseForSell = () => {
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -106,4 +106,4 @@ const HouseForRent = () => {
     )
 }
 
-export default HouseForRent;
+export default HouseForSell;
