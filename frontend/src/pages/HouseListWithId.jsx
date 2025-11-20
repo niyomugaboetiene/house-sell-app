@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { useEffect } from "react";
-import { useState, useParams } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const HouseListComponentWithId = () => {
     const [house, setHouse] = useState([]);
