@@ -29,12 +29,19 @@ const HouseListComponentWithId = () => {
     if (!house) return <p>Loading...</p>
     return (
         <div className="h-screen ">
-            <div>
-                <h1 className="text-bold">House list</h1>
+            <h1 className="text-bold text-2xl  mt-5 font-medium text-blue-500">House Details</h1>
+            <div className="ms-5 p-4 flex flex-1">
+          <div className="p-4">
+                 <img src={`http://localhost:5000/House_Images/${house.image }`} 
+                   className="w-[740px] object-cover h-[850px] rounded-xl shadow-2xl"
+                 />
 
-                        <p>{house.title}</p>
-                        <p>{house.description}</p>
-                        <p>{house.price}</p>
+           </div>
+           <div className="ms-3 p-4">
+                     <p className="text-2xl">Title: {house.title}</p>
+                        <p className="text-2xl">{house.description}</p>
+                        <p className="text-2xl">{house.price}</p>
+                        <p className="text-2xl">
                         {house.location && (
                             `Location: ${house.location.country}, 
                              City: ${house.location.city},
@@ -42,16 +49,18 @@ const HouseListComponentWithId = () => {
                              Sector: ${house.location.sector}, 
                              Street: ${house.location.street}`
                         )}
-                        <p>Bathrooms: {house.bathrooms}</p>
-                        <p>Bathrooms: {house.bedrooms}</p>
-                        <p>Size: {house.size}</p>
-                        <p>Year Built: {house.size}</p>
-                        <p>Has Garden: {house.hasGarden ? "Yes": "No"}</p>
-                        <p>Property Type: {house.PropertyType}</p>
-                        <p>Available: {house.isAvailable ? "Yes": "No" }</p>
-                        <img src={`http://localhost:5000/House_Images/${house.image }`} alt="" />
-                        
-                        <button onClick={() => setWatchVideo(true)}>Watch Video</button>
+                        </p>
+
+                        <p className="text-2xl">Bathrooms: {house.bathrooms}</p>
+                        <p className="text-2xl">Bedrooms: {house.bedrooms}</p>
+                        <p className="text-2xl">Size: {house.size}</p>
+                        <p className="text-2xl">Year Built: {house.yearBuilt}</p>
+                        <p className="text-2xl">Has Garden: {house.hasGarden ? "Yes": "No"}</p>
+                        <p className="text-2xl">Property Type: {house.PropertyType}</p>
+                        <p className="text-2xl"> Available: {house.isAvailable ? "Yes": "No" }</p>
+                        <button onClick={() => setWatchVideo(true)} className="mt-3 bg-red-500 px-6 py-3 text-white rounded-xl hover:bg-red-400 transition duration-100 hover:scale-105">Watch Video</button>
+           </div>
+   
                         {watchVideo && (
                             <>
                               {house.video.length !== 0 ? (
