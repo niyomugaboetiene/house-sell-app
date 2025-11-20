@@ -71,7 +71,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <p className="ms-10 mt-4 underline text-2xl font-bold text-blue-500">Recent House</p> 
+            <p className="ms-10 mt-4 text-2xl font-bold text-blue-500">New Houses</p> 
 
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="max-w-6xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

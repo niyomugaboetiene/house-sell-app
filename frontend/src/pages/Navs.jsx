@@ -32,10 +32,10 @@ const Navs = () => {
             Sell
           </Link>
           <Link to="/sign-up" className="hover:underline transition-colors hover:text-blue-500">
-            Saved
+             Properties
           </Link>
           <Link to="/sign-up" className="hover:underline transition-colors hover:text-blue-500">
-            Properties
+            Favorite
           </Link>
         </div>
 
