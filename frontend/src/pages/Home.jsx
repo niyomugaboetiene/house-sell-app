@@ -75,119 +75,122 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <p className="ms-10 mt-4 text-2xl font-bold text-blue-500">New Houses</p> 
+            <p className="ms-10 text-2xl font-bold text-blue-500 text-center mt-8">New Houses</p> 
 
-            <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="max-w-6xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {houses.map((house, idx) => (
-                        <div key={idx} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
-                            <div className="relative bg-gray-200">
-                                <div className="relative">
-                                    <button
-                                        className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition z-10"
-                                    >
-                                        <FaHeart className="text-red-500 text-lg" />
-                                    </button>
-                                </div>
-                                {house.image && house.image.length > 0 ? (
-                                    <img 
-                                        src={`http://localhost:5000/House_Images/${house.image}`} 
-                                        alt={house.title}
-                                        className="w-full h-48 object-cover"
-                                    />
-                                ) : (
-                                    <div className="w-full h-48 flex items-center justify-center bg-gray-100">
-                                        <p className="text-gray-500 text-sm">No Image Available</p>
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="p-4">
-                                <div className="mb-3">
-                                    <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 mb-1">
-                                        {house.title}
-                                    </h3>
-                                    <div className="flex space-x-3">
-                                        <h3 className="text-sm font-light text-gray-900">
-                                           bath: <span className="font-bold">{house.bathrooms}</span>
-                                        </h3>
-                                        <h3 className="text-sm font-light text-gray-900">
-                                           bed: <span className="font-bold">{house.bedrooms}</span>
-                                        </h3>
-                                    </div>
-                                    <p className="text-xl font-bold text-blue-600 mt-1">
-                                        ${house.price}
-                                    </p>
-                                </div>
-
-                                <button 
-                                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
-                                    onClick={() => navigate(`/allHouse/${house._id}`)}
-                                >
-                                    View Details
-                                </button>
-                            </div>
+<div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-6xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-auto">
+        {houses.map((house, idx) => (
+            <div key={idx} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                <div className="relative bg-gray-200">
+                    <div className="relative">
+                        <button
+                            className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition z-10"
+                        >
+                            <FaHeart className="text-red-500 text-lg" />
+                        </button>
+                    </div>
+                    {house.image && house.image.length > 0 ? (
+                        <img 
+                            src={`http://localhost:5000/House_Images/${house.image}`} 
+                            alt={house.title}
+                            className="w-full h-48 object-cover"
+                        />
+                    ) : (
+                        <div className="w-full h-48 flex items-center justify-center bg-gray-100">
+                            <p className="text-gray-500 text-sm">No Image Available</p>
                         </div>
-                    ))}
+                    )}
                 </div>
 
-                {houses.length === 0 && (
-                    <div className="text-center py-12">
-                        <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
-                        <h3 className="mt-2 text-sm font-medium text-gray-900">No properties found</h3>
-                        <p className="mt-1 text-sm text-gray-500">Get started by adding a new property listing.</p>
+                <div className="p-4">
+                    <div className="mb-3">
+                        <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 mb-1">
+                            {house.title}
+                        </h3>
+                        <div className="flex space-x-3">
+                            <h3 className="text-sm font-light text-gray-900">
+                               bath: <span className="font-bold">{house.bathrooms}</span>
+                            </h3>
+                            <h3 className="text-sm font-light text-gray-900">
+                               bed: <span className="font-bold">{house.bedrooms}</span>
+                            </h3>
+                        </div>
+                        <p className="text-xl font-bold text-blue-600 mt-1">
+                            ${house.price}
+                        </p>
                     </div>
-                )}
+
+                    <button 
+                        className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+                        onClick={() => navigate(`/allHouse/${house._id}`)}
+                    >
+                        View Details
+                    </button>
+                </div>
             </div>
+        ))}
+    </div>
 
-            <div className="grid grid-cols-3 w-[65%] p-2 mt-12 items-center ">
-                 <div className="bg-white shadow-2xl rounded-2xl ms-9">
-                    <img src={Lottien1} 
-                      className="w-54 h-40 ms-20"
-                    />
-                    <h1 className="text-center text-xl font-bold">Buy a home</h1>
-                    <p className="p-5 text-sm text-gray-700">
-                         Take the first step toward building your legacy.
-                         Homeownership isn't just about having a roof over your head - it's
-                         about creating a space that's truly yours, where every wall holds your
-                         memories and every room reflects your journey.
-                    </p>
-
-                    <button className="bg-blue-500 hover:bg-blue-600 transition-colors px-6 py-3 text-white rounded-lg ms-24">Buy House</button>
-                 </div>
-                 
-                 <div className="bg-white shadow-2xl rounded-2xl ms-9 p-5">
-                    <img src={Lottien3} 
-                      className="w-54 h-40 ms-20"
-                    />
-                    <h1 className="text-center text-xl font-bold">Rent a home</h1>
-                    <p className="text-sm text-gray-700">
-                           Experience the freedom to explore new neighborhoods
-                           and lifestyles without long-term commitment. 
-                           Renting gives you the flexibility to adapt to life's
-                           changes - whether it's a career move, 
-                           relationship shift, or simply the desire for a fresh start
-                    </p>
-
-                    <button className="bg-blue-500 px-6 py-3 text-white rounded-lg ms-24 hover:bg-blue-600 transition-colors">Buy House</button>
-                 </div>
-
-                 <div className="bg-white shadow-2xl rounded-2xl ms-9 p-5 ">
-                    <img src={Lottien2} 
-                      className="w-54 h-40 ms-20"
-                    />
-                    <h1 className="text-center text-xl font-bold text-blue-500">Sell a Home</h1>
-                    <p className="text-sm text-gray-700">
-                              Your home has been more than just a house - it's been your sanctuary, 
-                              your memory-maker, and now it's time to turn those cherished moments into financial success
-                    </p>
-
-                    <button className="bg-blue-500 px-6 py-3 text-white rounded-lg ms-24 hover:bg-blue-600 transition-colors mt-4">Buy House</button>
-                 </div>
-            </div>
+    {houses.length === 0 && (
+        <div className="text-center py-12">
+            <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            <h3 className="mt-2 text-sm font-medium text-gray-900">No properties found</h3>
+            <p className="mt-1 text-sm text-gray-500">Get started by adding a new property listing.</p>
         </div>
+    )}
+</div>
+
+ <div className="grid grid-cols-3 w-[65%] p-2 mt-12 items-stretch gap-6 mx-auto">
+    <div className="bg-white shadow-2xl rounded-2xl flex flex-col">
+        <img src={Lottien1} 
+            className="w-54 h-40 mx-auto mt-4"
+        />
+        <h1 className="text-center text-xl font-bold mt-2">Buy a home</h1>
+        <p className="p-5 text-sm text-gray-700 flex-grow">
+            Take the first step toward building your legacy.
+            Homeownership isn't just about having a roof over your head - it's
+            about creating a space that's truly yours, where every wall holds your
+            memories and every room reflects your journey.
+        </p>
+        <div className="p-5">
+            <button className="bg-blue-500 hover:bg-blue-600 transition-colors px-6 py-3 text-white rounded-lg ms-24">Buy House</button>
+        </div>
+    </div>
+    
+    <div className="bg-white shadow-2xl rounded-2xl flex flex-col">
+        <img src={Lottien3} 
+            className="w-54 h-40 mx-auto mt-4"
+        />
+        <h1 className="text-center text-xl font-bold mt-2">Rent a home</h1>
+        <p className="p-5 text-sm text-gray-700 flex-grow">
+            Experience the freedom to explore new neighborhoods
+            and lifestyles without long-term commitment. 
+            Renting gives you the flexibility to adapt to life's
+            changes - whether it's a career move, 
+            relationship shift, or simply the desire for a fresh start
+        </p>
+        <div className="p-5">
+            <button className="bg-blue-500 px-6 py-3 text-white rounded-lg  hover:bg-blue-600 transition-colors ms-24">Rent House</button>
+        </div>
+    </div>
+
+    <div className="bg-white shadow-2xl rounded-2xl flex flex-col">
+        <img src={Lottien2} 
+            className="w-54 h-40 mx-auto mt-4"
+        />
+        <h1 className="text-center text-xl font-bold text-blue-500 mt-2">Sell a Home</h1>
+        <p className="p-5 text-sm text-gray-700 flex-grow">
+            Your home has been more than just a house - it's been your sanctuary, 
+            your memory-maker, and now it's time to turn those cherished moments into financial success
+        </p>
+        <div className="p-5">
+            <button className="bg-blue-500 px-6 py-3 text-white rounded-lg hover:bg-blue-600 transition-colors ms-24">Sell House</button>
+        </div>
+    </div>
+</div>
+</div>
     )
 }
 
