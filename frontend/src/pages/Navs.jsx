@@ -58,7 +58,7 @@ const Navs = () => {
 <div className="hidden md:flex items-center space-x-3">
   <button
     className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition"
-    onClick={() => navigate("/cart")}
+    onClick={() => navigate("/myCart")}
   >
     <FaShoppingCart className="text-gray-700" />
   </button>
