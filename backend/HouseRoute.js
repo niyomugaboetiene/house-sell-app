@@ -102,4 +102,19 @@ route.get('/houses/:_id', async(req ,res) => {
     }
 
 });
+
+route.post('/BuyHOuse:/_id', async(req, res) => {
+   const { _id } = req.params;
+   try {
+    const IsHouseExist = await HouseSchema.findById(_id)
+    const Buyer_id = req.session.userInfo.user_id;
+
+    if (IsHouseExist) {
+        const BuyHOuse = await HouseSchema.findByIdAndUpdate({
+            buyer: Buyer_id,
+            AddedToCart: true
+        })
+    }
+   }
+})
 export default route;
