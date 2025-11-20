@@ -103,18 +103,31 @@ route.get('/houses/:_id', async(req ,res) => {
 
 });
 
-route.post('/BuyHOuse:/_id', async(req, res) => {
+route.post('/BuyHouse/:_id', async(req, res) => {
    const { _id } = req.params;
    try {
-    const IsHouseExist = await HouseSchema.findById(_id)
+    const IsHouseExist = await HouseSchema.findById(_id);
     const Buyer_id = req.session.userInfo.user_id;
 
     if (IsHouseExist) {
         const BuyHOuse = await HouseSchema.findByIdAndUpdate({
             buyer: Buyer_id,
             AddedToCart: true
-        })
+        }, {
+            new: true
+        });
+
+        if (BuyHOuse) {
+            return res.status(201).json({ message: 'You buyed house' });
+        } else {
+           return res.status(400).json({ message: 'Failed to Buy a house' });
+        }
+    }  else {
+         return res.status(404).json({ message: 'No house found' });
     }
-   }
-})
+   } catch (error) {
+    return res.status(500).json({ error: error.message });
+   } 
+});
+
 export default route;
