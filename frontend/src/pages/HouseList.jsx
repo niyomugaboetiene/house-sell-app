@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const HouseListComponent = () => {
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
     
     const fetchHouses = async () => {
         try {
@@ -82,7 +83,7 @@ const HouseListComponent = () => {
                                 </div>
 
                                 <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-blue-700 transition-colors"
-                                   onClick={() => }
+                                   onClick={() => navigate(`/allHouse/${house._id}`)}
                                 >
                                     View Details
                                 </button>
