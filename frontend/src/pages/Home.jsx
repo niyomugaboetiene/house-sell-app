@@ -3,6 +3,8 @@ import axios from "axios";
 import { FaHeart } from "react-icons/fa"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import House1 from "../assets/House_Images/house-1.jpg"
+import House2 from "../assets/House_Images/house2.jpg"
 
 const HomePage = () => {
     const [houses, setHouses] = useState([]);
@@ -34,7 +36,11 @@ const HomePage = () => {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            
+            <div>
+                <img src={House1} 
+                  className="w-full h-auto"
+                />
+            </div>
             <p className="ms-10 mt-4 underline text-2xl font-bold text-blue-500">Recent House</p> 
 
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
