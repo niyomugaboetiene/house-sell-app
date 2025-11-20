@@ -130,4 +130,22 @@ route.post('/AddToCart/:_id', async(req, res) => {
    } 
 });
 
+route.get('/myCart', async(req, res) => {
+    const user_id = req.session.userInfo.user_id;
+    try {
+        const userCart = await HouseSchema.find({
+           buyer: user_id,
+           AddedToCart: true
+        });
+
+        if (userCart.length > 0) {
+            return res.status(200).json({Your_cart: userCart });
+        } else {
+              return res.status(401).json({ message: 'Login first' });
+        }
+    } catch(error) {
+        return res.status(500).json({ error: error });
+    }
+})
+
 export default route;
