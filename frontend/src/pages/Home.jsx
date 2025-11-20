@@ -65,8 +65,8 @@ const HomePage = () => {
                         <input type="text" className="py-4 placeholder:text-blue-500 placeholder:font-light ps-2 w-full focus:outline-2 focus:outline-blue-500 rounded-s-lg bg-gray-100" 
                            placeholder="Search by address, type of house, country, district, ..."
                         />
-                        <div className="p-5 bg-gray-100 rounded-e-2xl active:border-2 border-blue-500">
-                           <FaSearch className="text-blue-500 "/>
+                        <div className="p-5 hover:bg-gray-200 transition-colors bg-gray-100 rounded-e-2xl active:border-2 border-blue-500">
+                           <FaSearch className="text-blue-500  "/>
                         </div>
                     </div>
                 </div>
