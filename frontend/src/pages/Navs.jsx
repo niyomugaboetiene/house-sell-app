@@ -22,19 +22,19 @@ const Navs = () => {
         </button>
 
         <div className="hidden md:flex space-x-8 font-medium text-gray-700">
-          <Link to="/" className="hover:underline transition-colors hover:text-blue-500">
+          <Link to="/sell" className="hover:underline transition-colors hover:text-blue-500">
             Buy
           </Link>
-          <Link to="/contact" className="hover:underline transition-colors hover:text-blue-500">
+          <Link to="/rent" className="hover:underline transition-colors hover:text-blue-500">
             Rent
           </Link>
           <Link to="/about" className="hover:underline transition-colors hover:text-blue-500">
             Sell
           </Link>
-          <Link to="/sign-up" className="hover:underline transition-colors hover:text-blue-500">
+          <Link to="/allHouse" className="hover:underline transition-colors hover:text-blue-500">
              Properties
           </Link>
-          <Link to="/sign-up" className="hover:underline transition-colors hover:text-blue-500">
+          <Link to="/liked" className="hover:underline transition-colors hover:text-blue-500">
             Favorite
           </Link>
         </div>
@@ -78,17 +78,21 @@ const Navs = () => {
 
       {isMobileMenuOpen && (
         <div className="fixed top-16 left-0 w-full bg-white shadow-md flex flex-col items-center space-y-6 py-6 md:hidden z-40">
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-green-500 text-lg">
-            Home
+          <Link to="/sell" className="hover:underline transition-colors hover:text-blue-500">
+            Buy
           </Link>
-          <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-green-500 text-lg">
-            Contact
+          <Link to="/rent" className="hover:underline transition-colors hover:text-blue-500">
+            Rent
           </Link>
-          <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-green-500 text-lg">
-            About
+          
+          <Link to="/" className="hover:underline transition-colors hover:text-blue-500">
+            Sell
           </Link>
-          <Link to="/sign-up" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-green-500 text-lg">
-            Sign Up
+          <Link to="/allHouse" className="hover:underline transition-colors hover:text-blue-500">
+             Properties
+          </Link>
+          <Link to="/liked" className="hover:underline transition-colors hover:text-blue-500">
+            Favorite
           </Link>
         </div>
       )}
