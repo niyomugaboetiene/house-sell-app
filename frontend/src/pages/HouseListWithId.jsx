@@ -145,7 +145,7 @@ const HouseListComponentWithId = () => {
                               Watch Video
                           </button>
                          <button
-                           className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-500 transition-colors"
+                           className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition-colors"
                            onClick={() => AddToCart(house._id)}
                           >
                             <FaShoppingCart /> Add to Cart

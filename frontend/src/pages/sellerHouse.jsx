@@ -49,7 +49,7 @@ const DeleteHouse = async(_id) => {
         <div className="min-h-screen bg-gray-50 mt-20">
             <div className="ms-10 mt-4 flex justify-between">
             <p className="text-2xl font-bold text-amber-500"> My Properties</p> 
-            <button className="me-8 bg-amber-500 px-6 py-2 text-white rounded-lg hover:bg-amber-500 transition-colors"
+            <button className="me-8 bg-amber-500 px-6 py-2 text-white rounded-lg hover:bg-amber-600 transition-colors"
                onClick={() => navigate('/addHouse')}
             >+ Add Property</button>
             </div>

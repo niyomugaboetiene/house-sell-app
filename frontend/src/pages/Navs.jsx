@@ -96,7 +96,7 @@ const Navs = () => {
   
   <div className="flex items-center">
     <Link 
-        className="bg-amber-500 text-white px-4 py-2 rounded-l-full hover:bg-amber-500 transition-colors"
+        className="bg-amber-500 text-white px-4 py-2 rounded-l-full hover:bg-amber-600 transition-colors"
         to='/register'
     >
       SignUp
@@ -136,7 +136,7 @@ const Navs = () => {
         <p className="text-xl text-gray-500">User name: <span className="font-medium capitalize">{userInfo.user_name}</span></p>
         <p className="text-xl text-gray-500">Your role: <span className="font-medium capitalize">{userInfo.role}</span></p>
       <div className="flex justify-between mt-4">
-        <button className="bg-amber-500 px-6 py-2 text-white rounded-lg hover:bg-amber-500 transition-colors">Setting</button>
+        <button className="bg-amber-500 px-6 py-2 text-white rounded-lg hover:bg-amber-600 transition-colors">Setting</button>
         <button className="bg-red-500 px-6 py-2 text-white rounded-lg hover:bg-red-600 transition-colors">Logout</button>
       </div>
        </div>

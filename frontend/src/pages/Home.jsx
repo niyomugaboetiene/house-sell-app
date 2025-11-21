@@ -159,7 +159,7 @@ const HomePage = () => {
             memories and every room reflects your journey.
         </p>
         <div className="p-5">
-            <button className="bg-amber-500 hover:bg-amber-500 transition-colors px-6 py-3 text-white rounded-lg ms-24"
+            <button className="bg-amber-500 hover:bg-amber-600 transition-colors px-6 py-3 text-white rounded-lg ms-24"
              onClick={() => navigate('/buy')}
             >
                 Buy House
@@ -180,7 +180,7 @@ const HomePage = () => {
             relationship shift, or simply the desire for a fresh start
         </p>
         <div className="p-5">
-            <button className="bg-amber-500 px-6 py-3 text-white rounded-lg  hover:bg-amber-500 transition-colors ms-24"
+            <button className="bg-amber-500 px-6 py-3 text-white rounded-lg  hover:bg-amber-600 transition-colors ms-24"
              onClick={() => navigate('/rent')}
             >
                 Rent House
@@ -198,7 +198,7 @@ const HomePage = () => {
             your memory-maker, and now it's time to turn those cherished moments into financial success
         </p>
         <div className="p-5">
-            <button className="bg-amber-500 px-6 py-3 text-white rounded-lg hover:bg-amber-500 transition-colors ms-24"
+            <button className="bg-amber-500 px-6 py-3 text-white rounded-lg hover:bg-amber-600 transition-colors ms-24"
                 onClick={() => navigate('/sell')}
             >
                 Sell House</button>
