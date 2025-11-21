@@ -27,7 +27,7 @@ const UpdateUserComponent = () => {
                 setUser_name(UserData.user_name || "");
                 setPassword(UserData.password || "");
                 setRole(UserData.role || "");
-                setImage(UserData.image || null);
+                setImage(null);
             }
 
             console.log('Data received', UserData);
@@ -53,8 +53,6 @@ const UpdateUserComponent = () => {
             formData.append("user_name", user_name);
             formData.append("password", password);
             formData.append("role", role);
-            formData.append("image", image);
-
             if (image) {
                 formData.append("image", image); 
             }

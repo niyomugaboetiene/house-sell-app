@@ -84,7 +84,7 @@ router.put('/updateProfile', uploads.single("image"), async(req, res) => {
    try {
     const userId = req.session.userInfo.user_id;
     if (!userId) {
-        return re.status(401).json({ message: 'Unauthorized'})
+        return res.status(401).json({ message: 'Unauthorized'})
     }
     const imagePath = image  ? req.file.path : req.session?.userInfo?.image;
 
