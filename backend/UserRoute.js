@@ -69,19 +69,25 @@ router.get('/userInfo', (req, res) => {
 router.put('/updateProfile/:_id', async(req, res) => {
 
     const { full_name, user_name, password, role } = req.body;
-    
+    const userId = req.session.userInfo.user_id;
    try {
        if (!full_name || !user_name || !password || !role) {
             return res.status(500).json({message: "Missing fileds"});
        } 
 
        const hashedPassword = await bcrypt.hash(password, 10);
+       const NewData = {
+                full_name,
+                user_name, 
+                password: hashedPassword, 
+                role
 
-      await User.create({
-        full_name, user_name, password: hashedPassword, role
+       }
+      await User.findOneAndUpdate(userId, NewData, {
+        new: true
        });
 
-       return res.status(201).json({message: 'User registered successfully' });
+       return res.status(201).json({message: 'User updated successfully' });
    } catch (err) {
     return res.status(500).json({message: err.message });
    }
