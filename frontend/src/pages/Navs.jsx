@@ -14,7 +14,7 @@ const Navs = () => {
     try {
         const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
         setUserInfo(res.data.user)
-        console.log("My session data:", res.data.user.role)
+        console.log("My session data:", res.data.user.image)
     } catch (error) {
       console.error(error.message);
     }
@@ -110,10 +110,10 @@ const Navs = () => {
   </div>
 
   {userInfo && Object.keys(userInfo).length > 0 &&(
-  <div className="relative">
-     <button className="border p-2 rounded-full border-amber-500" onClick={() => setShowUserInfo(!showUserInfo)}>
+  <div className="relative w-16">
+     <button className="p-2 rounded-full" onClick={() => setShowUserInfo(!showUserInfo)}>
       {userInfo.image ? (
-         <img src={`http://localhost:5000/${userInfo.image}`} alt="" />
+         <img src={`http://localhost:5000/${userInfo.image}`} alt="" className="w-16 object-cover rounded-full"/>
       ) : (
         <FaUser className="text-3xl text-amber-500" />
       )}
@@ -123,15 +123,18 @@ const Navs = () => {
 </div>
 
 {showUserInfo && (
-  <div className="absolute bg-white top-23 right-4 rounded-2xl shadow-2xl">
-       <div className="p-4">
-       <div className="ms-23 mt-3 mb-3 border w-20 rounded-full border-amber-500 h-19 p-2">
-       {userInfo.image ? (
-            <img src={`http://localhost:5000/${userInfo.image}`} alt="" />
-        ) : (
-           <FaUser className="text-5xl text-amber-500 ms-2" />
-        )}
-        </div>
+<div className="absolute bg-white top-24 right-4 rounded-2xl shadow-2xl p-4">
+  <div className="border w-20 h-20 rounded-full border-amber-500 flex items-center justify-center overflow-hidden">
+    {userInfo?.image ? (
+        <img 
+            src={`http://localhost:5000/${userInfo.image}`} 
+            className="w-20 h-20 object-cover"
+        />
+    ) : (
+        <FaUser className="text-5xl text-amber-500" />
+    )}
+  </div>
+
         <h1 className="text-xl text-gray-600">Full name: <span className="font-medium capitalize">{userInfo.full_name}</span></h1>
         <p className="text-xl text-gray-500">User name: <span className="font-medium capitalize">{userInfo.user_name}</span></p>
         <p className="text-xl text-gray-500">Your role: <span className="font-medium capitalize">{userInfo.role}</span></p>
@@ -140,7 +143,6 @@ const Navs = () => {
         <button className="bg-red-500 px-6 py-2 text-white rounded-lg hover:bg-red-600 transition-colors">Logout</button>
       </div>
        </div>
-  </div>
 )}
   </div>
 
@@ -166,8 +168,6 @@ const Navs = () => {
           </Link>
         </div>
       )}
-
-      
 
       <div className="pt-16 min-h-screen">
         <Outlet />
