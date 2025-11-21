@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RegisterComponent = () => {
     const [user_name, setUsername] = useState("");
@@ -9,6 +10,7 @@ const RegisterComponent = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const Register = async() => {
         if (!full_name || !user_name || !password || !role) {
@@ -27,9 +29,12 @@ const RegisterComponent = () => {
             
             setSuccess("Account created successfully");
             setError("");
+            navigate("/login");
+
         } catch (error) {
             console.error(error);
-            setError("Error during registration");
+            const errorMessage = err.response?.data?.error || "Failed login";
+            setError(errorMessage);
             setSuccess("");
         } finally {
             setLoading(false);
@@ -37,8 +42,8 @@ const RegisterComponent = () => {
     }
 
     return (
-        <div className="max-w-md mx-auto mt-14 p-6 bg-white rounded-lg shadow-md">
-            <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Create Account</h1>
+        <div className="max-w-md mx-auto mt-14 p-6 bg-white rounded-lg shadow-md border border-amber-500">
+            <h1 className="text-2xl font-bold text-amber-500 mb-6 text-center">Create Account</h1>
             
             <div className="space-y-4">
                 <div>

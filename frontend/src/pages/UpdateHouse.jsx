@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const UpdateHouseComponent = () => {
     const [title, setTitle] = useState("");
@@ -24,6 +25,7 @@ const UpdateHouseComponent = () => {
     const [Activity, setActivity] = useState("");
     const [propertyInfo, setPropertyInfo] = useState({});
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const { _id } = useParams();
 
@@ -108,6 +110,7 @@ const UpdateHouseComponent = () => {
             console.log('Update response:', response.data);
 
             setSuccess("House updated successfully");
+            navigate('/')
             
         } catch (err) {
             console.error("Update Error:", err.response?.data || err.message);

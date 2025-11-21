@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const UpdateUserComponent = () => {
     const [full_name, setFull_name] = useState("");
@@ -12,6 +13,7 @@ const UpdateUserComponent = () => {
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
     const [userInfo, setUserInfo] = useState(null);
+    const navigate = useNavigate();
 
     const FetchUserInfo = async() => {
         try {
@@ -65,6 +67,7 @@ const UpdateUserComponent = () => {
             });
 
             setSuccess("User updated successfully");
+            navigate('/');
             
         } catch (err) {
             console.error("Update Error:", err.response?.data || err.message);

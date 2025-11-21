@@ -71,7 +71,7 @@ route.get('/houses', async(req ,res) => {
         if (houses.length > 0) {
            return res.status(200).json({ houses: houses });
        } 
-       return res.status(404).json({ message: 'No house found' })
+       return res.status(404).json({ error: 'No house found' })
     } catch(error) {
         return res.status(500).json({ error: error.message })
     }
@@ -86,7 +86,7 @@ route.get('/houses', async(req ,res) => {
         if (houses.length > 0) {
            return res.status(200).json({ houses: houses });
        } 
-       return res.status(404).json({ message: 'No house found' })
+       return res.status(404).json({ error: 'No house found' })
     } catch(error) {
         return res.status(500).json({ error: error.message })
     }
@@ -101,7 +101,7 @@ route.get('/buy', async(req ,res) => {
         if (houses.length > 0) {
            return res.status(200).json({ houses: houses });
        } 
-       return res.status(404).json({ message: 'No house found' })
+       return res.status(404).json({ error: 'No house found' })
     } catch(error) {
         return res.status(500).json({ error: error.message })
     }
@@ -113,7 +113,7 @@ route.get('/recentlyAdded', async(req ,res) => {
         if (houses.length > 0) {
            return res.status(200).json({ houses: houses });
        } 
-       return res.status(404).json({ message: 'No house found' })
+       return res.status(404).json({ error: 'No house found' })
     } catch(error) {
         return res.status(500).json({ error: error.message })
     }
@@ -127,7 +127,7 @@ route.get('/houses/:_id', async(req ,res) => {
         if (house) {
            return res.status(200).json({ houses: house });
        } 
-       return res.status(404).json({ message: 'No house found' })
+       return res.status(404).json({ error: 'No house found' })
     } catch(error) {
         return res.status(500).json({ error: error.message })
     }
@@ -146,7 +146,7 @@ route.get('/myProperties', async(req ,res) => {
         if (house) {
            return res.status(200).json({ houses: house });
        } 
-       return res.status(404).json({ message: 'No house found' })
+       return res.status(404).json({ error: 'No house found' })
     } catch(error) {
         return res.status(500).json({ error: error.message })
     }
@@ -168,7 +168,7 @@ route.post('/AddToCart/:_id', async(req, res) => {
         });
 
         if (BuyHOuse) {
-            return res.status(201).json({ message: 'You buyed house' });
+            return res.status(201).json({ error: 'You buyed house' });
         } else {
            return res.status(400).json({ message: 'Failed to Buy a house' });
         }
@@ -191,7 +191,7 @@ route.get('/myCart', async(req, res) => {
         if (userCart.length > 0) {
             return res.status(200).json({my_cart: userCart });
         } else {
-              return res.status(401).json({ message: 'Login first' });
+              return res.status(401).json({ error: 'Login first' });
         }
     } catch(error) {
         return res.status(500).json({ error: error });
@@ -278,14 +278,14 @@ route.put('/update/:_id', uploads.fields([
 route.post('/delete/:_id', async(req, res) => {
     try {
         if (!req.session.userInfo) {
-            return res.status(401).json({ message: "Login first" });
+            return res.status(401).json({ error: "Login first" });
         }
 
         const { _id } = req.params;
         const userId = req.session.userInfo.user_id;
 
         const house = await HouseSchema.findById(_id);
-        if (!house) return res.status(404).json({ message: 'House not found' });
+        if (!house) return res.status(404).json({ error: 'House not found' });
 
         if (house.owner.toString() !== userId && req.session.userInfo.role !== "admin") {
             return res.status(403).json({ message: 'You are not the owner' });
@@ -300,7 +300,7 @@ route.post('/delete/:_id', async(req, res) => {
         return res.status(200).json({ message: 'House deleted successfully' });
 
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json({ error: error.message });
     }
 });
 
@@ -352,7 +352,7 @@ route.get("/search", async (req, res) => {
     });
   } catch (error) {
     console.error("Search error:", error);
-    res.status(500).json({ message: "Search failed", error: error.message });
+    res.status(500).json({ error: "Search failed", error: error.message });
   }
 });
 

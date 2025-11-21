@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useState, useEffect }  from "react";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa"
 
 const MyCart = () => {
     const [myCart, setMyCart] = useState([]);
+     const [error, setError] = useState("");
     
      const GetMyCart = async() => {
             try {
@@ -11,6 +12,8 @@ const MyCart = () => {
                setMyCart(res.data.my_cart);
             } catch(error) {
                 console.error(error.message);
+                const errorMessage = err.response?.data?.error || "Failed login";
+                setError(errorMessage);
             }
         }
 
@@ -87,6 +90,9 @@ const MyCart = () => {
                     </div>
                 )}
             </div>
+            {error && (
+                <p>{error}</p>
+            )}
         </div>
     )
 }
