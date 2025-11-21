@@ -58,7 +58,7 @@ router.post('/login', async(req, res) => {
 
 router.get('/userInfo', (req, res) => {
     if (req.session.userInfo) {
-        res.status(200).json({ user: userInfo })
+        res.status(200).json({ user: req.session.userInfo })
     } else {
         res.status(401).json({ error: 'Unauthorized' });
     }

@@ -1,11 +1,27 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../assets/House_Images/logo.png"
+import axios from "axios";
 
 const Navs = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [userInfo, setUserInfo] = useState([]);
   const navigate = useNavigate();
+
+  const GetUserInfo = async() => {
+    try {
+        const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+        setUserInfo(res.data.user)
+        console.log("My session data:", res.data.user.role)
+    } catch (error) {
+      console.error(error.message);
+    }
+
+  }
+  useEffect(() => {
+         GetUserInfo();
+  }, []);
 
   return (
     <>
@@ -28,9 +44,11 @@ const Navs = () => {
           <Link to="/rent" className="transition-colors hover:text-blue-500">
             Rent
           </Link>
+          {userInfo?.user?.role === 'seller' && (
           <Link to="/AddHouse" className="transition-colors hover:text-blue-500">
             Sell
           </Link>
+          )}
           <Link to="/allHouse" className="transition-colors hover:text-blue-500">
              Properties
           </Link>
@@ -91,9 +109,11 @@ const Navs = () => {
             Rent
           </Link>
           
-          <Link to="/" className="transition-colors hover:text-blue-500">
+          {userInfo?.user?.role === 'seller' && (
+          <Link to="/AddHouse" className="transition-colors hover:text-blue-500">
             Sell
           </Link>
+          )}
           <Link to="/allHouse" className="transition-colors hover:text-blue-500">
              Properties
           </Link>
