@@ -93,6 +93,8 @@ router.put('/updateProfile', uploads.single("image"), async(req, res) => {
     const { full_name, user_name, password, role } = req.body;
    try {
     const userId = req.session.userInfo.user_id;
+    const oldPassword = await UserSchema.findById(userId);
+    
     if (!userId) {
         return res.status(401).json({ message: 'Unauthorized'})
     }

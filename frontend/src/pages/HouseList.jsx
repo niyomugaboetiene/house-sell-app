@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { FaHeart } from "react-icons/fa"
+
+import { FaHeart, FaEdit, FaTrash } from "react-icons/fa"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -39,6 +40,19 @@ const HouseListComponent = () => {
          GetUserInfo();
   }, []);
 
+  const DeleteHouse = async(_id) => {
+    try {
+        const confirm = window.confirm("Are you sure you want to delete this property");
+        if (!confirm) return;
+        await axios.post(`http://localhost:5000/house/delete/${_id}`, {}, {withCredentials: true});
+        alert("House deleted successfully");
+
+        fetchHouses();
+    } catch (error) {
+     console.error(error.message)
+    }
+}
+
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -67,16 +81,24 @@ const HouseListComponent = () => {
                                   >
                                      <FaHeart className="text-red-500 text-xl" />
                                  </button>
-                                 <button
-                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
-                                  >
-                                     <FaHeart className="text-red-500 text-xl" />
-                                 </button>
-                                 <button
-                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
-                                  >
-                                     <FaHeart className="text-red-500 text-xl" />
-                                 </button>
+                                 {UserInfo.role === "admin" && (
+                                    <>
+                                         <button
+                                            className="absolute top-13 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                            onClick={() => navigate(`/update/${house._id}`)}
+                                         >
+                                                <FaEdit className="text-amber-500 text-xl" />
+                                        </button>
+                                        <button
+                                            className="absolute top-24 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                            onClick={() => DeleteHouse(house._id)}
+                                        >
+                                              <FaTrash className="text-green-500 text-xl" />
+                                        </button>
+                                    </>
+
+                                 )}
+
                                 </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 
