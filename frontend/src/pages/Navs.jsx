@@ -125,7 +125,7 @@ const Navs = () => {
 {showUserInfo && (
   <div className="absolute bg-white top-23 right-4 rounded-2xl shadow-2xl">
        <div className="p-4">
-       <div className="ms-17 mt-3 mb-3 border w-20 rounded-full border-amber-500 h-19 p-2">
+       <div className="ms-23 mt-3 mb-3 border w-20 rounded-full border-amber-500 h-19 p-2">
        {userInfo.image ? (
             <img src={`http://localhost:5000/${userInfo.image}`} alt="" />
         ) : (

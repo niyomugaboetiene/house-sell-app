@@ -120,7 +120,7 @@ const HomePage = () => {
         </p>
     </div>
 
-    <div className="absolute bg-amber-100 p-2 mt-2 top-5 right-2 rounded-full"> 
+    <div className="absolute bg-green-100 p-2 mt-2 top-5 right-2 rounded-full"> 
         <p className="text-sm text-gray-700">{house.Activity ? `For ${house.Activity}` : 'For: Not specified' }</p>
     </div>
 
