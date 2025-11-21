@@ -1,5 +1,5 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import { FaShoppingCart, FaBars, FaTimes, FaUser } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import logo from "../assets/House_Images/logo.png"
 import axios from "axios";
@@ -7,6 +7,7 @@ import axios from "axios";
 const Navs = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [userInfo, setUserInfo] = useState({});
+  const [showUserInfo, setShowUserInfo] = useState(false);
   const navigate = useNavigate();
 
   const GetUserInfo = async() => {
@@ -107,8 +108,28 @@ const Navs = () => {
       Login
     </Link>
   </div>
+  
+  {userInfo && (
+  <div className="relative">
+     <button className="border p-2 rounded-full border-blue-500" onClick={() => setShowUserInfo(!showUserInfo)}>
+      {userInfo.image ? (
+         <img src={`http://localhost:5000/${userInfo.image}`} alt="" />
+      ) : (
+        <FaUser className="text-3xl text-blue-500" />
+      )}
+      </button>
+  </div>
+)}
 </div>
-      </div>
+
+{showUserInfo && (
+  <div className="absolute bg-gray-300">
+       <div>
+        <h1>{useState.user_name}</h1>
+       </div>
+  </div>
+)}
+  </div>
 
       {isMobileMenuOpen && (
         <div className="fixed top-16 left-0 w-full bg-white shadow-md flex flex-col items-center space-y-6 py-6 md:hidden z-40">
@@ -132,6 +153,8 @@ const Navs = () => {
           </Link>
         </div>
       )}
+
+      
 
       <div className="pt-16 min-h-screen">
         <Outlet />
