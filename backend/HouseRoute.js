@@ -203,13 +203,13 @@ route.get('/update/:_id', async(req, res) => {
        const videoPath = req.files?.video ? req.files?.video.map((file) => file.filename) : [];
       
         
-        if (!title || !description || !price || !location || !bathrooms || !size || !yearBuilt || !Activity) {
+        if (!title && !description && !price && !location && !bathrooms && !size && !yearBuilt && !Activity) {
             return res.status(400).json({ error: "Some fileld is missing" });
         }
 
         if (userId === isProductExist.owner) {
             const newData = {
-                title,
+                 title,
                  description,
                  price,
                  location: locationData,
