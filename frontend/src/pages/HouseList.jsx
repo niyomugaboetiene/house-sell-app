@@ -67,6 +67,16 @@ const HouseListComponent = () => {
                                   >
                                      <FaHeart className="text-red-500 text-xl" />
                                  </button>
+                                 <button
+                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                  >
+                                     <FaHeart className="text-red-500 text-xl" />
+                                 </button>
+                                 <button
+                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                  >
+                                     <FaHeart className="text-red-500 text-xl" />
+                                 </button>
                                 </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 

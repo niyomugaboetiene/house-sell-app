@@ -14,7 +14,7 @@ const HouseComponent = () => {
     const [yearBuilt, setYearBuilt] = useState("");
     const [parkingSpace, setParkingSpace] = useState("");
     const [hasGarden, setHasGarden] = useState(false); 
-    const [PropertyType, setPropertyType] = useState("House");
+    const [PropertyType, setPropertyType] = useState("");
     const [isAvailable, setIsAvailable] = useState(true);
     const [image, setImage] = useState(null); 
     const [video, setVideo] = useState(null);
@@ -250,7 +250,7 @@ const HouseComponent = () => {
                             onChange={(e) => setPropertyType(e.target.value)}
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         >
-                            <option value="" disabled>Select propery</option>
+                            <option value="" disabled>Select propery type</option>
                             <option value="House">House</option>
                             <option value="Office">Office</option>
                             <option value="Industry">Industry</option>
