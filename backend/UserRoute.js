@@ -65,4 +65,25 @@ router.get('/userInfo', (req, res) => {
     }
 })
 
+
+router.put('/updateProfile/:_id', async(req, res) => {
+
+    const { full_name, user_name, password, role } = req.body;
+    
+   try {
+       if (!full_name || !user_name || !password || !role) {
+            return res.status(500).json({message: "Missing fileds"});
+       } 
+
+       const hashedPassword = await bcrypt.hash(password, 10);
+
+      await User.create({
+        full_name, user_name, password: hashedPassword, role
+       });
+
+       return res.status(201).json({message: 'User registered successfully' });
+   } catch (err) {
+    return res.status(500).json({message: err.message });
+   }
+})
 export default router;

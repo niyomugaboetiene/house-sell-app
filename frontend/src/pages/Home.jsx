@@ -95,7 +95,7 @@ const HomePage = () => {
                         />
                         <div 
                         className="p-5 hover:bg-gray-200 transition-colors bg-gray-100 rounded-e-2xl active:border-2 border-amber-500 ms-0.5"
-                           oncClick={handleSearch}
+                           onClick={handleSearch}
                         >
                            <FaSearch className="text-amber-500  "/>
                         </div>
