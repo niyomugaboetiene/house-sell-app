@@ -4,7 +4,8 @@ import axios from "axios";
 const UpdateUserComponent = () => {
     const [full_name, setFull_name] = useState("");
     const [user_name, setUser_name] = useState("");
-    const [password, setPassword] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+    const [oldPassword, setOldPassword] = useState("");
     const [role, setRole] = useState("");
     const [image, setImage] = useState(null); 
     const [loading, setLoading] = useState(false);
@@ -25,7 +26,6 @@ const UpdateUserComponent = () => {
             if (UserData) {
                 setFull_name(UserData.full_name || "");
                 setUser_name(UserData.user_name || "");
-                setPassword(UserData.password || "");
                 setRole(UserData.role || "");
                 setImage(null);
             }
@@ -50,7 +50,8 @@ const UpdateUserComponent = () => {
             const formData = new FormData();
             formData.append("full_name", full_name);
             formData.append("user_name", user_name);
-            formData.append("password", password);
+            formData.append("newPassword", newPassword);
+            formData.append("oldPassword", oldPassword);
             formData.append("role", role);
             if (image) {
                 formData.append("image", image); 
@@ -114,10 +115,19 @@ const UpdateUserComponent = () => {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">New Password (Optional)</label>
                     <input 
                         type="password"
-                        onChange={(e) => setPassword(e.target.value)} 
+                        onChange={(e) => setNewPassword(e.target.value)} 
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                        placeholder="Create a password"
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Type old Password to apply changes</label>
+                    <input 
+                        type="password"
+                        onChange={(e) => setOldPassword(e.target.value)} 
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         placeholder="Create a password"
                     />

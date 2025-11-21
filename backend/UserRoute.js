@@ -90,20 +90,23 @@ router.post('/logout', (req, res) => {
 
 router.put('/updateProfile', uploads.single("image"), async(req, res) => {
 
-    const { full_name, user_name, password, role } = req.body;
+    const { full_name, user_name, newPassword, oldPassword, role } = req.body;
    try {
     const userId = req.session.userInfo.user_id;
-    const oldPassword = await UserSchema.findById(userId);
     
     if (!userId) {
         return res.status(401).json({ message: 'Unauthorized'})
     }
-       if (!full_name || !user_name || !password || !role) {
+       if (!oldPassword) {
             return res.status(500).json({message: "Missing fields"});
        } 
 
        const OldData = await UserSchema.findById(userId);
-       const hashedPassword = password.trim() ? await bcrypt.hash(password, 10) : OldData.password;
+       const isPasswordTrue = await bcrypt.compare(OldData.password, oldPassword);
+       if (!isPasswordTrue) {
+               return res.status(200).json({ message: 'Password does not match'})
+       }
+       const hashedPassword = newPassword.trim() ? await bcrypt.hash(newPassword, 10) : OldData.password;
        
        const ImagePath = req.file ? req.file.path : OldData.image;
 
