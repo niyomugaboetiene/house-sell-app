@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Navs = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
   const navigate = useNavigate();
 
   const GetUserInfo = async() => {
@@ -44,7 +44,7 @@ const Navs = () => {
           <Link to="/rent" className="transition-colors hover:text-blue-500">
             Rent
           </Link>
-          {userInfo?.user?.role === 'seller' && (
+          {userInfo?.role === 'seller' && (
           <Link to="/AddHouse" className="transition-colors hover:text-blue-500">
             Sell
           </Link>
@@ -109,7 +109,7 @@ const Navs = () => {
             Rent
           </Link>
           
-          {userInfo?.user?.role === 'seller' && (
+          {userInfo?.role === 'seller' && (
           <Link to="/AddHouse" className="transition-colors hover:text-blue-500">
             Sell
           </Link>
