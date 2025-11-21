@@ -214,9 +214,16 @@ route.put('/update/:_id', uploads.fields([
             }
         }
 
+        let locationData = house.location;
         if (updateData.location) {
-            updateData.location = JSON.parse(updateData.location);
+            if (typeof updateData.location === 'string') {
+                   updateData.location = JSON.parse(updateData.location);
+            } else {
+                locationData = updateData.location;
+            }
         }
+
+        updateData.location = locationData;
 
         if (req.files?.image) {
             updateData.image = req.files.image.map(f => f.filename);
