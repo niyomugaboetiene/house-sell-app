@@ -38,6 +38,9 @@ const Navs = () => {
         </button>
 
         <div className="hidden md:flex space-x-8 font-medium text-gray-700">
+          <Link to="/" className="transition-colors hover:text-blue-500">
+            Home
+          </Link>
           <Link to="/buy" className="transition-colors hover:text-blue-500">
             Buy
           </Link>
