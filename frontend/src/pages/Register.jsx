@@ -8,58 +8,102 @@ const RegisterComponent = () => {
     const [role, setRole] = useState("customer");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const Register = async() => {
-    
         if (!full_name || !user_name || !password || !role) {
             alert("Please fill out all fields");
             return;
-       } 
+        } 
 
         try {
-             await axios.post('http://localhost:5000/user/register', {
+            setLoading(true);
+            setError("");
+            setSuccess("");
+            
+            await axios.post('http://localhost:5000/user/register', {
                 full_name, user_name, password, role
-             }, { withCredentials: true });
-             setSuccess("Account created successfully successfully");
-             setError("");
+            }, { withCredentials: true });
+            
+            setSuccess("Account created successfully");
+            setError("");
         } catch (error) {
             console.error(error);
-            setError("Error during login");
+            setError("Error during registration");
             setSuccess("");
-
+        } finally {
+            setLoading(false);
         }
     }
 
     return (
-        <div>
-            <div>
-                <label>Full name</label>
-                <input type="text" onChange={(e) => setFull_name(e.target.value)} /> <br />
+        <div className="max-w-md mx-auto mt-14 p-6 bg-white rounded-lg shadow-md">
+            <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Create Account</h1>
+            
+            <div className="space-y-4">
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input 
+                        type="text" 
+                        onChange={(e) => setFull_name(e.target.value)} 
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter your full name"
+                    />
+                </div>
 
-                <label>User name</label>
-                <input type="text" onChange={(e) => setUsername(e.target.value)} /> <br />
-              
-               <label>role</label>
-                <select onChange={(e) => setRole(e.target.value)}>
-                    <option value="customer">Customer</option>
-                    <option value="seller">Seller</option>
-                </select> <br />
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <input 
+                        type="text" 
+                        onChange={(e) => setUsername(e.target.value)} 
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Choose a username"
+                    />
+                </div>
 
-                <label>Password</label>
-                <input type="password" onChange={(e) => setPassword(e.target.value)} /> <br />
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                    <select 
+                        onChange={(e) => setRole(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                        <option value="customer">Customer</option>
+                        <option value="seller">Seller</option>
+                    </select>
+                </div>
 
-                <button onClick={Register}>Register</button>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input 
+                        type="password" 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Create a password"
+                    />
+                </div>
 
-                {error && (
-                    <p>{error}</p>
-                )}
+                <button 
+                    onClick={Register} 
+                    disabled={loading}
+                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                    {loading ? "Creating Account..." : "Register"}
+                </button>
 
                 {success && (
-                    <p>{success}</p>
+                    <div className="p-3 bg-green-50 border border-green-200 text-green-700 rounded-md">
+                        {success}
+                    </div>
+                )}
+                
+                {error && (
+                    <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-md">
+                        {error}
+                    </div>
                 )}
             </div>
         </div>
     )
 }
 
-export default RegisterComponent
+export default RegisterComponent;
