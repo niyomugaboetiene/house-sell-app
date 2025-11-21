@@ -198,7 +198,6 @@ route.get('/myCart', async(req, res) => {
     }
 })
 
-
 route.put('/update/:_id', uploads.fields([
     { name: 'image', maxCount: 10 },
     { name: 'video', maxCount: 5 }
@@ -228,21 +227,29 @@ route.put('/update/:_id', uploads.fields([
         let updateData = {};
 
         for (let key in req.body) {
-            if (req.body[key] !== "" && req.body[key] !== undefined) {
-             updateData[key] = req.body[key];   
+            if (req.body[key] !== "" && req.body[key] !== undefined && key !== 'location') {
+                updateData[key] = req.body[key];
             }
         }
 
-        let locationData = house.location;
-        if (updateData.location) {
-            if (typeof updateData.location === 'string') {
-                   updateData.location = JSON.parse(updateData.location);
+        if (req.body.location) {
+            let locationUpdate;
+            
+            if (typeof req.body.location === 'string') {
+                try {
+                    locationUpdate = JSON.parse(req.body.location);
+                } catch (error) {
+                    return res.status(400).json({ error: "Invalid location format" });
+                }
             } else {
-                locationData = updateData.location;
+                locationUpdate = req.body.location;
             }
-        }
 
-        updateData.location = locationData;
+            updateData.location = {
+                ...house.location.toObject(),
+                ...locationUpdate
+            };
+        }
 
         if (req.files?.image) {
             updateData.image = req.files.image.map(f => f.filename);
@@ -252,14 +259,19 @@ route.put('/update/:_id', uploads.fields([
             updateData.video = req.files.video.map(f => f.filename);
         }
 
-        // final update
+        console.log('Update data being sent to DB:', updateData); 
 
-        const updated = await HouseSchema.findByIdAndUpdate(_id, updateData, { new: true })
-        return res.status(201).json({ house: updated })
+        const updated = await HouseSchema.findByIdAndUpdate(
+            _id, 
+            updateData, 
+            { new: true, runValidators: true }
+        );
+        
+        return res.status(200).json({ house: updated });
       
     } catch (error) {
+        console.error("Update error:", error);
         return res.status(500).json({ error: error.message });
     }
 });
-
 export default route;
