@@ -110,7 +110,7 @@ const Navs = () => {
   </div>
 
   {userInfo && Object.keys(userInfo).length > 0 &&(
-  <div className="relative w-16">
+  <div className="relative w-18">
      <button className="p-2 rounded-full" onClick={() => setShowUserInfo(!showUserInfo)}>
       {userInfo.image ? (
          <img src={`http://localhost:5000/${userInfo.image}`} alt="" className="w-16 object-cover rounded-full"/>
