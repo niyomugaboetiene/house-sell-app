@@ -68,9 +68,11 @@ router.get('/userInfo', (req, res) => {
 
 router.put('/updateProfile/:_id', async(req, res) => {
 
-    const { full_name, user_name, password, role } = req.body;
+    const { full_name, user_name, password, role, image } = req.body;
     const userId = req.session.userInfo.user_id;
    try {
+    const imagePath = image  ? req.file.path : req.session?.userInfo?.image;
+
        if (!full_name || !user_name || !password || !role) {
             return res.status(500).json({message: "Missing fileds"});
        } 
@@ -80,8 +82,8 @@ router.put('/updateProfile/:_id', async(req, res) => {
                 full_name,
                 user_name, 
                 password: hashedPassword, 
-                role
-
+                role,
+                image: imagePath
        }
       await User.findOneAndUpdate(userId, NewData, {
         new: true
