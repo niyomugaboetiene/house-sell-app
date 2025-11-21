@@ -20,7 +20,7 @@ const MyCart = () => {
 
     return (
  <div className="min-h-screen bg-gray-50 mt-20">
-            <p className="ms-10 mt-4 underline text-2xl font-bold text-amber-500">My Cart</p> 
+            <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">My Cart</p> 
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {myCart.map((house, idx) => (
