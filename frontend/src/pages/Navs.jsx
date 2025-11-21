@@ -108,7 +108,7 @@ const Navs = () => {
       Login
     </Link>
   </div>
-  
+
   {userInfo && (
   <div className="relative">
      <button className="border p-2 rounded-full border-blue-500" onClick={() => setShowUserInfo(!showUserInfo)}>
@@ -123,9 +123,18 @@ const Navs = () => {
 </div>
 
 {showUserInfo && (
-  <div className="absolute bg-gray-300">
+  <div className="absolute bg-gray-100">
        <div>
-        <h1>{useState.user_name}</h1>
+        <h1 className="">{userInfo.full_name}</h1>
+        <p>{userInfo.user_name}</p>
+        <p>{userInfo.role}</p>
+        <div>
+       {userInfo.image ? (
+            <img src={`http://localhost:5000/${userInfo.image}`} alt="" />
+        ) : (
+           <FaUser className="text-3xl text-blue-500" />
+        )}
+        </div>
        </div>
   </div>
 )}
