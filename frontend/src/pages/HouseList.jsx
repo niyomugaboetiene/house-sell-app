@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const HouseListComponent = () => {
     const [houses, setHouses] = useState([]);
+    const [UserInfo, setUserInfo] = useState([])
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     
@@ -24,6 +25,19 @@ const HouseListComponent = () => {
         fetchHouses();
     }, []);
 
+      const GetUserInfo = async() => {
+    try {
+        const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+        setUserInfo(res.data.user)
+        console.log("My session data:", res.data.user.image)
+    } catch (error) {
+      console.error(error.message);
+    }
+
+  }
+  useEffect(() => {
+         GetUserInfo();
+  }, []);
 
     if (loading) {
         return (
