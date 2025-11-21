@@ -10,8 +10,8 @@ const SearchResults = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 mt-20">
-      <p className="ms-10 mt-4 underline text-2xl font-bold text-amber-500">
-        All Houses
+      <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">
+        Results
       </p>
 
       <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -23,7 +23,7 @@ const SearchResults = () => {
             >
               <div className="relative h-80 bg-gray-200">
 
-                {house.image ? (
+                {house.image && house.image.length > 0 ? (
                   <img
                     src={`http://localhost:5000/House_Images/${house.image}`}
                     alt={house.title}

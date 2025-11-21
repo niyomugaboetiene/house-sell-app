@@ -14,7 +14,6 @@ import House5 from "../assets/House_Images/house5.jpg"
 import Lottien1 from "../assets/House_Images/lottie1.png"
 import Lottien2 from "../assets/House_Images/lottie2.png"
 import Lottien3 from "../assets/House_Images/lottie3.png"
-import { Query } from "mongoose";
 
 const Images = [House1, House2, House3, House4, House5];
 
@@ -89,7 +88,7 @@ const HomePage = () => {
                     <h1 className=" text-white font-medium text-[50px]">Search your desired House</h1>
                     <div className="flex justify-between w-110 bg-gray-50 rounded-xl">
                         <input type="text" 
-                           onChange={(e) => setSearchText(e.target.value)}
+                           onChange={(e) => setSearchQuery(e.target.value)}
                            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
                            className="py-4 placeholder:text-amber-500 placeholder:font-light ps-2 w-96 focus:outline-2 focus:outline-amber-500 rounded-s-lg bg-gray-100" 
                            placeholder="Search by address, type of house, country, district, ..."

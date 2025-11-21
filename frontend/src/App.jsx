@@ -12,6 +12,7 @@ import HouseForSell from "./pages/HouseForSell"
 import MyProperties from "./pages/sellerHouse"
 import UpdateHouseComponent from "./pages/UpdateHouse"
 import Footer from "./pages/Footer"
+import SearchResults from "./pages/SearchBar"
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
               <Route path="/buy" element={<HouseForSell />}/>
               <Route path="/myProperties" element={<MyProperties />}/>
               <Route path="/update/:_id" element={<UpdateHouseComponent />}/>
+              <Route path="/search" element={<SearchResults />}/>
           </Route>
          </Routes>
         <Footer />
