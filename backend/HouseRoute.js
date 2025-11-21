@@ -299,54 +299,56 @@ route.post('/delete/:_id', async(req, res) => {
     }
 });
 
-
-route.get('/search', async (req, res) => {
+route.get("/search", async (req, res) => {
   try {
-    const { query, country, Activity, district, city, sector, PropertyType } = req.query; 
+    const { query, country, Activity, district, city, sector, PropertyType } =
+      req.query;
 
     let searchFilter = {};
 
+    const orConditions = [];
+
     if (query) {
-      searchFilter.$or = [
-        { title: { $regex: query, $options: 'i' } },
-        { description: { $regex: query, $options: 'i' } }, 
-        { 'location.country': { $regex: query, $options: 'i' } },
-        { 'location.city': { $regex: query, $options: 'i' } },
-        { 'location.district': { $regex: query, $options: 'i' } },
-        { 'location.sector': { $regex: query, $options: 'i' } },
-      ];
+      orConditions.push({ title: { $regex: query, $options: "i" } });
+      orConditions.push({ description: { $regex: query, $options: "i" } });
+      orConditions.push({ "location.country": { $regex: query, $options: "i" } });
+      orConditions.push({ "location.city": { $regex: query, $options: "i" } });
+      orConditions.push({
+        "location.district": { $regex: query, $options: "i" },
+      });
+      orConditions.push({
+        "location.sector": { $regex: query, $options: "i" },
+      });
     }
 
-    if (country) {
-        searchFilter['location.country'] = { $regex: country, $options: 'i' };
-    }
-    if (city) {
-        searchFilter['location.city'] = { $regex: city, $options: 'i' };
-    }
-    if (district) {
-        searchFilter['location.district'] = { $regex: district, $options: 'i' };
-    }
-    if (sector) {
-        searchFilter['location.sector'] = { $regex: sector, $options: 'i' };
-    }
-    if (Activity) {
-        searchFilter.Activity = { $regex: Activity, $options: 'i' };
-    }
-    if (PropertyType) {
-        searchFilter.PropertyType = { $regex: PropertyType, $options: 'i' };
+    if (orConditions.length > 0) {
+      searchFilter.$or = orConditions;
     }
 
+    if (country)
+      searchFilter["location.country"] = { $regex: country, $options: "i" };
+    if (city)
+      searchFilter["location.city"] = { $regex: city, $options: "i" };
+    if (district)
+      searchFilter["location.district"] = { $regex: district, $options: "i" };
+    if (sector)
+      searchFilter["location.sector"] = { $regex: sector, $options: "i" };
+    if (Activity)
+      searchFilter.Activity = { $regex: Activity, $options: "i" };
+    if (PropertyType)
+      searchFilter.PropertyType = { $regex: PropertyType, $options: "i" };
 
     const Houses = await HouseSchema.find(searchFilter);
 
     res.status(200).json({
-      message: 'Search result',
+      message: "Search result",
       Houses,
       total: Houses.length,
     });
   } catch (error) {
-    console.error('Search error:', error);
-    res.status(500).json({ message: 'Search failed', error: error.message });
+    console.error("Search error:", error);
+    res.status(500).json({ message: "Search failed", error: error.message });
   }
 });
+
 export default route;
