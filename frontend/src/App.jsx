@@ -9,6 +9,7 @@ import HouseListComponentWithId from "./pages/HouseListWithId"
 import HouseForRent from "./pages/HouseForRent"
 import MyCart from "./pages/MyCart"
 import HouseForSell from "./pages/HouseForSell"
+import MyProperties from "./pages/sellerHouse"
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
               <Route path="/myCart" element={<MyCart />}/>
               <Route path="/rent" element={<HouseForRent />}/>
               <Route path="/buy" element={<HouseForSell />}/>
+              <Route path="/myProperties" element={<MyProperties />}/>
           </Route>
          </Routes>
      </BrowserRouter>
