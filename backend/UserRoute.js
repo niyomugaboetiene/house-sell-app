@@ -2,6 +2,7 @@ import User from "./UserSchema.js"
 import express from "express"
 import bcrypt from "bcrypt";
 import multer from "multer";
+import UserSchema from "./UserSchema.js";
 
 const router = express.Router();
 
@@ -80,25 +81,27 @@ router.get('/userInfo', (req, res) => {
 
 router.put('/updateProfile', uploads.single("image"), async(req, res) => {
 
-    const { full_name, user_name, password, role, image } = req.body;
+    const { full_name, user_name, password, role } = req.body;
    try {
     const userId = req.session.userInfo.user_id;
     if (!userId) {
         return res.status(401).json({ message: 'Unauthorized'})
     }
-    const imagePath = image  ? req.file.path : req.session?.userInfo?.image;
-
        if (!full_name || !user_name || !password || !role) {
-            return res.status(500).json({message: "Missing fileds"});
+            return res.status(500).json({message: "Missing fields"});
        } 
 
-       const hashedPassword = await bcrypt.hash(password, 10);
+       const OldData = await UserSchema.findById(userId);
+       const hashedPassword = password.trim() ? await bcrypt.hash(password, 10) : OldData.password;
+       
+       const ImagePath = req.file ? req.file.path : OldData.image;
+
        const NewData = {
                 full_name,
                 user_name, 
                 password: hashedPassword, 
                 role,
-                image: imagePath
+                image: ImagePath
        }
      const newUser = await User.findByIdAndUpdate(userId, NewData, {
         new: true

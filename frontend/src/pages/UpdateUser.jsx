@@ -48,7 +48,6 @@ const UpdateUserComponent = () => {
             setSuccess("");
             
             const formData = new FormData();
-
             formData.append("full_name", full_name);
             formData.append("user_name", user_name);
             formData.append("password", password);
@@ -57,14 +56,12 @@ const UpdateUserComponent = () => {
                 formData.append("image", image); 
             }
 
-            const response = await axios.put(`http://localhost:5000/user/updateProfile`, formData, {
+             await axios.put(`http://localhost:5000/user/updateProfile`, formData, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-
-            console.log('Update response:', response.data);
 
             setSuccess("User updated successfully");
             
