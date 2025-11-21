@@ -109,7 +109,7 @@ const UpdateHouseComponent = () => {
             });
 
             setError("");
-            setSuccess("House added successfully");
+            setSuccess("House Updated successfully");
             
             setTitle("");
             setDescription("");
@@ -157,7 +157,7 @@ const UpdateHouseComponent = () => {
                         placeholder={propertyInfo.description}
                         value={description} 
                         onChange={(e) => setDescription(e.target.value)} 
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
                 </div>
                 
@@ -168,7 +168,7 @@ const UpdateHouseComponent = () => {
                         placeholder={`$ ${propertyInfo.price}`}
                         value={price} 
                         onChange={(e) => setPrice(e.target.value)} 
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
                 </div>
                 
@@ -180,7 +180,7 @@ const UpdateHouseComponent = () => {
             // value={location.country} 
             placeholder={propertyInfo?.location?.country}
             onChange={(e) => setLocation({...location, country: e.target.value})} 
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
     </div>
     <div>
@@ -190,7 +190,7 @@ const UpdateHouseComponent = () => {
             placeholder={propertyInfo?.location?.city}
             value={location.city} 
             onChange={(e) => setLocation({...location, city: e.target.value})} 
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 placeholder:text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
     </div>
     <div>
@@ -200,7 +200,7 @@ const UpdateHouseComponent = () => {
             value={location.district} 
             placeholder={propertyInfo?.location?.district}
             onChange={(e) => setLocation({...location, district: e.target.value})} 
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 placeholder:text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
     </div>
     <div>
@@ -210,7 +210,7 @@ const UpdateHouseComponent = () => {
             value={location.sector} 
             placeholder={propertyInfo?.location?.sector}
             onChange={(e) => setLocation({...location, sector: e.target.value})} 
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
     </div>
     <div className="md:col-span-2">
@@ -220,7 +220,7 @@ const UpdateHouseComponent = () => {
             value={location.street} 
             placeholder={propertyInfo?.location?.street}
             onChange={(e) => setLocation({...location, street: e.target.value})} 
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
     </div>
      </div>
@@ -233,7 +233,7 @@ const UpdateHouseComponent = () => {
                             placeholder={propertyInfo.bathrooms}
                             value={bathrooms} 
                             onChange={(e) => setBathrooms(e.target.value)} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -243,7 +243,7 @@ const UpdateHouseComponent = () => {
                             placeholder={propertyInfo.bedrooms}
                             value={bedrooms} 
                             onChange={(e) => setBedrooms(e.target.value)} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -253,7 +253,7 @@ const UpdateHouseComponent = () => {
                             placeholder={propertyInfo.size}
                             value={size} 
                             onChange={(e) => setSize(e.target.value)} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -263,7 +263,7 @@ const UpdateHouseComponent = () => {
                             value={yearBuilt} 
                             placeholder={propertyInfo.yearBuilt}
                             onChange={(e) => setYearBuilt(e.target.value)} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -273,7 +273,7 @@ const UpdateHouseComponent = () => {
                             placeholder={propertyInfo.parkingSpace}
                             value={parkingSpace} 
                             onChange={(e) => setParkingSpace(e.target.value)} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                     </div>
                 </div>
@@ -285,7 +285,7 @@ const UpdateHouseComponent = () => {
 
                             checked={hasGarden} 
                             onChange={(e) => setHasGarden(e.target.checked)} 
-                            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                            className="w-4 h-4 placeholder:text-black text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                         />
                         <label className="text-sm font-medium text-gray-700">Has Garden</label>
                     </div>
