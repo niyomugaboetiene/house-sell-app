@@ -22,7 +22,7 @@ const UpdateHouseComponent = () => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
     const [Activity, setActivity] = useState("");
-    const [propertyInfo, setPropertyInfo] = useState({}); // Changed from array to object
+    const [propertyInfo, setPropertyInfo] = useState({});
     const [error, setError] = useState("");
 
     const { _id } = useParams();
@@ -34,11 +34,9 @@ const UpdateHouseComponent = () => {
                 { withCredentials: true }
             );
 
-            // Assuming your API returns the house object directly or in a property
             const houseData = res.data.house || res.data.houses || res.data;
             setPropertyInfo(houseData);
             
-            // Pre-populate form with existing data
             if (houseData) {
                 setTitle(houseData.title || "");
                 setDescription(houseData.description || "");
@@ -74,7 +72,6 @@ const UpdateHouseComponent = () => {
             
             const formData = new FormData();
             
-            // Always send all fields, not just changed ones - let backend handle partial updates
             formData.append("title", title);
             formData.append("description", description);
             formData.append("price", price);
@@ -97,7 +94,6 @@ const UpdateHouseComponent = () => {
                 formData.append("image", image); 
             }
 
-            // Debug: log what's being sent
             for (let [key, value] of formData.entries()) {
                 console.log(key, value);
             }
@@ -205,7 +201,6 @@ const UpdateHouseComponent = () => {
                     </div>
                 </div>
                 
-                {/* Rest of your form remains the same but with value props instead of placeholders */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Number of Bathrooms</label>
