@@ -49,9 +49,16 @@ const Navs = () => {
             Sell
           </Link>
           )}
-          <Link to="/allHouse" className="transition-colors hover:text-blue-500">
-             Properties
-          </Link>
+          {userInfo?.role === 'customer' ? (
+              <Link to="/allHouse" className="transition-colors hover:text-blue-500">
+                Properties
+             </Link>
+          ) : (
+              <Link to="/viewMyProperties" className="transition-colors hover:text-blue-500">
+                  My Properties
+             </Link>
+          )}
+
           <Link to="/liked" className="transition-colors hover:text-blue-500">
             Favorite
           </Link>

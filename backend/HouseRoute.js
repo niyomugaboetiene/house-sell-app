@@ -134,6 +134,25 @@ route.get('/houses/:_id', async(req ,res) => {
 
 });
 
+// get user's properties based on their session
+route.get('/myProperties', async(req ,res) => {
+    try {
+        if (!req.session.userInfo) {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+        const userId = req.session.userInfo.user_id;
+
+        const house = await HouseSchema.find({ owner: userId }).populate("owner", "full_name user_name _id role");
+        if (house) {
+           return res.status(200).json({ houses: house });
+       } 
+       return res.status(404).json({ message: 'No house found' })
+    } catch(error) {
+        return res.status(500).json({ error: error.message })
+    }
+
+});
+
 route.post('/AddToCart/:_id', async(req, res) => {
    const { _id } = req.params;
    try {
