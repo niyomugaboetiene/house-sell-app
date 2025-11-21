@@ -180,52 +180,73 @@ route.get('/myCart', async(req, res) => {
 })
 
 
-
-route.get('/update/:_id', async(req, res) => {
-    const { _id } = req.params;
-    const userId = req.session.userInfo.user_id;
-    
-    const isProductExist = await HouseSchema.findById(_id);
-
+route.put('/update/:_id', uploads.fields([
+    { name: 'image', maxCount: 10 },
+    { name: 'video', maxCount: 5 }
+]), async (req, res) => {
     try {
-         const { title, description, price, bathrooms, bedrooms, size, yearBuilt, location, parkingSpace, hasGarden, PropertyType, isAvailable, Activity } = req.body;
-        
-         const locationData = JSON.parse(location);
+        const { _id } = req.params;
 
         if (!req.session.userInfo) {
-            return res.status(401).json({error: 'Login first' });
+            return res.status(401).json({ error: "Login first" });
         }
 
         if (req.session.userInfo.role !== "seller") {
-            return res.status(400).json({ error: "you are not seller" });
-        }
-       const imagePath = req.files?.image  ? req.files.image.map((file) => file.filename) : [];
-       const videoPath = req.files?.video ? req.files?.video.map((file) => file.filename) : [];
-      
-        
-        if (!title && !description && !price && !location && !bathrooms && !size && !yearBuilt && !Activity) {
-            return res.status(400).json({ error: "Some fileld is missing" });
+            return res.status(403).json({ error: "You are not a seller" });
         }
 
-        if (userId === isProductExist.owner) {
-            const newData = {
-                 title,
-                 description,
-                 price,
-                 location: locationData,
-                 bathrooms,
-                 bedrooms,
-                 size,
-                 yearBuilt,
-                 parkingSpace,
-                 hasGarden,
-                 PropertyType,
-                 isAvailable,
-                 image: imagePath,
-                 video: videoPath,
-                 Activity
-            }
+        const userId = req.session.userInfo.user_id;
+        const house = await HouseSchema.findById(_id);
+
+        if (!house) {
+            return res.status(404).json({ error: "House not found" });
         }
+
+        if (house.owner.toString() !== userId) {
+            return res.status(403).json({ error: "You are not the owner of this house" });
+        }
+
+        const {
+            title, description, price, bathrooms, bedrooms, size,
+            yearBuilt, location, parkingSpace, hasGarden,
+            PropertyType, isAvailable, Activity
+        } = req.body;
+
+        const locationData = location ? JSON.parse(location) : house.location;
+
+        const imagePath = req.files?.image
+            ? req.files["image"].map(f => f.filename)
+            : house.image;
+
+        const videoPath = req.files?.video
+            ? req.files["video"].map(f => f.filename)
+            : house.video;
+
+        const newData = {
+            title: title ?? house.title,
+            description: description ?? house.description,
+            price: price ?? house.price,
+            location: locationData,
+            bathrooms: bathrooms ?? house.bathrooms,
+            bedrooms: bedrooms ?? house.bedrooms,
+            size: size ?? house.size,
+            yearBuilt: yearBuilt ?? house.yearBuilt,
+            parkingSpace: parkingSpace ?? house.parkingSpace,
+            hasGarden: hasGarden ?? house.hasGarden,
+            PropertyType: PropertyType ?? house.PropertyType,
+            isAvailable: isAvailable ?? house.isAvailable,
+            Activity: Activity ?? house.Activity,
+            image: imagePath,
+            video: videoPath
+        };
+
+        const updated = await HouseSchema.findByIdAndUpdate(_id, newData, { new: true });
+
+        return res.status(200).json({ message: "House updated successfully", house: updated });
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
     }
-})
+});
+
 export default route;
