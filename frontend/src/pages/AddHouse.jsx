@@ -46,6 +46,7 @@ const HouseComponent = () => {
             formData.append("hasGarden", hasGarden);
             formData.append("PropertyType", PropertyType);
             formData.append("isAvailable", isAvailable);
+            
             if (video) {
                 formData.append("video", video);
             }
