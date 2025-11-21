@@ -179,4 +179,53 @@ route.get('/myCart', async(req, res) => {
     }
 })
 
+
+
+route.get('/update/:_id', async(req, res) => {
+    const { _id } = req.params;
+    const userId = req.session.userInfo.user_id;
+    
+    const isProductExist = await HouseSchema.findById(_id);
+
+    try {
+         const { title, description, price, bathrooms, bedrooms, size, yearBuilt, location, parkingSpace, hasGarden, PropertyType, isAvailable, Activity } = req.body;
+        
+         const locationData = JSON.parse(location);
+
+        if (!req.session.userInfo) {
+            return res.status(401).json({error: 'Login first' });
+        }
+
+        if (req.session.userInfo.role !== "seller") {
+            return res.status(400).json({ error: "you are not seller" });
+        }
+       const imagePath = req.files?.image  ? req.files.image.map((file) => file.filename) : [];
+       const videoPath = req.files?.video ? req.files?.video.map((file) => file.filename) : [];
+      
+        
+        if (!title || !description || !price || !location || !bathrooms || !size || !yearBuilt || !Activity) {
+            return res.status(400).json({ error: "Some fileld is missing" });
+        }
+
+        if (userId === isProductExist.owner) {
+            const newData = {
+                title,
+                 description,
+                 price,
+                 location: locationData,
+                 bathrooms,
+                 bedrooms,
+                 size,
+                 yearBuilt,
+                 parkingSpace,
+                 hasGarden,
+                 PropertyType,
+                 isAvailable,
+                 image: imagePath,
+                 video: videoPath,
+                 Activity
+            }
+        }
+    }
+})
 export default route;
