@@ -5,7 +5,6 @@ const Footer = () => {
     return (
         <footer className="bg-white border-t border-gray-200">
             <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {/* Brand Section */}
                 <div className="space-y-4">
                     <h1 className="text-2xl font-bold text-gray-800">
                         HouseFinder
@@ -25,26 +24,27 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Quick Links */}
                 <div className="space-y-4">
                     <h1 className="text-lg font-semibold text-gray-800 mb-2">Quick Links</h1>
                     <div className="space-y-2 text-gray-600">
                         <Link className="block hover:text-blue-600 transition-colors" to="/">
                             Home
                         </Link>
-                        <Link className="block hover:text-blue-600 transition-colors" to="/properties">
-                            Properties
+                        <Link className="block hover:text-blue-600 transition-colors" to="/buy">
+                            Buy
+                        </Link>
+                        <Link className="block hover:text-blue-600 transition-colors" to="/sell">
+                            Sell
+                        </Link>
+                        <Link className="block hover:text-blue-600 transition-colors" to="/rent">
+                            Rent
                         </Link>
                         <Link className="block hover:text-blue-600 transition-colors" to="/about">
                             About Us
                         </Link>
-                        <Link className="block hover:text-blue-600 transition-colors" to="/contact">
-                            Contact
-                        </Link>
                     </div>
                 </div>
 
-                {/* Support */}
                 <div className="space-y-4">
                     <h1 className="text-lg font-semibold text-gray-800 mb-2">Support</h1>
                     <div className="space-y-3 text-gray-600">
@@ -58,12 +58,11 @@ const Footer = () => {
                         </div>
                         <div className="flex items-center space-x-2">
                             <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                            <span>info@housefinder.rw</span>
+                            <span>I'll enter email here later</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Social Media */}
                 <div className="space-y-4">
                     <h1 className="text-lg font-semibold text-gray-800 mb-2">Connect With Us</h1>
                     <p className="text-gray-600 text-sm">
@@ -122,7 +121,6 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Bottom Section */}
             <div className="border-t border-gray-200">
                 <div className="max-w-7xl mx-auto px-6 py-4">
                     <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
