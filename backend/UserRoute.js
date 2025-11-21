@@ -1,8 +1,20 @@
 import User from "./UserSchema.js"
 import express from "express"
 import bcrypt from "bcrypt";
+import multer from "multer";
 
 const router = express.Router();
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "User_Image/");
+    }, 
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+});
+
+const uploads = multer({ storage });
 
 router.post('/register', async(req, res) => {
 
@@ -66,7 +78,7 @@ router.get('/userInfo', (req, res) => {
 })
 
 
-router.put('/updateProfile', async(req, res) => {
+router.put('/updateProfile', uploads.single("image"), async(req, res) => {
 
     const { full_name, user_name, password, role, image } = req.body;
    try {

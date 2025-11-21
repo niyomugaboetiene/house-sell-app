@@ -8,6 +8,7 @@ import HouseRoute from "./HouseRoute.js"
 const app = express();
 app.use(express.json());
 app.use("/House_Images", express.static("House_Images"));
+app.use("/User_Image", express.static("User_Image"));
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true
