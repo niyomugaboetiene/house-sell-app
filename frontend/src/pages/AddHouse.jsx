@@ -226,7 +226,7 @@ const HouseComponent = () => {
                             type="checkbox" 
                             checked={hasGarden} 
                             onChange={(e) => setHasGarden(e.target.checked)} 
-                            className="w-4 h-4 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+                            className="w-4 h-4 text-amber-500 border-gray-300 rounded focus:ring-amber-500"
                         />
                         <label className="text-sm font-medium text-gray-700">Has Garden</label>
                     </div>
@@ -236,7 +236,7 @@ const HouseComponent = () => {
                             type="checkbox" 
                             checked={isAvailable} 
                             onChange={(e) => setIsAvailable(e.target.checked)} 
-                            className="w-4 h-4 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+                            className="w-4 h-4 text-amber-500 border-gray-300 rounded focus:ring-amber-500"
                         />
                         <label className="text-sm font-medium text-gray-700">Is Available</label>
                     </div>
@@ -296,7 +296,7 @@ const HouseComponent = () => {
                 <button 
                     onClick={AddHouse} 
                     disabled={loading}
-                    className="w-full bg-amber-600 text-white py-2 px-4 rounded-md hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="w-full bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                     {loading ? "Adding..." : "Add House"}
                 </button>

@@ -115,7 +115,7 @@ const HomePage = () => {
                 bed: <span className="font-bold">{house.bedrooms}</span>
             </p>
         </div>
-        <p className="text-xl font-bold text-amber-600 mt-1">
+        <p className="text-xl font-bold text-amber-500 mt-1">
             ${house.price}
         </p>
     </div>
@@ -125,7 +125,7 @@ const HomePage = () => {
     </div>
 
          <button 
-             className="w-full bg-amber-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors"
+             className="w-full bg-amber-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors"
              onClick={() => navigate(`/allHouse/${house._id}`)}
           >
                View Details
@@ -159,7 +159,7 @@ const HomePage = () => {
             memories and every room reflects your journey.
         </p>
         <div className="p-5">
-            <button className="bg-amber-500 hover:bg-amber-600 transition-colors px-6 py-3 text-white rounded-lg ms-24"
+            <button className="bg-amber-500 hover:bg-amber-500 transition-colors px-6 py-3 text-white rounded-lg ms-24"
              onClick={() => navigate('/buy')}
             >
                 Buy House
@@ -180,7 +180,7 @@ const HomePage = () => {
             relationship shift, or simply the desire for a fresh start
         </p>
         <div className="p-5">
-            <button className="bg-amber-500 px-6 py-3 text-white rounded-lg  hover:bg-amber-600 transition-colors ms-24"
+            <button className="bg-amber-500 px-6 py-3 text-white rounded-lg  hover:bg-amber-500 transition-colors ms-24"
              onClick={() => navigate('/rent')}
             >
                 Rent House
@@ -198,7 +198,7 @@ const HomePage = () => {
             your memory-maker, and now it's time to turn those cherished moments into financial success
         </p>
         <div className="p-5">
-            <button className="bg-amber-500 px-6 py-3 text-white rounded-lg hover:bg-amber-600 transition-colors ms-24"
+            <button className="bg-amber-500 px-6 py-3 text-white rounded-lg hover:bg-amber-500 transition-colors ms-24"
                 onClick={() => navigate('/sell')}
             >
                 Sell House</button>

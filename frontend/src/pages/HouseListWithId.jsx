@@ -81,7 +81,7 @@ const HouseListComponentWithId = () => {
                         <div className="mb-8">
                             <h2 className="text-2xl font-bold text-gray-900 mb-2">{house.title}</h2>
                             <p className="text-lg text-gray-600 mb-4">{house.description}</p>
-                            <p className="text-3xl font-bold text-amber-600">${house.price.toLocaleString()}</p>
+                            <p className="text-3xl font-bold text-amber-500">${house.price.toLocaleString()}</p>
                         </div>
 
                         {house.location && (
@@ -145,7 +145,7 @@ const HouseListComponentWithId = () => {
                               Watch Video
                           </button>
                          <button
-                           className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition-colors"
+                           className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-500 transition-colors"
                            onClick={() => AddToCart(house._id)}
                           >
                             <FaShoppingCart /> Add to Cart

@@ -60,7 +60,7 @@ const MyCart = () => {
                                         </h3>
                                        </div>
 
-                                    <p className="text-2xl font-bold text-amber-600">
+                                    <p className="text-2xl font-bold text-amber-500">
                                         ${(house.price)}
                                     </p>
                                 </div>
