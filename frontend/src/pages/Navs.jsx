@@ -109,7 +109,7 @@ const Navs = () => {
     </Link>
   </div>
 
-  {userInfo && (
+  {userInfo && Object.keys(userInfo).length > 0 &&(
   <div className="relative">
      <button className="border p-2 rounded-full border-amber-500" onClick={() => setShowUserInfo(!showUserInfo)}>
       {userInfo.image ? (
