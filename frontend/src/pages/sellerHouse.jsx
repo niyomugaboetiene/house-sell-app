@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { FaHeart } from "react-icons/fa"
+import { FaHeart, FaTrash, FaEdit } from "react-icons/fa"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -46,6 +46,18 @@ const MyProperties = () => {
                                          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
                                   >
                                      <FaHeart className="text-red-500 text-xl" />
+                                 </button>
+                                 <button
+                                         className="absolute top-13 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                         onClick={() => navigate(`/update/${house._id}`)}
+                                  >
+                                     <FaEdit className="text-blue-500 text-xl" />
+                                 </button>
+                                 <button
+                                         className="absolute top-23 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                         onClick={() => navigate(`/delete/${house._id}`)}
+                                  >
+                                     <FaTrash className="text-green-500 text-xl" />
                                  </button>
                                 </div>
                                 {house.image && house.image.length > 0 ? (

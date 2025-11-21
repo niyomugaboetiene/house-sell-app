@@ -54,7 +54,7 @@ const Navs = () => {
                 Properties
              </Link>
           ) : (
-              <Link to="/viewMyProperties" className="transition-colors hover:text-blue-500">
+              <Link to="/myProperties" className="transition-colors hover:text-blue-500">
                   My Properties
              </Link>
           )}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -22,10 +22,30 @@ const UpdateHouseComponent = () => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
     const [Activity, setActivity] = useState("");
+    const [propertyInfo, setPropertyInfo] = useState([]);
+
     const [error, setError] = useState("");
 
     const { _id } = useParams();
 
+    const FetchProperyInfo = async(req, res) => {
+        try {
+            const res = await axios.get(
+                `http://localhost:5000/house/houses/${_id}`,
+                { withCredentials: true }
+            );
+
+            setPropertyInfo(res.data.houses); 
+            console.log('Data received', res.data.houses);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        FetchProperyInfo();
+    }, []);
+    
     const UpdateHouse = async () => {
         try {
             setLoading(true);
@@ -81,7 +101,7 @@ const UpdateHouseComponent = () => {
                 formData.append("image", image); 
             }
 
-            await axios.post(`http://localhost:5000/house/update/${_id}`, formData, {
+            await axios.put(`http://localhost:5000/house/update/${_id}`, formData, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -117,16 +137,16 @@ const UpdateHouseComponent = () => {
 
     return (
         <div className="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-            <h1 className="text-2xl font-bold text-gray-800 mb-6">Sell New Property</h1>
+            <h1 className="text-2xl font-bold text-gray-800 mb-6">Update Property</h1>
             
             <div className="space-y-4">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
                     <input 
                         type="text" 
-                        value={title} 
+                        placeholder={propertyInfo.title}
                         onChange={(e) => setTitle(e.target.value)} 
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border placeholder:text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
                 </div>
                 
@@ -134,6 +154,7 @@ const UpdateHouseComponent = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                     <input 
                         type="text" 
+                        placeholder={propertyInfo.description}
                         value={description} 
                         onChange={(e) => setDescription(e.target.value)} 
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -144,6 +165,7 @@ const UpdateHouseComponent = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">Price</label>
                     <input 
                         type="number" 
+                        placeholder={`$ ${propertyInfo.price}`}
                         value={price} 
                         onChange={(e) => setPrice(e.target.value)} 
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"

@@ -10,6 +10,7 @@ import HouseForRent from "./pages/HouseForRent"
 import MyCart from "./pages/MyCart"
 import HouseForSell from "./pages/HouseForSell"
 import MyProperties from "./pages/sellerHouse"
+import UpdateHouseComponent from "./pages/UpdateHouse"
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
               <Route path="/rent" element={<HouseForRent />}/>
               <Route path="/buy" element={<HouseForSell />}/>
               <Route path="/myProperties" element={<MyProperties />}/>
+              <Route path="/update/:_id" element={<UpdateHouseComponent />}/>
           </Route>
          </Routes>
      </BrowserRouter>
