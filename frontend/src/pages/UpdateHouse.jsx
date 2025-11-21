@@ -129,7 +129,7 @@ const UpdateHouseComponent = () => {
                         type="text" 
                         value={title}
                         onChange={(e) => setTitle(e.target.value)} 
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     />
                 </div>
                 
@@ -139,7 +139,7 @@ const UpdateHouseComponent = () => {
                         type="text" 
                         value={description} 
                         onChange={(e) => setDescription(e.target.value)} 
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     />
                 </div>
                 
@@ -149,7 +149,7 @@ const UpdateHouseComponent = () => {
                         type="number" 
                         value={price} 
                         onChange={(e) => setPrice(e.target.value)} 
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     />
                 </div>
                 
@@ -160,7 +160,7 @@ const UpdateHouseComponent = () => {
                             type="text" 
                             value={location.country} 
                             onChange={(e) => setLocation({...location, country: e.target.value})} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -169,7 +169,7 @@ const UpdateHouseComponent = () => {
                             type="text" 
                             value={location.city} 
                             onChange={(e) => setLocation({...location, city: e.target.value})} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -178,7 +178,7 @@ const UpdateHouseComponent = () => {
                             type="text" 
                             value={location.district} 
                             onChange={(e) => setLocation({...location, district: e.target.value})} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -187,7 +187,7 @@ const UpdateHouseComponent = () => {
                             type="text" 
                             value={location.sector} 
                             onChange={(e) => setLocation({...location, sector: e.target.value})} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                     <div className="md:col-span-2">
@@ -196,7 +196,7 @@ const UpdateHouseComponent = () => {
                             type="text" 
                             value={location.street} 
                             onChange={(e) => setLocation({...location, street: e.target.value})} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                 </div>
@@ -208,7 +208,7 @@ const UpdateHouseComponent = () => {
                             type="number" 
                             value={bathrooms} 
                             onChange={(e) => setBathrooms(e.target.value)} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -217,7 +217,7 @@ const UpdateHouseComponent = () => {
                             type="number" 
                             value={bedrooms} 
                             onChange={(e) => setBedrooms(e.target.value)} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -226,7 +226,7 @@ const UpdateHouseComponent = () => {
                             type="number" 
                             value={size} 
                             onChange={(e) => setSize(e.target.value)} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -235,7 +235,7 @@ const UpdateHouseComponent = () => {
                             type="number" 
                             value={yearBuilt} 
                             onChange={(e) => setYearBuilt(e.target.value)} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                     <div>
@@ -244,7 +244,7 @@ const UpdateHouseComponent = () => {
                             type="number" 
                             value={parkingSpace} 
                             onChange={(e) => setParkingSpace(e.target.value)} 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                 </div>
@@ -255,7 +255,7 @@ const UpdateHouseComponent = () => {
                             type="checkbox" 
                             checked={hasGarden} 
                             onChange={(e) => setHasGarden(e.target.checked)} 
-                            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                            className="w-4 h-4 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
                         />
                         <label className="text-sm font-medium text-gray-700">Has Garden</label>
                     </div>
@@ -265,7 +265,7 @@ const UpdateHouseComponent = () => {
                             type="checkbox" 
                             checked={isAvailable} 
                             onChange={(e) => setIsAvailable(e.target.checked)} 
-                            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                            className="w-4 h-4 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
                         />
                         <label className="text-sm font-medium text-gray-700">Is Available</label>
                     </div>
@@ -277,7 +277,7 @@ const UpdateHouseComponent = () => {
                         <select 
                             value={PropertyType} 
                             onChange={(e) => setPropertyType(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         >
                             <option value="House">House</option>
                             <option value="Office">Office</option>
@@ -292,7 +292,7 @@ const UpdateHouseComponent = () => {
                         <select 
                             value={Activity} 
                             onChange={(e) => setActivity(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         >
                             <option value="Sell">Sell</option>
                             <option value="Rent">Rent</option>
@@ -307,7 +307,7 @@ const UpdateHouseComponent = () => {
                             type="file" 
                             onChange={(e) => setImage(e.target.files[0])} 
                             accept="image/*" 
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                     
@@ -317,7 +317,7 @@ const UpdateHouseComponent = () => {
                             type="file" 
                             onChange={(e) => setVideo(e.target.files[0])} 
                             accept="video/*"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         />
                     </div>
                 </div>
@@ -325,7 +325,7 @@ const UpdateHouseComponent = () => {
                 <button 
                     onClick={UpdateHouse} 
                     disabled={loading}
-                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="w-full bg-amber-600 text-white py-2 px-4 rounded-md hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                     {loading ? "Updating..." : "Update Property"}
                 </button>

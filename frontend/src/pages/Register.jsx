@@ -46,7 +46,7 @@ const RegisterComponent = () => {
                     <input 
                         type="text" 
                         onChange={(e) => setFull_name(e.target.value)} 
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         placeholder="Enter your full name"
                     />
                 </div>
@@ -56,7 +56,7 @@ const RegisterComponent = () => {
                     <input 
                         type="text" 
                         onChange={(e) => setUsername(e.target.value)} 
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         placeholder="Choose a username"
                     />
                 </div>
@@ -65,7 +65,7 @@ const RegisterComponent = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
                     <select 
                         onChange={(e) => setRole(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     >
                         <option value="customer">Customer</option>
                         <option value="seller">Seller</option>
@@ -77,7 +77,7 @@ const RegisterComponent = () => {
                     <input 
                         type="password" 
                         onChange={(e) => setPassword(e.target.value)} 
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         placeholder="Create a password"
                     />
                 </div>
@@ -85,7 +85,7 @@ const RegisterComponent = () => {
                 <button 
                     onClick={Register} 
                     disabled={loading}
-                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="w-full bg-amber-600 text-white py-2 px-4 rounded-md hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                     {loading ? "Creating Account..." : "Register"}
                 </button>

@@ -28,14 +28,14 @@ const HouseForSell = () => {
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
             </div>
         );
     }
 
     return (
         <div className="min-h-screen bg-gray-50 mt-20">
-            <p className="ms-10 mt-4 text-2xl font-bold text-blue-500">Quick Buy </p> 
+            <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">Quick Buy </p> 
 
 
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -77,12 +77,12 @@ const HouseForSell = () => {
                                         </h3>
                                        </div>
 
-                                    <p className="text-2xl font-bold text-blue-600">
+                                    <p className="text-2xl font-bold text-amber-600">
                                         ${(house.price)}
                                     </p>
                                 </div>
 
-                                <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-blue-700 transition-colors"
+                                <button className="w-full bg-amber-600 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-amber-700 transition-colors"
                                    onClick={() => navigate(`/allHouse/${house._id}`)}
                                 >
                                     View Details

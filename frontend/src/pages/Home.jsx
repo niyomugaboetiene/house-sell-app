@@ -49,7 +49,7 @@ const HomePage = () => {
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
             </div>
         );
     }
@@ -66,16 +66,16 @@ const HomePage = () => {
                 <div className="absolute top-50 left-11">
                     <h1 className=" text-white font-medium text-[50px]">Search your desired House</h1>
                     <div className="flex justify-between w-110 bg-gray-50 rounded-xl">
-                        <input type="text" className="py-4 placeholder:text-blue-500 placeholder:font-light ps-2 w-96 focus:outline-2 focus:outline-blue-500 rounded-s-lg bg-gray-100" 
+                        <input type="text" className="py-4 placeholder:text-amber-500 placeholder:font-light ps-2 w-96 focus:outline-2 focus:outline-amber-500 rounded-s-lg bg-gray-100" 
                            placeholder="Search by address, type of house, country, district, ..."
                         />
-                        <div className="p-5 hover:bg-gray-200 transition-colors bg-gray-100 rounded-e-2xl active:border-2 border-blue-500 ms-0.5">
-                           <FaSearch className="text-blue-500  "/>
+                        <div className="p-5 hover:bg-gray-200 transition-colors bg-gray-100 rounded-e-2xl active:border-2 border-amber-500 ms-0.5">
+                           <FaSearch className="text-amber-500  "/>
                         </div>
                     </div>
                 </div>
             </div>
-            <p className="ms-10 text-2xl font-bold text-blue-500 text-center mt-8">New Houses</p> 
+            <p className="ms-10 text-2xl font-bold text-amber-500 text-center mt-8">New Houses</p> 
 
 <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div className="max-w-6xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-auto">
@@ -115,17 +115,17 @@ const HomePage = () => {
                 bed: <span className="font-bold">{house.bedrooms}</span>
             </p>
         </div>
-        <p className="text-xl font-bold text-blue-600 mt-1">
+        <p className="text-xl font-bold text-amber-600 mt-1">
             ${house.price}
         </p>
     </div>
 
-    <div className="absolute bg-blue-100 p-2 mt-2 top-5 right-2 rounded-full"> 
+    <div className="absolute bg-amber-100 p-2 mt-2 top-5 right-2 rounded-full"> 
         <p className="text-sm text-gray-700">{house.Activity ? `For ${house.Activity}` : 'For: Not specified' }</p>
     </div>
 
          <button 
-             className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+             className="w-full bg-amber-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors"
              onClick={() => navigate(`/allHouse/${house._id}`)}
           >
                View Details
@@ -151,7 +151,7 @@ const HomePage = () => {
         <img src={Lottien1} 
             className="w-54 h-40 mx-auto mt-4"
         />
-        <h1 className="text-center text-xl font-bold mt-2 text-blue-500">Buy a House</h1>
+        <h1 className="text-center text-xl font-bold mt-2 text-amber-500">Buy a House</h1>
         <p className="p-5 text-sm text-gray-700 flex-grow">
             Take the first step toward building your legacy.
             Homeownership isn't just about having a roof over your head - it's
@@ -159,7 +159,7 @@ const HomePage = () => {
             memories and every room reflects your journey.
         </p>
         <div className="p-5">
-            <button className="bg-blue-500 hover:bg-blue-600 transition-colors px-6 py-3 text-white rounded-lg ms-24"
+            <button className="bg-amber-500 hover:bg-amber-600 transition-colors px-6 py-3 text-white rounded-lg ms-24"
              onClick={() => navigate('/buy')}
             >
                 Buy House
@@ -171,7 +171,7 @@ const HomePage = () => {
         <img src={Lottien3} 
             className="w-54 h-40 mx-auto mt-4"
         />
-        <h1 className="text-center text-xl font-bold mt-2 text-blue-500">Rent a House</h1>
+        <h1 className="text-center text-xl font-bold mt-2 text-amber-500">Rent a House</h1>
         <p className="p-5 text-sm text-gray-700 flex-grow">
             Experience the freedom to explore new neighborhoods
             and lifestyles without long-term commitment. 
@@ -180,7 +180,7 @@ const HomePage = () => {
             relationship shift, or simply the desire for a fresh start
         </p>
         <div className="p-5">
-            <button className="bg-blue-500 px-6 py-3 text-white rounded-lg  hover:bg-blue-600 transition-colors ms-24"
+            <button className="bg-amber-500 px-6 py-3 text-white rounded-lg  hover:bg-amber-600 transition-colors ms-24"
              onClick={() => navigate('/rent')}
             >
                 Rent House
@@ -192,13 +192,13 @@ const HomePage = () => {
         <img src={Lottien2} 
             className="w-54 h-40 mx-auto mt-4"
         />
-        <h1 className="text-center text-xl font-bold text-blue-500 mt-2">Sell a House</h1>
+        <h1 className="text-center text-xl font-bold text-amber-500 mt-2">Sell a House</h1>
         <p className="p-5 text-sm text-gray-700 flex-grow">
             Your home has been more than just a house - it's been your sanctuary, 
             your memory-maker, and now it's time to turn those cherished moments into financial success
         </p>
         <div className="p-5">
-            <button className="bg-blue-500 px-6 py-3 text-white rounded-lg hover:bg-blue-600 transition-colors ms-24"
+            <button className="bg-amber-500 px-6 py-3 text-white rounded-lg hover:bg-amber-600 transition-colors ms-24"
                 onClick={() => navigate('/sell')}
             >
                 Sell House</button>

@@ -47,13 +47,13 @@ const HouseListComponentWithId = () => {
     );
 
     return (
-        <div className="min-h-screen bg-blue-50 py-8 mt-10">
+        <div className="min-h-screen bg-amber-50 py-8 mt-10">
             {message && (
                 <p>{message}</p>
             )}
            <button onClick={() => navigate(-1)} className="bg-gray-200 ms-13 px-3 py-1 hover:bg-gray-300 transition-colors">&larr; Back</button>
             <div className="max-w-7xl mx-auto px-4">
-                <h1 className="text-3xl font-bold text-blue-500 mb-8">House Details</h1>
+                <h1 className="text-3xl font-bold text-amber-500 mb-8">House Details</h1>
                 
                 <div className="flex flex-col lg:flex-row gap-8">
                     <div className="lg:w-1/2">
@@ -63,10 +63,10 @@ const HouseListComponentWithId = () => {
                                src={`http://localhost:5000/House_Images/${house.image}`} 
                                className="w-full h-[800px] lg:h-[820px] object-cover rounded-2xl shadow-xl"
                         />
-                        <button className="absolute top-130 left-84 bg-blue-50 p-2 rounded-full hover:bg-blue-100 transition duration-200 hover:scale-105">
+                        <button className="absolute top-130 left-84 bg-amber-50 p-2 rounded-full hover:bg-amber-100 transition duration-200 hover:scale-105">
                             <FaChevronLeft className="text-gray-500 text-2xl"/>
                         </button>
-                        <button className="absolute top-130 left-222 bg-blue-50 p-2 rounded-full  hover:bg-blue-100 transition duration-200 hover:scale-105">
+                        <button className="absolute top-130 left-222 bg-amber-50 p-2 rounded-full  hover:bg-amber-100 transition duration-200 hover:scale-105">
                             <FaChevronRight className="text-gray-500 text-2xl" />
                         </button>
                         </div>
@@ -81,12 +81,12 @@ const HouseListComponentWithId = () => {
                         <div className="mb-8">
                             <h2 className="text-2xl font-bold text-gray-900 mb-2">{house.title}</h2>
                             <p className="text-lg text-gray-600 mb-4">{house.description}</p>
-                            <p className="text-3xl font-bold text-blue-600">${house.price.toLocaleString()}</p>
+                            <p className="text-3xl font-bold text-amber-600">${house.price.toLocaleString()}</p>
                         </div>
 
                         {house.location && (
                             <div className="mb-8 p-6 bg-gray-100 shadow-inner shadow-sky-500xl rounded-xl hover:-translate-y-1 transition duration-200">
-                                <h3 className="text-xl font-serif text-blue-500 mb-4 text-center">Location Details</h3>
+                                <h3 className="text-xl font-serif text-amber-500 mb-4 text-center">Location Details</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <p className="text-gray-700"><span className="font-medium">Country:</span> {house.location.country}</p>
@@ -102,7 +102,7 @@ const HouseListComponentWithId = () => {
                         )}
 
                         <div className="mb-8">
-                            <h3 className="text-xl font-semibold text-blue-500 mb-4">Property Features</h3>
+                            <h3 className="text-xl font-semibold text-amber-500 mb-4">Property Features</h3>
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                                 <div className="bg-gray-100 p-4 rounded-lg shadow-inner shadow-2xl hover:-translate-y-1 transition duration-200">
                                     <p className="text-sm text-gray-600">Bedrooms</p>
@@ -145,7 +145,7 @@ const HouseListComponentWithId = () => {
                               Watch Video
                           </button>
                          <button
-                           className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                           className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition-colors"
                            onClick={() => AddToCart(house._id)}
                           >
                             <FaShoppingCart /> Add to Cart
