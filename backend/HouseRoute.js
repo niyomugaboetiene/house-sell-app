@@ -287,7 +287,7 @@ route.post('/delete/:_id', async(req, res) => {
         const house = await HouseSchema.findById(_id);
         if (!house) return res.status(404).json({ message: 'House not found' });
 
-        if (house.owner.toString() !== userId || req.session.userInfo.role !== "admin") {
+        if (house.owner.toString() !== userId && req.session.userInfo.role !== "admin") {
             return res.status(403).json({ message: 'You are not the owner' });
         }
 
