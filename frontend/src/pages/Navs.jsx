@@ -36,7 +36,7 @@ const Navs = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-gray-50 px-6 py-4 flex items-center justify-between" onClick={() => setShowUserInfo(!showUserInfo)}>
+      <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-gray-50 px-6 py-4 flex items-center justify-between">
         
         <div>
             <img src={logo} className="h-14 w-18"/>
