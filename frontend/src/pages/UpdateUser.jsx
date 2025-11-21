@@ -5,7 +5,7 @@ const UpdateUserComponent = () => {
     const [full_name, setFull_name] = useState("");
     const [user_name, setUser_name] = useState("");
     const [password, setPassword] = useState("");
-    const [role, setRole] = useState("");
+    const [role, setRole] = useState("seller");
     const [image, setImage] = useState(null); 
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
