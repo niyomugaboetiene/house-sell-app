@@ -66,10 +66,16 @@ const Navs = () => {
   <Link className="hover:underline transition-colors hover:text-blue-500">Get Help</Link>
   
   <div className="flex items-center">
-    <Link className="bg-blue-500 text-white px-4 py-2 rounded-l-full hover:bg-blue-600 transition-colors">
+    <Link 
+        className="bg-blue-500 text-white px-4 py-2 rounded-l-full hover:bg-blue-600 transition-colors"
+        to='/register'
+    >
       SignUp
     </Link>
-    <Link className="border border-blue-500 border-l-0 text-blue-500 px-4 py-2 rounded-r-full hover:bg-blue-50 transition-colors">
+    <Link 
+        className="border border-blue-500 border-l-0 text-blue-500 px-4 py-2 rounded-r-full hover:bg-blue-50 transition-colors"
+        to='/login'
+    >
       Login
     </Link>
   </div>
