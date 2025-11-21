@@ -27,7 +27,7 @@ route.post('/add', uploads.fields([
         if (!req.session.userInfo) {
             return res.status(401).json({error: 'Login first' });
         }
-        if (req.session.userInfo.role !== "seller" || req.session.userInfo.role !== "admin") {
+        if (req.session.userInfo.role !== "seller" && req.session.userInfo.role !== "admin") {
             return res.status(400).json({ error: "you are not seller or admin" });
         }
        const imagePath = req.files?.image  ? req.files.image.map((file) => file.filename) : [];
@@ -209,8 +209,8 @@ route.put('/update/:_id', uploads.fields([
             return res.status(401).json({ error: "Login first" });
         }
 
-        if (req.session.userInfo.role !== "seller" || req.session.userInfo.role !== "admin") {
-            return res.status(403).json({ error: "You are not a seller" });
+        if (req.session.userInfo.role !== "seller" && req.session.userInfo.role !== "admin") {
+            return res.status(403).json({ error: "You are not a seller or admin" });
         }
 
         const userId = req.session.userInfo.user_id;
@@ -287,9 +287,14 @@ route.post('/delete/:_id', async(req, res) => {
         const house = await HouseSchema.findById(_id);
         if (!house) return res.status(404).json({ message: 'House not found' });
 
-        if (house.owner.toString() !== userId) {
+        if (house.owner.toString() !== userId || req.session.userInfo.role !== "admin") {
             return res.status(403).json({ message: 'You are not the owner' });
         }
+
+        if (req.session.userInfo.role !== "seller" && req.session.userInfo.role !== "admin") {
+            return res.status(403).json({ error: "You are not a seller or admin" });
+        }
+
 
         await HouseSchema.findByIdAndDelete(_id);
         return res.status(200).json({ message: 'House deleted successfully' });
