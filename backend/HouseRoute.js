@@ -206,44 +206,31 @@ route.put('/update/:_id', uploads.fields([
             return res.status(403).json({ error: "You are not the owner of this house" });
         }
 
-        const {
-            title, description, price, bathrooms, bedrooms, size,
-            yearBuilt, location, parkingSpace, hasGarden,
-            PropertyType, isAvailable, Activity
-        } = req.body;
+        let updateData = {};
 
-        const locationData = location ? JSON.parse(location) : house.location;
+        for (let key in req.body) {
+            if (req.body[key] !== "" && req.body[key] !== undefined) {
+             updateData[key] = req.body[key];   
+            }
+        }
 
-        const imagePath = req.files?.image
-            ? req.files["image"].map(f => f.filename)
-            : house.image;
+        if (updateData.location) {
+            updateData.location = JSON.parse(updateData.location);
+        }
 
-        const videoPath = req.files?.video
-            ? req.files["video"].map(f => f.filename)
-            : house.video;
+        if (req.files?.image) {
+            updateData.image = req.files.image.map(f => f.filename);
+        }
 
-        const newData = {
-            title: title ?? house.title,
-            description: description ?? house.description,
-            price: price ?? house.price,
-            location: locationData,
-            bathrooms: bathrooms ?? house.bathrooms,
-            bedrooms: bedrooms ?? house.bedrooms,
-            size: size ?? house.size,
-            yearBuilt: yearBuilt ?? house.yearBuilt,
-            parkingSpace: parkingSpace ?? house.parkingSpace,
-            hasGarden: hasGarden ?? house.hasGarden,
-            PropertyType: PropertyType ?? house.PropertyType,
-            isAvailable: isAvailable ?? house.isAvailable,
-            Activity: Activity ?? house.Activity,
-            image: imagePath,
-            video: videoPath
-        };
+        if (req.files?.video) {
+            updateData.video = req.files.video.map(f => f.filename);
+        }
 
-        const updated = await HouseSchema.findByIdAndUpdate(_id, newData, { new: true });
+        // final update
 
-        return res.status(200).json({ message: "House updated successfully", house: updated });
-
+        const updated = await HouseSchema.findByIdAndUpdate(_id, updateData, { new: true })
+        return res.status(201).json({ house: updated })
+      
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
