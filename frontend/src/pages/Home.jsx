@@ -14,6 +14,7 @@ import House5 from "../assets/House_Images/house5.jpg"
 import Lottien1 from "../assets/House_Images/lottie1.png"
 import Lottien2 from "../assets/House_Images/lottie2.png"
 import Lottien3 from "../assets/House_Images/lottie3.png"
+import { Query } from "mongoose";
 
 const Images = [House1, House2, House3, House4, House5];
 
@@ -47,6 +48,25 @@ const HomePage = () => {
     useEffect(() => {
         fetchHouses();
     }, []);
+
+    const handleSearch = async() => {
+        if (!searchQuery.trim()) {
+            alert("please enter search query");
+            return;
+        }
+
+        try {
+            const results = await searchProducts(searchQuery);
+            navigate("/search", {
+                state: {
+                    results,
+                    query: searchQuery
+                }
+            })
+        } catch (error) {
+            console.error("Search failed", error);
+        }
+    }
 
     if (loading) {
         return (
