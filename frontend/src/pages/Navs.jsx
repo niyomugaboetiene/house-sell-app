@@ -123,26 +123,27 @@ const Navs = () => {
 </div>
 
 {showUserInfo && (
-<div className="absolute bg-white top-24 right-4 rounded-2xl shadow-2xl p-4">
-  <div className="border w-20 h-20 rounded-full border-amber-500 flex items-center justify-center overflow-hidden">
+<div className="absolute bg-white top-20 right-4 rounded-xl shadow-xl p-4 w-80">
+  <div className="border w-16 h-16 rounded-full border-amber-500 flex items-center justify-center overflow-hidden mx-auto mb-3">
     {userInfo?.image ? (
         <img 
             src={`http://localhost:5000/${userInfo.image}`} 
-            className="w-20 h-20 object-cover"
+            className="w-16 h-16 object-cover"
         />
     ) : (
-        <FaUser className="text-5xl text-amber-500" />
+        <FaUser className="text-3xl text-amber-500" />
     )}
   </div>
 
-        <h1 className="text-xl text-gray-600">Full name: <span className="font-medium capitalize">{userInfo.full_name}</span></h1>
-        <p className="text-xl text-gray-500">User name: <span className="font-medium capitalize">{userInfo.user_name}</span></p>
-        <p className="text-xl text-gray-500">Your role: <span className="font-medium capitalize">{userInfo.role}</span></p>
-      <div className="flex justify-between mt-4">
-        <button className="bg-amber-500 px-6 py-2 text-white rounded-lg hover:bg-amber-600 transition-colors">Setting</button>
-        <button className="bg-red-500 px-6 py-2 text-white rounded-lg hover:bg-red-600 transition-colors">Logout</button>
-      </div>
-       </div>
+  <h1 className="text-lg text-gray-600 mb-2">Full name: <span className="font-medium capitalize">{userInfo.full_name}</span></h1>
+  <p className="text-lg text-gray-500 mb-2">User name: <span className="font-medium capitalize">{userInfo.user_name}</span></p>
+  <p className="text-lg text-gray-500 mb-4">Your role: <span className="font-medium capitalize">{userInfo.role}</span></p>
+  
+  <div className="flex justify-between mt-4">
+    <button className="bg-amber-500 px-4 py-2 text-white rounded-lg hover:bg-amber-600 transition-colors text-sm" onClick={() => navigate('/updateUser')}>Setting</button>
+    <button className="bg-red-500 px-4 py-2 text-white rounded-lg hover:bg-red-600 transition-colors text-sm">Logout</button>
+  </div>
+</div>
 )}
   </div>
 

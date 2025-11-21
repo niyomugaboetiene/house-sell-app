@@ -75,8 +75,8 @@ const UpdateUserComponent = () => {
     }
 
     return (
-       <div className="max-w-md mx-auto mt-14 p-6 bg-white rounded-lg shadow-md">
-            <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Create Account</h1>
+       <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded-lg shadow-md ">
+            <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Update Your Account</h1>
             
             <div className="space-y-4">
                 <div>
