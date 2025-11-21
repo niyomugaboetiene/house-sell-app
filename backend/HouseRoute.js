@@ -341,7 +341,7 @@ route.get('/search', async (req, res) => {
 
     res.status(200).json({
       message: 'Search result',
-      products,
+      Houses,
       total: Houses.length,
     });
   } catch (error) {
