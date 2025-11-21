@@ -28,7 +28,7 @@ const Navs = () => {
           <Link to="/rent" className="transition-colors hover:text-blue-500">
             Rent
           </Link>
-          <Link to="/about" className="transition-colors hover:text-blue-500">
+          <Link to="/AddHouse" className="transition-colors hover:text-blue-500">
             Sell
           </Link>
           <Link to="/allHouse" className="transition-colors hover:text-blue-500">

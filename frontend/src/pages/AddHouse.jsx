@@ -91,7 +91,7 @@ const HouseComponent = () => {
 
     return (
         <div className="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-            <h1 className="text-2xl font-bold text-gray-800 mb-6">Add New Property</h1>
+            <h1 className="text-2xl font-bold text-gray-800 mb-6">Sell New Property</h1>
             
             <div className="space-y-4">
                 <div>

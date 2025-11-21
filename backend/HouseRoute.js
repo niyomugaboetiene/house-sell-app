@@ -28,7 +28,7 @@ route.post('/add', uploads.fields([
             return res.status(401).json({error: 'Login first' });
         }
         if (req.session.userInfo.role !== "seller") {
-            return res.status(400).json({error: "you are not seller" });
+            return res.status(400).json({ error: "you are not seller" });
         }
        const imagePath = req.files?.image  ? req.files.image.map((file) => file.filename) : [];
        const videoPath = req.files?.video ? req.files?.video.map((file) => file.filename) : [];
