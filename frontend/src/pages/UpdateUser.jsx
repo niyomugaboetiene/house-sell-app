@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
 const UpdateUserComponent = () => {
     const [full_name, setFull_name] = useState("");
@@ -12,12 +11,11 @@ const UpdateUserComponent = () => {
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
     const [userInfo, setUserInfo] = useState(null);
-    const { _id } = useParams();
 
     const FetchUserInfo = async() => {
         try {
             const res = await axios.get(
-                `http://localhost:5000/user/userInfo}`,
+                `http://localhost:5000/user/userInfo`,
                 { withCredentials: true }
             );
 
@@ -136,7 +134,7 @@ const UpdateUserComponent = () => {
                     />
                 </div>
                 <button 
-                    onClick={Register}
+                    onClick={UpdateUser}
                     disabled={loading}
                     className="w-full bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
