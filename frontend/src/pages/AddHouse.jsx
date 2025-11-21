@@ -250,6 +250,7 @@ const HouseComponent = () => {
                             onChange={(e) => setPropertyType(e.target.value)}
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         >
+                            <option disabled>Select propery type</option>
                             <option value="House">House</option>
                             <option value="Office">Office</option>
                             <option value="Industry">Industry</option>
@@ -265,6 +266,7 @@ const HouseComponent = () => {
                             onChange={(e) => setActivity(e.target.value)}
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                         >
+                            <option disabled>Select activity</option>
                             <option value="Sell">Sell</option>
                             <option value="Rent">Rent</option>
                         </select>
