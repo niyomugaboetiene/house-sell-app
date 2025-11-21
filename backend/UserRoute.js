@@ -116,7 +116,7 @@ router.put('/updateProfile', uploads.single("image"), async(req, res) => {
         new: true
        });
 
-       return res.status(201).json({message: 'User updated successfully', user: newUser });
+       return res.status(201).json({ message: 'User updated successfully', user: newUser });
    } catch (err) {
     return res.status(500).json({message: err.message });
    }

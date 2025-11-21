@@ -24,9 +24,19 @@ const Navs = () => {
          GetUserInfo();
   }, []);
 
+  const Logout = async() => {
+    try {
+         await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+         setUserInfo({});
+         navigate('/');
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
   return (
     <>
-      <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-gray-50 px-6 py-4 flex items-center justify-between">
+      <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-gray-50 px-6 py-4 flex items-center justify-between" onClick={() => setShowUserInfo(!showUserInfo)}>
         
         <div>
             <img src={logo} className="h-14 w-18"/>
@@ -141,7 +151,7 @@ const Navs = () => {
   
   <div className="flex justify-between mt-4">
     <button className="bg-amber-500 px-4 py-2 text-white rounded-lg hover:bg-amber-600 transition-colors text-sm" onClick={() => navigate('/updateUser')}>Setting</button>
-    <button className="bg-red-500 px-4 py-2 text-white rounded-lg hover:bg-red-600 transition-colors text-sm">Logout</button>
+    <button className="bg-red-500 px-4 py-2 text-white rounded-lg hover:bg-red-600 transition-colors text-sm" onClick={Logout}>Logout</button>
   </div>
 </div>
 )}
