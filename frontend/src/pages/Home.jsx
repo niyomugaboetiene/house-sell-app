@@ -4,6 +4,7 @@ import axios from "axios";
 import { FaHeart } from "react-icons/fa"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { searchProducts } from "./SearchedApi";
 import House1 from "../assets/House_Images/house-1.jpg"
 import House2 from "../assets/House_Images/house2.jpg"
 import House3 from "../assets/House_Images/house3.jpg"
@@ -20,6 +21,7 @@ const HomePage = () => {
     const [imageIndex, setImageIndex] = useState(0)
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate(0);
     
     const fetchHouses = async () => {
