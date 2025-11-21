@@ -130,11 +130,13 @@ const UpdateUserComponent = () => {
                 </div>
                 
                 <div>
-                    <label htmlFor="">Choose your profile image (Optional)</label>
-                    <input type="file"  onChange={(e) => setImage(e.target.files[0])} />
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Choose your profile image (Optional)</label>
+                    <input type="file"  onChange={(e) => setImage(e.target.files[0])} accept="image/*" 
+                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    />
                 </div>
                 <button 
-                    onClick={Register} 
+                    onClick={Register}
                     disabled={loading}
                     className="w-full bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
