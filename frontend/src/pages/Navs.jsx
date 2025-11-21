@@ -63,7 +63,7 @@ const Navs = () => {
             Sell
           </Link>
           )}
-          {userInfo?.role === 'customer' ? (
+          {userInfo?.role === 'customer'  || userInfo?.role === 'admin' ? (
               <Link to="/allHouse" className="transition-colors hover:text-amber-500">
                 Properties
              </Link>
