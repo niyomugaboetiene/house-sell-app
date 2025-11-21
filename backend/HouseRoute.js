@@ -276,19 +276,26 @@ route.put('/update/:_id', uploads.fields([
 });
 
 route.post('/delete/:_id', async(req, res) => {
-    const { _id } = req.params;
     try {
+        if (!req.session.userInfo) {
+            return res.status(401).json({ message: "Login first" });
+        }
+
+        const { _id } = req.params;
         const userId = req.session.userInfo.user_id;
 
-        const isOwner = await HouseSchema.find({ owner: userId });
-        if (isOwner) {
-            await HouseSchema.findByIdAndDelete(_id);
-            return res.status(200).json({ message: 'Deleted' });
-        }  else {
-            return res.status(301).json({ message: 'Not owner' });
+        const house = await HouseSchema.findById(_id);
+        if (!house) return res.status(404).json({ message: 'House not found' });
+
+        if (house.owner.toString() !== userId) {
+            return res.status(403).json({ message: 'You are not the owner' });
         }
+
+        await HouseSchema.findByIdAndDelete(_id);
+        return res.status(200).json({ message: 'House deleted successfully' });
+
     } catch (error) {
-          return res.status(500).json({ message: error.message });
+        return res.status(500).json({ message: error.message });
     }
-})
+});
 export default route;

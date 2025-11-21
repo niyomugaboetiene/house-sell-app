@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { FaHeart, FaTrash, FaEdit } from "react-icons/fa"
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const MyProperties = () => {
     const [houses, setHouses] = useState([]);
@@ -24,6 +24,18 @@ const MyProperties = () => {
         fetchHouses();
     }, []);
 
+const DeleteHouse = async(_id) => {
+    try {
+        const confirm = window.confirm("Are you sure you want to delete this property");
+        if (!confirm) return;
+        await axios.post(`http://localhost:5000/house/delete/${_id}`, {}, {withCredentials: true});
+        alert("House deleted successfully");
+
+        fetchHouses();
+    } catch (error) {
+     console.error(error.message)
+    }
+}
 
     if (loading) {
         return (
@@ -55,7 +67,7 @@ const MyProperties = () => {
                                  </button>
                                  <button
                                          className="absolute top-23 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
-                                         onClick={() => navigate(`/delete/${house._id}`)}
+                                         onClick={() => DeleteHouse(`${house._id}`)}
                                   >
                                      <FaTrash className="text-green-500 text-xl" />
                                  </button>
