@@ -27,8 +27,8 @@ route.post('/add', uploads.fields([
         if (!req.session.userInfo) {
             return res.status(401).json({error: 'Login first' });
         }
-        if (req.session.userInfo.role !== "seller") {
-            return res.status(400).json({ error: "you are not seller" });
+        if (req.session.userInfo.role !== "seller" || req.session.userInfo.role !== "admin") {
+            return res.status(400).json({ error: "you are not seller or admin" });
         }
        const imagePath = req.files?.image  ? req.files.image.map((file) => file.filename) : [];
        const videoPath = req.files?.video ? req.files?.video.map((file) => file.filename) : [];
@@ -209,7 +209,7 @@ route.put('/update/:_id', uploads.fields([
             return res.status(401).json({ error: "Login first" });
         }
 
-        if (req.session.userInfo.role !== "seller") {
+        if (req.session.userInfo.role !== "seller" || req.session.userInfo.role !== "admin") {
             return res.status(403).json({ error: "You are not a seller" });
         }
 
