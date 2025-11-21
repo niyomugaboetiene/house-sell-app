@@ -22,7 +22,7 @@ const UpdateHouseComponent = () => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
     const [Activity, setActivity] = useState("");
-    const [propertyInfo, setPropertyInfo] = useState([]);
+    const [propertyInfo, setPropertyInfo] = useState({});
 
     const [error, setError] = useState("");
 
