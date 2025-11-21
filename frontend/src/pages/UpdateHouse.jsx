@@ -177,7 +177,8 @@ const UpdateHouseComponent = () => {
         <label className="block text-sm font-medium text-gray-700 mb-1">Country</label>
         <input 
             type="text" 
-            value={location.country} 
+            // value={location.country} 
+            placeholder={propertyInfo?.location?.country}
             onChange={(e) => setLocation({...location, country: e.target.value})} 
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
@@ -186,6 +187,7 @@ const UpdateHouseComponent = () => {
         <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
         <input 
             type="text" 
+            placeholder={propertyInfo?.location?.city}
             value={location.city} 
             onChange={(e) => setLocation({...location, city: e.target.value})} 
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -196,6 +198,7 @@ const UpdateHouseComponent = () => {
         <input 
             type="text" 
             value={location.district} 
+            placeholder={propertyInfo?.location?.district}
             onChange={(e) => setLocation({...location, district: e.target.value})} 
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
@@ -205,6 +208,7 @@ const UpdateHouseComponent = () => {
         <input 
             type="text" 
             value={location.sector} 
+            placeholder={propertyInfo?.location?.sector}
             onChange={(e) => setLocation({...location, sector: e.target.value})} 
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
@@ -214,6 +218,7 @@ const UpdateHouseComponent = () => {
         <input 
             type="text" 
             value={location.street} 
+            placeholder={propertyInfo?.location?.street}
             onChange={(e) => setLocation({...location, street: e.target.value})} 
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
@@ -225,6 +230,7 @@ const UpdateHouseComponent = () => {
                         <label className="block text-sm font-medium text-gray-700 mb-1">Number of Bathrooms</label>
                         <input 
                             type="number" 
+                            placeholder={propertyInfo.bathrooms}
                             value={bathrooms} 
                             onChange={(e) => setBathrooms(e.target.value)} 
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -234,6 +240,7 @@ const UpdateHouseComponent = () => {
                         <label className="block text-sm font-medium text-gray-700 mb-1">Number of Bedrooms</label>
                         <input 
                             type="number" 
+                            placeholder={propertyInfo.bedrooms}
                             value={bedrooms} 
                             onChange={(e) => setBedrooms(e.target.value)} 
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -243,6 +250,7 @@ const UpdateHouseComponent = () => {
                         <label className="block text-sm font-medium text-gray-700 mb-1">Size (sq ft)</label>
                         <input 
                             type="number" 
+                            placeholder={propertyInfo.size}
                             value={size} 
                             onChange={(e) => setSize(e.target.value)} 
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -253,6 +261,7 @@ const UpdateHouseComponent = () => {
                         <input 
                             type="number" 
                             value={yearBuilt} 
+                            placeholder={propertyInfo.yearBuilt}
                             onChange={(e) => setYearBuilt(e.target.value)} 
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
@@ -261,6 +270,7 @@ const UpdateHouseComponent = () => {
                         <label className="block text-sm font-medium text-gray-700 mb-1">Parking Spaces</label>
                         <input 
                             type="number" 
+                            placeholder={propertyInfo.parkingSpace}
                             value={parkingSpace} 
                             onChange={(e) => setParkingSpace(e.target.value)} 
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -272,6 +282,7 @@ const UpdateHouseComponent = () => {
                     <div className="flex items-center space-x-2">
                         <input 
                             type="checkbox" 
+
                             checked={hasGarden} 
                             onChange={(e) => setHasGarden(e.target.checked)} 
                             className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
