@@ -125,7 +125,7 @@ const HomePage = () => {
     </div>
 
          <button 
-             className="w-full bg-amber-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors"
+             className="w-full bg-amber-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors"
              onClick={() => navigate(`/allHouse/${house._id}`)}
           >
                View Details

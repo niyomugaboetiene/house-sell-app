@@ -109,7 +109,7 @@ const DeleteHouse = async(_id) => {
                                     </p>
                                 </div>
 
-                                <button className="w-full bg-amber-500 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-amber-700 transition-colors"
+                                <button className="w-full bg-amber-500 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-amber-600 transition-colors"
                                    onClick={() => navigate(`/allHouse/${house._id}`)}
                                 >
                                     View Details

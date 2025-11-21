@@ -18,7 +18,7 @@ const Footer = () => {
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent" 
                             placeholder="Enter your email"
                         />
-                        <button className="w-full bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-colors font-medium">
+                        <button className="w-full bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-colors font-medium">
                             Subscribe
                         </button>
                     </div>
@@ -110,7 +110,7 @@ const Footer = () => {
                             <FaWhatsapp className="text-xl group-hover:scale-110 transition-transform" />
                         </Link>
                         <Link 
-                            className="p-3 bg-gray-100 rounded-md hover:bg-amber-700 hover:text-white transition-colors group flex justify-center" 
+                            className="p-3 bg-gray-100 rounded-md hover:bg-amber-600 hover:text-white transition-colors group flex justify-center" 
                             to="https://www.linkedin.com" 
                             rel="noopener noreferrer" 
                             target="_blank"
