@@ -49,7 +49,13 @@ const HouseListComponent = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 mt-20">
+            <div className="flex items-center justify-between">
             <p className="ms-10 mt-4 underline text-2xl font-bold text-amber-500">All Houses </p> 
+            {UserInfo.role === "admin" && (
+                <button className="me-8 bg-amber-500 px-6 py-2 text-white rounded-lg hover:bg-amber-600 transition-colors" onClick={() => navigate('/addHouse')}>+ Add Product</button>
+            )}
+          </div>
+
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {houses.map((house, idx) => (
