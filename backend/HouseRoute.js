@@ -274,4 +274,21 @@ route.put('/update/:_id', uploads.fields([
         return res.status(500).json({ error: error.message });
     }
 });
+
+route.post('/delete/:_id', async(req, res) => {
+    const { _id } = req.params;
+    try {
+        const userId = req.session.userInfo.user_id;
+
+        const isOwner = await HouseSchema.find({ owner: userId });
+        if (isOwner) {
+            await HouseSchema.findByIdAndDelete(_id);
+            return res.status(200).json({ message: 'Deleted' });
+        }  else {
+            return res.status(301).json({ message: 'Not owner' });
+        }
+    } catch (error) {
+          return res.status(500).json({ message: error.message });
+    }
+})
 export default route;
