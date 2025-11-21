@@ -11,6 +11,7 @@ import MyCart from "./pages/MyCart"
 import HouseForSell from "./pages/HouseForSell"
 import MyProperties from "./pages/sellerHouse"
 import UpdateHouseComponent from "./pages/UpdateHouse"
+import Footer from "./pages/Footer"
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
               <Route path="/update/:_id" element={<UpdateHouseComponent />}/>
           </Route>
          </Routes>
+        <Footer />
      </BrowserRouter>
   )
 }

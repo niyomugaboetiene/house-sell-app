@@ -146,7 +146,7 @@ const HomePage = () => {
     )}
 </div>
 
- <div className="grid grid-cols-3 w-[65%] p-2 mt-12 items-stretch gap-6 mx-auto">
+ <div className="grid grid-cols-3 w-[65%] p-2 mt-12 mb-9 items-stretch gap-6 mx-auto">
     <div className="bg-white shadow-2xl rounded-2xl flex flex-col">
         <img src={Lottien1} 
             className="w-54 h-40 mx-auto mt-4"
