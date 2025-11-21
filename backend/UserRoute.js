@@ -66,11 +66,14 @@ router.get('/userInfo', (req, res) => {
 })
 
 
-router.put('/updateProfile/:_id', async(req, res) => {
+router.put('/updateProfile', async(req, res) => {
 
     const { full_name, user_name, password, role, image } = req.body;
-    const userId = req.session.userInfo.user_id;
    try {
+    const userId = req.session.userInfo.user_id;
+    if (!userId) {
+        return re.status(401).json({ message: 'Unauthorized'})
+    }
     const imagePath = image  ? req.file.path : req.session?.userInfo?.image;
 
        if (!full_name || !user_name || !password || !role) {
@@ -85,11 +88,11 @@ router.put('/updateProfile/:_id', async(req, res) => {
                 role,
                 image: imagePath
        }
-      await User.findOneAndUpdate(userId, NewData, {
+     const newUser = await User.findByIdAndUpdate(userId, NewData, {
         new: true
        });
 
-       return res.status(201).json({message: 'User updated successfully' });
+       return res.status(201).json({message: 'User updated successfully', user: newUser });
    } catch (err) {
     return res.status(500).json({message: err.message });
    }
