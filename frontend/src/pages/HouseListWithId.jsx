@@ -96,7 +96,10 @@ const HouseListComponentWithId = () => {
                                         <p className="text-gray-700"><span className="font-medium">District:</span> {house.location.district}</p>
                                         <p className="text-gray-700"><span className="font-medium">Sector:</span> {house.location.sector}</p>
                                     </div>
-                                    <p className="text-gray-700 md:col-span-2"><span className="font-medium">Street:</span> {house.location.street}</p>
+                                    <div  className="flex justify-between">
+                                        <p className="text-gray-700 md:col-span-2"><span className="font-medium">Street:</span> {house.location.street}</p>
+                                        <p className="text-gray-700 md:col-span-2"><span className="font-medium">Owner:</span> {house.owner.full_name}</p>
+                                   </div>
                                 </div>
                             </div>
                         )}
