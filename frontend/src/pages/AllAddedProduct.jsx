@@ -22,7 +22,7 @@ const AllAddedToCart = () => {
 
         const LikeProperty = async (_id) => {
             try {
-                const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true });
+                const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true, headers: { 'Content-Type': 'application/json'} });
                 const successMessage = res.data.message;
                 setMessage(successMessage);
             } catch (error) {

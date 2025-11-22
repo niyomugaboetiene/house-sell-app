@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 const HouseListComponent = () => {
     const [houses, setHouses] = useState([]);
     const [UserInfo, setUserInfo] = useState([])
+    const [error, setError] = useState("");
+    const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     
@@ -21,6 +23,18 @@ const HouseListComponent = () => {
             setLoading(false);
         }
     }
+
+        const LikeProperty = async (_id) => {
+            try {
+                const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true, headers: { 'Content-Type': 'application/json'} });
+                const successMessage = res.data.message;
+                setMessage(successMessage);
+            } catch (error) {
+                const errorMessage = error?.response?.data?.error || "Something went wrong";
+                console.error(error.message);
+                setError(errorMessage);
+            }
+        }
 
     useEffect(() => {
         fetchHouses();
@@ -79,7 +93,7 @@ const HouseListComponent = () => {
                                   <button
                                          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
                                   >
-                                     <FaHeart className="text-red-500 text-xl" />
+                                     <FaHeart className="text-red-500 text-xl" onClick={() => LikeProperty(house._id)}/>
                                  </button>
                                  {UserInfo.role === "admin" && (
                                     <>

@@ -15,6 +15,7 @@ const Navs = () => {
         const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
         setUserInfo(res.data.user)
         console.log("My session data:", res.data.user.image)
+        console.log("My session data:", res.data.user.user_id)
     } catch (error) {
       console.error(error.message);
     }
