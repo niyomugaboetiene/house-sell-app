@@ -370,4 +370,29 @@ route.get('/allAddedToCart', async(req ,res) => {
     }
 })
 
+route.post('/like/:_id', async(req, res) => {
+    const { _id } = req.params;
+
+    try {
+       const UserId = req.session?.userInfo?.user_id;
+       if (!UserId) {
+        return res.status(401).json({ error: 'Unauthorized '})
+       }
+
+       const IsHouseExist = await HouseSchema.findById(_id);
+       
+       if (!IsHouseExist) {
+        return res.status(404).json({ error: 'House not exist' });
+       }
+
+       const isLiked = await HouseSchema.findByIdAndUpdate(_id, { likes: UserId }, { new: true });
+       if (isLiked) {
+        return res.status(200).json({ message: 'Added successfully' });
+       }
+       
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
+
 export default route;
