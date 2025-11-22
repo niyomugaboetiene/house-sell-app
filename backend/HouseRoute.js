@@ -385,10 +385,15 @@ route.post('/like/:_id', async(req, res) => {
         return res.status(404).json({ error: 'House not exist' });
        }
 
-       const isLiked = await HouseSchema.findByIdAndUpdate(_id, { likes: UserId }, { new: true });
-       if (isLiked) {
-        return res.status(200).json({ message: 'Added successfully' });
+       const isAlreadyLiked = IsHouseExist.likes.includes(UserId);
+       if (isAlreadyLiked) {
+        return res.status(400).json({ message: 'Aready liked' });
        }
+
+       IsHouseExist.likes.push(UserId);
+       await IsHouseExist.save();
+
+       return res.status(200).json({ message: 'Liked successfully', totalLikes: IsHouseExist.likes.length });
        
     } catch (error) {
         return res.status(500).json({ error: error.message });

@@ -100,10 +100,12 @@ const HouseSchema = new mongoose.Schema({
         required: true
     },
 
-    likes: {
+    likes: [
+        {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
+   ]
 })
 
 export default mongoose.model("House", HouseSchema);
