@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect }  from "react";
 import { FaHeart } from "react-icons/fa"
+import { useNavigate } from "react-router-dom";
 
 const AllAddedToCart = () => {
     const [myCart, setMyCart] = useState([]);
      const [error, setError] = useState("");
+     const navigate = useNavigate();
     
      const GetMyCart = async() => {
             try {
@@ -61,6 +63,9 @@ const AllAddedToCart = () => {
                                         <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
                                            bed: <span className="font-bold">{house.bedrooms} </span>
                                         </h3>
+                                        <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
+                                           Owner: <span className="font-bold">{house.owner.full_name} </span>
+                                        </h3>
                                        </div>
 
                                     <p className="text-2xl font-bold text-amber-500">
@@ -72,8 +77,9 @@ const AllAddedToCart = () => {
                             <div>
                                 <button 
                                    className="bg-amber-500 px-10 py-2 ms-3 text-white rounded-lg hover:bg-amber-600 transition-colors mb-4"
+                                   onClick={() => navigate(`/allHouse/${house._id}`)}
                                    >
-                                    {house.Activity === "Rent" ? "Rent" : "Buy" }
+                                    View Details
                                 </button>
                             </div>
                         </div>

@@ -24,7 +24,7 @@ const LoginComponent = () => {
             navigate('/');
         } catch (error) {
             console.error(error);
-            const errorMessage = err.response?.data?.error || "Failed login";
+            const errorMessage = error.response?.data?.error || "Failed login";
             setError(errorMessage);
         } finally {
             setLoading(false);
