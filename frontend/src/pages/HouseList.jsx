@@ -90,11 +90,21 @@ const HouseListComponent = () => {
                         <div key={idx} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
                             <div className="relative h-80 bg-gray-200">
                               <div className="relative">
-                                  <button
-                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
-                                  >
-                                     <FaHeart className="text-red-500 text-xl" onClick={() => LikeProperty(house._id)}/>
-                                 </button>
+      <div className="absolute top-3 right-3 flex items-center space-x-2">
+    <button
+        className="bg-white p-2 rounded-full shadow-lg hover:bg-red-50 transition-all duration-300 hover:scale-110"
+        onClick={() => LikeProperty(house._id)}
+    >
+        <FaHeart className={`text-lg transition-colors ${
+            house.likes && house.likes.length > 0 
+                ? 'text-red-500 fill-red-500' 
+                : 'text-gray-400'
+        }`} />
+    </button>
+    <span className="text-white text-sm font-bold bg-black bg-opacity-70 px-2 py-1 rounded-full min-w-8 text-center">
+        {house.likes ? house.likes.length : 0}
+    </span>
+</div>
                                  {UserInfo.role === "admin" && (
                                     <>
                                          <button
