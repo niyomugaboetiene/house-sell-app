@@ -1,0 +1,308 @@
+[{
+  "_id": {
+    "$oid": "691c861061dae90a42e909c1"
+  },
+  "title": "fspodvkl",
+  "description": "o;flv",
+  "price": 20,
+  "location": {
+    "country": "Rwanda",
+    "city": "egsd",
+    "district": "KIGALI",
+    "sector": "sffd",
+    "street": "sdvf"
+  },
+  "bathrooms": 4,
+  "size": 6,
+  "image": [
+    "1763477008947-images.jpeg"
+  ],
+  "video": [],
+  "isAvailable": true,
+  "createdAt": {
+    "$date": "2025-11-18T14:42:12.378Z"
+  },
+  "yearBuilt": 7,
+  "parkingSpace": 3,
+  "hasGarden": true,
+  "PropertyType": "Office",
+  "owner": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "__v": 0,
+  "AddedToCart": true,
+  "buyer": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "bedrooms": 4
+},
+{
+  "_id": {
+    "$oid": "691f41f39b266b1289404dbe"
+  },
+  "title": "Buy a house",
+  "description": "get free house for free",
+  "price": 20.5,
+  "location": {
+    "country": "Rwanda",
+    "city": "Bugesera",
+    "district": "Bugesera",
+    "sector": "Kanzenze",
+    "street": "bg-044"
+  },
+  "bathrooms": 2,
+  "bedrooms": 4,
+  "size": 2000,
+  "image": [],
+  "video": [],
+  "isAvailable": true,
+  "createdAt": {
+    "$date": "2025-11-20T16:25:19.003Z"
+  },
+  "yearBuilt": 2020,
+  "parkingSpace": 4,
+  "hasGarden": true,
+  "AddedToCart": true,
+  "buyer": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "PropertyType": "Apartment",
+  "owner": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691f4fc801575d64d103b535"
+  },
+  "title": "sdvklv",
+  "description": "sdpov;lmv",
+  "price": 30,
+  "location": {
+    "country": "afkl.",
+    "city": "esvikl",
+    "district": "svl m,",
+    "sector": "fvlk",
+    "street": "dvkl"
+  },
+  "bathrooms": 2,
+  "bedrooms": 5,
+  "size": 200,
+  "image": [],
+  "video": [],
+  "isAvailable": true,
+  "createdAt": {
+    "$date": "2025-11-20T17:25:27.797Z"
+  },
+  "yearBuilt": 2020,
+  "parkingSpace": 2,
+  "hasGarden": true,
+  "AddedToCart": true,
+  "Activity": "Rent",
+  "buyer": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "isBuyed": false,
+  "PropertyType": "House",
+  "owner": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691fddccbc8b5e0766c22b87"
+  },
+  "title": "wipgskl",
+  "description": "skf,.x",
+  "price": 20.3,
+  "location": {
+    "country": "Rwanda",
+    "city": "Bugesera",
+    "district": "Bugesera",
+    "sector": "Nyamata",
+    "street": "ny 02"
+  },
+  "bathrooms": 2,
+  "bedrooms": 4,
+  "size": 2000,
+  "image": [],
+  "video": [
+    "1763696076436-videoplayback.mp4"
+  ],
+  "isAvailable": true,
+  "createdAt": {
+    "$date": "2025-11-21T03:32:27.283Z"
+  },
+  "yearBuilt": 2025,
+  "parkingSpace": 2,
+  "hasGarden": true,
+  "AddedToCart": true,
+  "Activity": "Rent",
+  "buyer": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "isBuyed": false,
+  "PropertyType": "Office",
+  "owner": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691fdf6229610d0aaf2185d0"
+  },
+  "title": "poew;sdvl",
+  "description": "spo;",
+  "price": 20,
+  "location": {
+    "country": "ewifsdkl.,eflk. ",
+    "city": "efidkl",
+    "district": "efkdnlv",
+    "sector": "sfdinlksdl",
+    "street": "skldvm, "
+  },
+  "bathrooms": 29,
+  "bedrooms": 29,
+  "size": 1999,
+  "image": [
+    "1763696482412-Screenshot_from_2025-11-20_15-45-15-removebg-preview.png"
+  ],
+  "video": [
+    "1763696482391-videoplayback.mp4"
+  ],
+  "isAvailable": true,
+  "createdAt": {
+    "$date": "2025-11-21T03:38:39.507Z"
+  },
+  "yearBuilt": 2020,
+  "parkingSpace": 5,
+  "hasGarden": true,
+  "AddedToCart": true,
+  "Activity": "Rent",
+  "buyer": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "isBuyed": false,
+  "PropertyType": "House",
+  "owner": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6920685b40d1fa43178bdc9c"
+  },
+  "title": "admin product",
+  "description": "this is admin product",
+  "price": 20,
+  "location": {
+    "country": "Rwanda",
+    "city": "Bugesera",
+    "district": "Bugesera",
+    "sector": "Rilima",
+    "street": "bg 201"
+  },
+  "bathrooms": 3,
+  "bedrooms": 2,
+  "size": 3000,
+  "image": [
+    "1763731547065-house-1.jpg"
+  ],
+  "video": [],
+  "isAvailable": true,
+  "createdAt": {
+    "$date": "2025-11-21T12:56:21.322Z"
+  },
+  "yearBuilt": 2000,
+  "parkingSpace": 2,
+  "hasGarden": true,
+  "AddedToCart": false,
+  "Activity": "Rent",
+  "buyer": null,
+  "isBuyed": false,
+  "PropertyType": "Office",
+  "owner": {
+    "$oid": "6920630140d1fa43178bdc63"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6920697b40d1fa43178bdca6"
+  },
+  "title": "sddvs",
+  "description": "dsz",
+  "price": 30,
+  "location": {
+    "country": "sxklv",
+    "city": "sdfvklx",
+    "district": "fvdklx ",
+    "sector": "fvxjk",
+    "street": "bg 201"
+  },
+  "bathrooms": 3,
+  "bedrooms": 3,
+  "size": 19,
+  "image": [],
+  "video": [],
+  "isAvailable": true,
+  "createdAt": {
+    "$date": "2025-11-21T12:56:21.322Z"
+  },
+  "yearBuilt": 2020,
+  "parkingSpace": 2,
+  "hasGarden": true,
+  "AddedToCart": true,
+  "Activity": "Sell",
+  "buyer": {
+    "$oid": "6920630140d1fa43178bdc63"
+  },
+  "isBuyed": false,
+  "PropertyType": "House",
+  "owner": {
+    "$oid": "6920630140d1fa43178bdc63"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69207df17becf717673889c4"
+  },
+  "title": "Home House",
+  "description": "dvj",
+  "price": 20,
+  "location": {
+    "country": "Rwanda",
+    "city": "KIGALI",
+    "district": "Nyarugengw",
+    "sector": "Nyamirambo",
+    "street": "bg 201"
+  },
+  "bathrooms": 4,
+  "bedrooms": 5,
+  "size": 2000,
+  "image": [
+    "1763737073447-lottie3.png"
+  ],
+  "video": [],
+  "isAvailable": true,
+  "createdAt": {
+    "$date": "2025-11-21T14:50:11.967Z"
+  },
+  "yearBuilt": 2010,
+  "parkingSpace": 1,
+  "hasGarden": true,
+  "AddedToCart": false,
+  "Activity": "Sell",
+  "buyer": null,
+  "isBuyed": false,
+  "PropertyType": "Apartment",
+  "owner": {
+    "$oid": "69207d7c7becf717673889b3"
+  },
+  "__v": 0
+}]

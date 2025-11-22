@@ -1,0 +1,69 @@
+[{
+  "_id": {
+    "$oid": "691c434dd2a9391dc7da1d00"
+  },
+  "full_name": "etieneniyomugabo",
+  "user_name": "etiene",
+  "password": "$2b$10$xzYESwVvQNIfASdkq/1oKe9no0z8oL1poE4DkntxtImDzhKCYtLey",
+  "role": "customer",
+  "createdAt": {
+    "$date": "2025-11-18T09:57:32.849Z"
+  },
+  "image": "User_Image/1763725674445-github.jpeg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691c571186d025d15c753640"
+  },
+  "full_name": "customer",
+  "user_name": "customer",
+  "password": "$2b$10$.KgkYR56jh7OufMHLDXilehQu0v3gpRPa7iOKjCrik8fG9Lw3hvFy",
+  "role": "seller",
+  "createdAt": {
+    "$date": "2025-11-18T11:19:52.565Z"
+  },
+  "image": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691d5ead64d3f2c13713b9cc"
+  },
+  "full_name": "etieneniyo",
+  "user_name": "etiene1",
+  "password": "$2b$10$mZcFqy96Heh8cLMcyyGAge1U3AvWHBEhzH9O9V6Plrs.xFIRz2hKq",
+  "role": "seller",
+  "createdAt": {
+    "$date": "2025-11-19T06:06:40.815Z"
+  },
+  "image": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6920630140d1fa43178bdc63"
+  },
+  "full_name": "admin",
+  "user_name": "admin",
+  "password": "$2b$10$Im8RTiUVDrXCnDyRqv0GauDcT9/JFV5cvq8zMGv1Dpy3pD8YCy3HK",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2025-11-21T12:56:21.186Z"
+  },
+  "__v": 0,
+  "image": "User_Image/1763732831011-lottie5.png"
+},
+{
+  "_id": {
+    "$oid": "69207d7c7becf717673889b3"
+  },
+  "full_name": "seller1",
+  "user_name": "seller",
+  "password": "$2b$10$a5Z7Kb1UDCnv9roKzpbALeCjOClleJyNL//V.xJ7rjkJxHRmic25a",
+  "role": "seller",
+  "createdAt": {
+    "$date": "2025-11-21T14:50:11.909Z"
+  },
+  "__v": 0
+}]
