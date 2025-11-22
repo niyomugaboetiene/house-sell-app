@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect }  from "react";
 import { FaHeart } from "react-icons/fa"
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
     const [myCart, setMyCart] = useState([]);
-     const [error, setError] = useState("");
+    const [error, setError] = useState("");
+    const [userInfo, setUserInfo] = useState([]);
     
      const GetMyCart = async() => {
             try {
@@ -34,7 +36,15 @@ const MyCart = () => {
 
     return (
  <div className="min-h-screen bg-gray-50 mt-20">
-            <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">My Cart</p> 
+    <div className="ms-10 mt-4 flex justify-between">
+          <p className="text-2xl font-bold text-amber-500">My Cart</p> 
+           {userInfo.role === "admin" && (
+            <div>
+                <Link to='/allCart' className="me-7 bg-amber-500 hover:bg-amber-600 transition-colors px-6 py-2 text-white rounded-lg">View All Transactions</Link>
+                <Link to='/allCart' className="me-7 border-2 border-amber-500 hover:bg-amber-600 transition-colors px-6 py-2 text-gray-600 hover:text-white rounded-lg">View All Cart</Link>
+            </div>
+           )}
+    </div>
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {myCart.map((house, idx) => (

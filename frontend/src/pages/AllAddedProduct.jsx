@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 const AllAddedToCart = () => {
     const [myCart, setMyCart] = useState([]);
      const [error, setError] = useState("");
-     const [userInfo, setUserInfo] = useState([]);
      const navigate = useNavigate();
     
      const GetMyCart = async() => {
@@ -21,19 +20,8 @@ const AllAddedToCart = () => {
         }
 
 
- const GetUserInfo = async() => {
-    try {
-        const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
-        setUserInfo(res.data.user)
-        console.log("My session data:", res.data.user.image)
-    } catch (error) {
-      console.error(error.message);
-    }
-
-  }
     useEffect(() => {
        GetMyCart();
-       GetUserInfo();
     }, [])
 
     return (
