@@ -87,12 +87,12 @@ const HouseListComponentWithId = () => {
                         {house.location && (
                             <div className="mb-8 p-6 bg-gray-100 shadow-inner shadow-sky-500xl rounded-xl hover:-translate-y-1 transition duration-200">
                                 <h3 className="text-xl font-serif text-amber-500 mb-4 text-center">Location Details</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
+                                <div className="">
+                                    <div className="flex justify-between">
                                         <p className="text-gray-700"><span className="font-medium">Country:</span> {house.location.country}</p>
                                         <p className="text-gray-700"><span className="font-medium">City:</span> {house.location.city}</p>
                                     </div>
-                                    <div>
+                                    <div className="flex justify-between">
                                         <p className="text-gray-700"><span className="font-medium">District:</span> {house.location.district}</p>
                                         <p className="text-gray-700"><span className="font-medium">Sector:</span> {house.location.sector}</p>
                                     </div>
