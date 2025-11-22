@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const AllAddedToCart = () => {
     const [myCart, setMyCart] = useState([]);
      const [error, setError] = useState("");
+     const [message, setMessage] = useState("");
      const navigate = useNavigate();
     
      const GetMyCart = async() => {
@@ -19,6 +20,17 @@ const AllAddedToCart = () => {
             }
         }
 
+        const LikeProperty = async (_id) => {
+            try {
+                const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true });
+                const successMessage = res.data.message;
+                setMessage(successMessage);
+            } catch (error) {
+                const errorMessage = error?.response?.data?.error || "Something went wrong";
+                console.error(error.message);
+                setError(errorMessage);
+            }
+        }
 
     useEffect(() => {
        GetMyCart();
@@ -35,6 +47,7 @@ const AllAddedToCart = () => {
                               <div className="relative">
                                   <button
                                          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                         onClick={() => LikeProperty(house._id)}
                                   >
                                      <FaHeart className="text-red-500 text-xl" />
                                  </button>
