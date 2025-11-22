@@ -365,6 +365,8 @@ route.get('/allAddedToCart', async(req ,res) => {
         if (AllProperties.length > 0) {
             return res.status(200).json({ houses: AllProperties});
         }
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
     }
 })
 
