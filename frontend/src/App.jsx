@@ -13,6 +13,7 @@ import MyProperties from "./pages/sellerHouse"
 import UpdateHouseComponent from "./pages/UpdateHouse"
 import Footer from "./pages/Footer"
 import SearchResults from "./pages/SearchBar"
+import AllAddedToCart from "./pages/AllAddedProduct"
 import UpdateUserComponent from "./pages/UpdateUser"
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
               <Route path="/update/:_id" element={<UpdateHouseComponent />}/>
               <Route path="/search" element={<SearchResults />}/>
               <Route path="/updateUser" element={<UpdateUserComponent />}/>
+              <Route path="/allCart" element={<AllAddedToCart />}/>
           </Route>
          </Routes>
         <Footer />
