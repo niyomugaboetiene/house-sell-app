@@ -27,10 +27,9 @@ const HouseListComponent = () => {
         const LikeProperty = async (_id) => {
             try {
                 const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true, headers: { 'Content-Type': 'application/json'} });
-                const successMessage = res.data.message;
-                setMessage(successMessage);
+                setMessage(res.data.message);
             } catch (error) {
-                const errorMessage = error?.response?.data?.error || "Something went wrong";
+                const errorMessage = error.response?.data?.error || "Something went wrong";
                 console.error(error.message);
                 setError(errorMessage);
             }
@@ -90,21 +89,21 @@ const HouseListComponent = () => {
                         <div key={idx} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
                             <div className="relative h-80 bg-gray-200">
                               <div className="relative">
-      <div className="absolute top-3 right-3 flex items-center space-x-2">
-    <button
-        className="bg-white p-2 rounded-full shadow-lg hover:bg-red-50 transition-all duration-300 hover:scale-110"
-        onClick={() => LikeProperty(house._id)}
-    >
-        <FaHeart className={`text-lg transition-colors ${
-            house.likes && house.likes.length > 0 
-                ? 'text-red-500 fill-red-500' 
-                : 'text-gray-400'
-        }`} />
-    </button>
-    <span className="text-white text-sm font-bold bg-black bg-opacity-70 px-2 py-1 rounded-full min-w-8 text-center">
-        {house.likes ? house.likes.length : 0}
-    </span>
-</div>
+                               <div className="absolute top-3 right-3 flex items-center space-x-2">
+                             <button
+                                 className="bg-white p-2 rounded-full shadow-lg hover:bg-red-50 transition-all duration-300 hover:scale-110"
+                                 onClick={() => LikeProperty(house._id)}
+                                >
+                                <FaHeart className={`text-lg transition-colors ${
+                                     house.likes && house.likes.length > 0 
+                                     ? 'text-red-500 fill-red-500' 
+                                     : 'text-gray-400'
+                                    }`} />
+                                    </button>
+                                     <span className="text-white text-sm font-bold bg-black bg-opacity-70 px-2 py-1 rounded-full min-w-8 text-center">
+                                         {house.likes ? house.likes.length : 0}
+                                      </span>
+                                </div>
                                  {UserInfo.role === "admin" && (
                                     <>
                                          <button
