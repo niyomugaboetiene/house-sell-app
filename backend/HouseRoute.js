@@ -356,4 +356,16 @@ route.get("/search", async (req, res) => {
   }
 });
 
+route.get('/allAddedToCart', async(req ,res) => {
+    try {
+        if (!req.session.userInfo.role !== "admin") {
+            return res.status(401).json({ message: 'You are not admin' });
+        }
+        const AllProperties = await HouseSchema.find({ AddedToCart: true}).populate("owner", "full_name user_name role");
+        if (AllProperties.length > 0) {
+            return res.status(200).json({ houses: AllProperties});
+        }
+    }
+})
+
 export default route;
