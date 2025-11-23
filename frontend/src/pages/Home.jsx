@@ -148,7 +148,7 @@ const HomePage = () => {
 
 <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
     {message && (
-             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-green-500 font-bold text-white px-6 py-2 rounded-lg shadow-lg z-50">
                  {message}
             </div>
           )}

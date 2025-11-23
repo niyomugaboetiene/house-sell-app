@@ -15,6 +15,7 @@ import Footer from "./pages/Footer"
 import SearchResults from "./pages/SearchBar"
 import AllAddedToCart from "./pages/AllAddedToCartProperties"
 import UpdateUserComponent from "./pages/UpdateUser"
+import MyFavorite from "./pages/YourLikedProperties"
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
               <Route path="/search" element={<SearchResults />}/>
               <Route path="/updateUser" element={<UpdateUserComponent />}/>
               <Route path="/allCart" element={<AllAddedToCart />}/>
+              <Route path="/myFavorite" element={<MyFavorite />}/>
           </Route>
          </Routes>
         <Footer />
