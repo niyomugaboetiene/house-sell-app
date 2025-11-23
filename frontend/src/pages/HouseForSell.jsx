@@ -87,6 +87,7 @@ const HouseForSell = () => {
                                   >
                                      <FaHeart className="text-red-500 text-xl" />
                                  </button>
+                                 <p className="absolute bg-gray-900 px-2 top-4 text-white font-bold rounded-full right-2">{house.likes.length}</p>      
                                 </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 
