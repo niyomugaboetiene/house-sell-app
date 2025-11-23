@@ -16,6 +16,9 @@ import SearchResults from "./pages/SearchBar"
 import AllAddedToCart from "./pages/AllAddedToCartProperties"
 import UpdateUserComponent from "./pages/UpdateUser"
 import MyFavorite from "./pages/YourLikedProperties"
+import TermsOfUse from "./pages/TermsOfUse"
+import PrivacyPolicy from "./pages/PrivancyPolicy"
+import GetHelp from "./pages/getHelp"
 
 function App() {
 
@@ -38,6 +41,9 @@ function App() {
               <Route path="/updateUser" element={<UpdateUserComponent />}/>
               <Route path="/allCart" element={<AllAddedToCart />}/>
               <Route path="/myFavorite" element={<MyFavorite />}/>
+              <Route path="/terms" element={<TermsOfUse />}/>
+              <Route path="/privancy" element={<PrivacyPolicy />}/>
+              <Route path="/help" element={<GetHelp />}/>
           </Route>
          </Routes>
         <Footer />

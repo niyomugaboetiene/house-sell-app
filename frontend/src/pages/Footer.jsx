@@ -25,7 +25,7 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div className="space-y-4">
                     <h1 className="text-2xl font-bold text-gray-800">
-                        HouseFinder
+                        HomeFinder
                     </h1>
                     <p className="text-gray-600 text-sm">
                         Find your dream home with HouseFinder - The best platform for property listings in Rwanda.
@@ -148,7 +148,7 @@ const Footer = () => {
                             © 2025 HouseFinder. All rights reserved.
                         </p>
                         <div className="flex space-x-4 text-sm text-gray-500">
-                            <Link to="/privacy" className="hover:text-amber-500 transition-colors">
+                            <Link to="/privancy" className="hover:text-amber-500 transition-colors">
                                 Privacy Policy
                             </Link>
                             <Link to="/terms" className="hover:text-amber-500 transition-colors">
