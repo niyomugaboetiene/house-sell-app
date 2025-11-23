@@ -4,6 +4,10 @@ import cors from "cors"
 import userRoute from "./UserRoute.js"
 import session from "express-session"
 import HouseRoute from "./HouseRoute.js"
+import dotenv from "dotenv"
+import nodemailer from "nodemailer"
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());

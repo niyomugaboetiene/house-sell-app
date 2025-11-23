@@ -19,6 +19,7 @@ import MyFavorite from "./pages/YourLikedProperties"
 import TermsOfUse from "./pages/TermsOfUse"
 import PrivacyPolicy from "./pages/PrivancyPolicy"
 import GetHelp from "./pages/getHelp"
+import Contact from "./pages/Contact"
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
               <Route path="/terms" element={<TermsOfUse />}/>
               <Route path="/privancy" element={<PrivacyPolicy />}/>
               <Route path="/help" element={<GetHelp />}/>
+              <Route path="/contact" element={<Contact />}/>
           </Route>
          </Routes>
         <Footer />
