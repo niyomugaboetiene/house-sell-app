@@ -397,7 +397,7 @@ route.post('/like/:_id', async (req, res) => {
 
         await house.save();
 
-        res.status(200).json({ likes: house.likes.length });
+        res.status(200).json({ likes: house.likes });
 
     } catch (error) {
         return res.status(500).json({ error: error.message });
