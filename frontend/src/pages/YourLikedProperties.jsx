@@ -7,6 +7,7 @@ const MyFavorite = () => {
     const [myFavorite, setMyFavorite] = useState([]);
     const [error, setError] = useState("");
     const [userInfo, setUserInfo] = useState([]);
+    const [currentImageIndex, setCurrentImageIndex] = useState({});
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
     
@@ -14,6 +15,12 @@ const MyFavorite = () => {
         try {
             const res = await axios.get('http://localhost:5000/house/likedProperties', { withCredentials: true });
             setMyFavorite(res.data.properties);
+            const indexes = {};
+            res.data.properties.forEach(house => {
+                indexes[house._id] = 0;
+            });
+            setCurrentImageIndex(indexes);
+
         } catch(error) { 
             console.error(error.message);
             const errorMessage = error.response?.data?.error || "Failed to load cart"; 
@@ -78,7 +85,7 @@ const LikeProperty = async (_id) => {
                    <p className="text-white font-medium">{error}</p>
                 </div>
             )}
-            <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">All Properties added to cart</p> 
+            <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">My favorite properties</p> 
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {myFavorite.map((house, idx) => (
@@ -93,10 +100,10 @@ const LikeProperty = async (_id) => {
                                     </button>
                                     <p className="absolute bg-gray-900 px-2 top-4 text-white font-bold rounded-full right-2">{house.likes.length}</p>      
                                 </div>
-                            
+                             
                                 {house.image && house.image.length > 0 ? (
                                     <img 
-                                        src={`http://localhost:5000/House_Images/${house.image}`} 
+                                        src={`http://localhost:5000/House_Images/${house.image[0]}`} 
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />

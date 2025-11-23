@@ -8,12 +8,19 @@ const AllAddedToCart = () => {
     const [error, setError] = useState("");
     const [userInfo, setUserInfo] = useState([]);
     const [message, setMessage] = useState("");
+    const [currentImageIndex, setCurrentImageIndex] = useState({});
     const navigate = useNavigate();
     
     const GetMyCart = async() => {
         try {
             const res = await axios.get('http://localhost:5000/house/allAddedToCart', { withCredentials: true });
             setMyCart(res.data.houses);
+            const indexes = {};
+            res.data.houses.forEach(house => {
+                indexes[house._id] = 0;
+            });
+            setCurrentImageIndex(indexes);
+
         } catch(error) { 
             console.error(error.message);
             const errorMessage = error.response?.data?.error || "Failed to load cart"; 
@@ -96,7 +103,7 @@ const LikeProperty = async (_id) => {
                             
                                 {house.image && house.image.length > 0 ? (
                                     <img 
-                                        src={`http://localhost:5000/House_Images/${house.image}`} 
+                                        src={`http://localhost:5000/House_Images/${house.image[0]}`} 
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />

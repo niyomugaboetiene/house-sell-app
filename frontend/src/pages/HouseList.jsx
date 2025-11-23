@@ -9,6 +9,7 @@ const HouseListComponent = () => {
     const [houses, setHouses] = useState([]);
     const [UserInfo, setUserInfo] = useState([])
     const [error, setError] = useState("");
+    const [currentImageIndex, setCurrentImageIndex] = useState({});
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -17,6 +18,12 @@ const HouseListComponent = () => {
         try {
             const res = await axios.get('http://localhost:5000/house/houses', { withCredentials: true });
             setHouses(res.data.houses);
+            const indexes = {};
+            res.data.houses.forEach(house => {
+                indexes[house._id] = 0;
+            });
+            setCurrentImageIndex(indexes);
+
         } catch (error) {
             console.error("Error fetching houses:", error);
         } finally {
@@ -144,7 +151,7 @@ const GetUserInfo = async() => {
                                 </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 
-                                        src={`http://localhost:5000/House_Images/${house.image}`} 
+                                        src={`http://localhost:5000/House_Images/${house.image[0]}`} 
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />

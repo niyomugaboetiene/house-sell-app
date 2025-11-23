@@ -7,12 +7,18 @@ const MyCart = () => {
     const [myCart, setMyCart] = useState([]);
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
+    const [currentImageIndex, setCurrentImageIndex] = useState({});
     const [userInfo, setUserInfo] = useState([]);
     
      const GetMyCart = async() => {
             try {
                const res = await axios.get('http://localhost:5000/house/myCart', { withCredentials: true });
                setMyCart(res.data.my_cart);
+               const indexes = {};
+               res.data.my_cart.forEach(house => {
+                   indexes[house._id] = 0;
+               });
+               setCurrentImageIndex(indexes);
             } catch(error) {
                 console.error(error.message);
                 const errorMessage = err.response?.data?.error || "Failed login";
@@ -101,7 +107,7 @@ const GetUserInfo = async() => {
                                 </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 
-                                        src={`http://localhost:5000/House_Images/${house.image}`} 
+                                        src={`http://localhost:5000/House_Images/${house.image[0]}`} 
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />

@@ -10,12 +10,19 @@ const HouseForRent = () => {
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
     const [userInfo, setUserInfo] = useState([]);
+    const [currentImageIndex, setCurrentImageIndex] = useState({});
     const navigate = useNavigate();
     
     const fetchHouses = async () => {
         try {
             const res = await axios.get('http://localhost:5000/house/rent', { withCredentials: true });
             setHouses(res.data.houses);
+            const indexes = {};
+            res.data.houses.forEach(house => {
+                indexes[house._id] = 0;
+            });
+            setCurrentImageIndex(indexes);
+
         } catch (error) {
             console.error("Error fetching houses:", error);
         } finally {
@@ -107,7 +114,7 @@ const LikeProperty = async (_id) => {
                                 </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 
-                                        src={`http://localhost:5000/House_Images/${house.image}`} 
+                                        src={`http://localhost:5000/House_Images/${house.image[0]}`} 
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />
