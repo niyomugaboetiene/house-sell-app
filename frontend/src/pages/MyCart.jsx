@@ -20,22 +20,31 @@ const MyCart = () => {
             }
         }
 
-    const LikeProperty = async (_id) => {
-            try {
-                const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true, headers: { 'Content-Type': 'application/json'} });
-                setMessage(res.data.message);
-                setTimeout(() => {
-                   setMessage("");
-                }, 3000);
-            } catch (error) {
-                const errorMessage = error.response?.data?.error || "Something went wrong";
-                console.error(error.message);
-                setError(errorMessage);
-                setTimeout(() => {
-                   setError("");
-                }, 3000);
-            }
-        }
+  const LikeProperty = async (_id) => {
+    try {
+        const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, { withCredentials: true });
+        const updateLike = res.data.likes;  
+        setMyCart((prev) =>
+            prev.map((h) =>
+                h._id === _id ? { ...h, likes: updateLike } : h
+            )
+        );
+        console.log("console message", res.data.message);
+        setMessage(res.data.message || ""); 
+
+        setTimeout(() => {
+            setMessage("");
+        }, 2000);
+
+    } catch (error) {
+        const errorMessage = error?.response?.data?.error || "Something went wrong";
+        console.error(error);
+        setError(errorMessage);
+        setTimeout(() => {
+            setError("");
+        }, 2000);
+    }
+}
 
 const GetUserInfo = async() => {
     try {

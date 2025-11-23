@@ -13,7 +13,7 @@ import MyProperties from "./pages/sellerHouse"
 import UpdateHouseComponent from "./pages/UpdateHouse"
 import Footer from "./pages/Footer"
 import SearchResults from "./pages/SearchBar"
-import AllAddedToCart from "./pages/AllAddedProduct"
+import AllAddedToCart from "./pages/AllAddedToCartProperties"
 import UpdateUserComponent from "./pages/UpdateUser"
 
 function App() {
