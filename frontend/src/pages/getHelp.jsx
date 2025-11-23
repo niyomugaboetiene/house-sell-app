@@ -125,7 +125,7 @@ const GetHelp = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
-      <section className="bg-gradient-to-r from-amber-500 to-amber-600 text-white py-16">
+      <section className="bg-linear-to-r from-amber-500 to-amber-600 text-white py-16">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-black mb-6">
             Get Help with HomeFinder
@@ -136,13 +136,13 @@ const GetHelp = () => {
           
           <div className="max-w-2xl mx-auto relative">
             <div className="relative">
-              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl" />
+              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-xl" />
               <input
                 type="text"
                 placeholder="Search for help with properties, accounts, favorites..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-6 py-4 rounded-2xl border-0 text-gray-900 text-lg focus:ring-2 focus:ring-amber-300 focus:outline-none"
+                className="w-full pl-12 pr-6 py-4 rounded-2xl border-2 text-white placeholder:text-white text-lg focus:ring-2 focus:ring-amber-300 focus:outline-none"
               />
             </div>
           </div>
@@ -152,13 +152,13 @@ const GetHelp = () => {
       <section className="py-12 bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-black text-gray-900 mb-8 text-center">Quick Support Options</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="text-center p-6 rounded-2xl bg-amber-50 border border-amber-200 hover:shadow-md transition-all duration-300">
               <FaPhone className="text-3xl text-amber-600 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-2">Call Us</h3>
               <p className="text-gray-600 mb-4">Get immediate help with property issues</p>
-              <a href="tel:+250790000000" className="text-amber-600 font-semibold hover:text-amber-700">
-                +250 790 000 000
+              <a href="tel:+" className="text-amber-600 font-semibold hover:text-amber-700">
+                later
               </a>
             </div>
 
@@ -167,17 +167,8 @@ const GetHelp = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-2">Email Support</h3>
               <p className="text-gray-600 mb-4">Detailed help within 24 hours</p>
               <a href="mailto:support@homefinder.com" className="text-amber-600 font-semibold hover:text-amber-700">
-                support@homefinder.com
+                later
               </a>
-            </div>
-
-            <div className="text-center p-6 rounded-2xl bg-amber-50 border border-amber-200 hover:shadow-md transition-all duration-300">
-              <FaComments className="text-3xl text-amber-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Live Chat</h3>
-              <p className="text-gray-600 mb-4">Real-time help with our team</p>
-              <button className="text-amber-600 font-semibold hover:text-amber-700">
-                Start Chat Now
-              </button>
             </div>
           </div>
         </div>
@@ -280,9 +271,6 @@ const GetHelp = () => {
             <button className="bg-white text-amber-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-amber-50 transition-colors">
               Contact Support Team
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:bg-opacity-10 transition-colors">
-              Visit Our Office
-            </button>
           </div>
 
           <div className="mt-12 pt-8 border-t border-amber-400 border-opacity-30">
@@ -290,13 +278,13 @@ const GetHelp = () => {
               <div>
                 <h4 className="text-lg font-bold mb-3 text-white">Contact Information</h4>
                 <p className="text-amber-100 text-sm mb-2">
-                  <strong>Phone:</strong> +250 790 000 000
+                  <strong>Phone:</strong> later
                 </p>
                 <p className="text-amber-100 text-sm mb-2">
-                  <strong>Email:</strong> support@homefinder.com
+                  <strong>Email:</strong> later
                 </p>
                 <p className="text-amber-100 text-sm">
-                  <strong>Hours:</strong> Mon-Sun, 7AM-9PM
+                  <strong>Hours:</strong> later
                 </p>
               </div>
               <div>
