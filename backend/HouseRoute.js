@@ -25,10 +25,10 @@ route.post('/add', uploads.fields([
 
     try {
         if (!req.session.userInfo) {
-            return res.status(401).json({error: 'Login first' });
+            return res.status(401).json({ error: 'Login first' });
         }
         if (req.session.userInfo.role !== "seller" && req.session.userInfo.role !== "admin") {
-            return res.status(400).json({ error: "you are not seller or admin" });
+            return res.status(403).json({ error: "you are not seller or admin" });
         }
        const imagePath = req.files?.image  ? req.files.image.map((file) => file.filename) : [];
        const videoPath = req.files?.video ? req.files?.video.map((file) => file.filename) : [];

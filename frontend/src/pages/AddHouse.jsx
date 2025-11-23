@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const HouseComponent = () => {
     const [title, setTitle] = useState("");
@@ -22,6 +23,7 @@ const HouseComponent = () => {
     const [success, setSuccess] = useState("");
     const [Activity, setActivity] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const AddHouse = async () => {
         if (!title || !description || !price || !bathrooms  || !bedrooms || !size || !yearBuilt || !Activity) {
@@ -62,9 +64,7 @@ const HouseComponent = () => {
                 }
             });
 
-            setError("");
-            setSuccess("House added successfully");
-            
+            setError("");            
             setTitle("");
             setDescription("");
             setPrice("");
@@ -79,11 +79,29 @@ const HouseComponent = () => {
             setIsAvailable(true);
             setImage(null);
             setVideo("");
+            setSuccess("House added successfully");
+
+            setTimeout(() => {
+                navigate('/');
+                setSuccess("");
+            }, 2000);
             
         } catch (err) {
             console.error("Error", err.response?.data || err.message);
-            const errorMessage = err.response?.error;
-            setError(errorMessage);
+            const errorMessage = err.response?.data?.error || "Some thing went wrong";
+            if (err.response?.status === 401) {
+                 setError(errorMessage);
+                 setTimeout(() => {
+                      navigate('/login');
+                      setError("");
+                 }, 3000);
+            } else {
+                setError(errorMessage);
+                setTimeout(() => {
+                    setError("");
+                }, 3000);
+            }
+
         } finally {
             setLoading(false);
         }
@@ -91,7 +109,19 @@ const HouseComponent = () => {
 
     return (
         <div className="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-            <h1 className="text-2xl font-bold text-gray-800 mb-6">Sell New Property</h1>
+           {error && (
+                <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-red-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                   <p className="text-white font-medium">{error}</p>
+                </div>
+           )}
+           
+           {success && (
+                <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-green-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                   <p className="text-white font-medium">{success}</p>
+                </div>
+             )}
+
+            <h1 className="text-2xl font-bold text-amber-500 mb-6">Sell New Property</h1>
             
             <div className="space-y-4">
                 <div>
@@ -302,17 +332,6 @@ const HouseComponent = () => {
                 >
                     {loading ? "Adding..." : "Add House"}
                 </button>
-
-                {success && (
-                    <div className="p-3 bg-green-50 border border-green-200 text-green-700 rounded-md">
-                        {success}
-                    </div>
-                )}
-                {error && (
-                    <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-md">
-                        {error}
-                    </div>
-                )}
             </div>
         </div>
     )
