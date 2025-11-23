@@ -39,14 +39,14 @@ const Contact = () => {
       className="min-h-screen w-full px-4 py-12 flex items-center justify-center"
     >
       <motion.div
-        className="max-w-6xl w-full bg-green-800/70 rounded-xl shadow-lg p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8"
+        className="max-w-6xl w-full bg-amber-800/70 rounded-xl shadow-lg p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       > 
         <div className="space-y-6">
           <motion.h2 
-            className="text-4xl font-bold text-green-500 mb-8"
+            className="text-4xl font-bold text-amber-500 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -121,7 +121,7 @@ const Contact = () => {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 bg-green-600 hover:bg-green-700 rounded-lg text-white font-semibold shadow-lg transition duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 amber-amber-600 hover:bg-amber-700 rounded-lg text-white font-semibold shadow-lg transition duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
@@ -159,7 +159,7 @@ const Contact = () => {
             
             {submitStatus === "success" && (
               <motion.div
-                className="bg-green-900/50 text-green-100 rounded-lg p-3 text-center mt-4 font-medium"
+                className="bg-amber-900/50 text-amber-100 rounded-lg p-3 text-center mt-4 font-medium"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
@@ -183,7 +183,7 @@ const Contact = () => {
 
         <div className="flex flex-col justify-center">
           <motion.h2 
-            className="text-4xl font-bold text-green-500 mb-8"
+            className="text-4xl font-bold text-amber-500 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -198,8 +198,8 @@ const Contact = () => {
             transition={{ delay: 0.5 }}
           >
             <div className="flex items-start space-x-4">
-              <div className="p-3 bg-green-600/20 rounded-full">
-                <FaMapMarkerAlt className="text-green-400 text-xl" />
+              <div className="p-3 bg-amber-600/20 rounded-full">
+                <FaMapMarkerAlt className="text-amber-400 text-xl" />
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-white mb-1">Location</h3>
@@ -208,8 +208,8 @@ const Contact = () => {
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="p-3 bg-green-600/20 rounded-full">
-                <FaEnvelope className="text-green-400 text-xl" />
+              <div className="p-3 bg-amber-600/20 rounded-full">
+                <FaEnvelope className="text-amber-400 text-xl" />
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-white mb-1">Email</h3>
@@ -218,8 +218,8 @@ const Contact = () => {
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="p-3 bg-green-600/20 rounded-full">
-                <FaPhoneAlt className="text-green-400 text-xl" />
+              <div className="p-3 bg-amber-600/20 rounded-full">
+                <FaPhoneAlt className="text-amber-400 text-xl" />
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-white mb-1">Phone</h3>
@@ -240,7 +240,7 @@ const Contact = () => {
                 href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-3 bg-gray-700 hover:bg-blue-600 rounded-full transition duration-300"
+                className="p-3 bg-blue-500 hover:bg-blue-600 rounded-full transition duration-300"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin className="text-white text-xl" />
@@ -258,7 +258,7 @@ const Contact = () => {
                 href="https://wa.me/+250728184299" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-3 bg-gray-700 hover:bg-green-600 rounded-full transition duration-300"
+                className="p-3 bg-green-500 hover:bg-green-600 rounded-full transition duration-300"
                 aria-label="GitHub"
               >
                 <FaWhatsapp className="text-white text-xl" />

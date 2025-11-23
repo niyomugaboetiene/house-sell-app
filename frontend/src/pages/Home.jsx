@@ -22,6 +22,7 @@ const HomePage = () => {
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [currentImageIndex, setCurrentImageIndex] = useState([]);
     const [message, setMessage] = useState("");
     const [userInfo, setUserInfo] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
