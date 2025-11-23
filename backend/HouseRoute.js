@@ -394,13 +394,19 @@ route.post('/like/:_id', async (req, res) => {
 
         if (isAlreadyLiked) {
             house.likes = house.likes.filter(id => id.toString() !== UserId.toString());
+            await house.save();
+            res.status(200).json({ 
+                message: 'Unliked successfully',
+                likes: house.likes
+            })
         } else {
-            house.likes.push(UserId);            
+            house.likes.push(UserId);     
+            await house.save();
+            res.status(200).json({ 
+                message: 'Liked successfully',
+                likes: house.likes
+            })       
         }
-
-        await house.save();
-
-        res.status(200).json({ likes: house.likes });
 
     } catch (error) {
         console.error("Like error:", error);
