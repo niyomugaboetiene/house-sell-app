@@ -52,7 +52,7 @@ const LoginComponent = () => {
             <h1 className="text-2xl font-bold text-amber-500 mb-6 text-center">Login</h1>
             <div className="space-y-4">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Username</label>
                     <input 
                         type="text" 
                         onChange={(e) => setUsername(e.target.value)} 
@@ -62,7 +62,7 @@ const LoginComponent = () => {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Password</label>
                     <input 
                         type="password" 
                         onChange={(e) => setPassword(e.target.value)} 
@@ -83,7 +83,7 @@ const LoginComponent = () => {
                 <p>Don't you have account ?</p>
                 <div className="flex justify-between">
                    <button onClick={() => navigate('/register')} className="hover:underline text-sky-500 ">Register</button>
-                   <button onClick={() => navigate('/')} className="rounded-lg border-2 hover:text-white w-1/2 border-amber-500 ms-13 px-3 py-1 hover:bg-amber-500 transition-colors">Go to Home</button>
+                   <button onClick={() => navigate('/')} className="text-amber-500 rounded-lg border-2 hover:text-white w-1/2 border-amber-500 ms-13 px-3 py-1 hover:bg-amber-500 transition-colors">Go to Home</button>
                 </div>
             </div>
         </div>

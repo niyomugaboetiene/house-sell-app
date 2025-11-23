@@ -3,13 +3,29 @@ import { FaShoppingCart, FaBars, FaTimes, FaUser } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import logo from "../assets/House_Images/logo.png"
 import axios from "axios";
+import { useRef } from "react";
 
 const Navs = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [showUserInfo, setShowUserInfo] = useState(false);
   const navigate = useNavigate();
+  const menuRef = useRef(null);
 
+  useEffect(() => {
+    const HandleClickOutSide = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowUserInfo(false);
+      }
+    };
+
+    document.addEventListener('mousedown', HandleClickOutSide);
+
+    return () => {
+       document.addEventListener('mousedown', HandleClickOutSide);
+    }
+  }, []);
+  
   const GetUserInfo = async() => {
     try {
         const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
@@ -27,7 +43,7 @@ const Navs = () => {
 
   const Logout = async() => {
     try {
-         await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+         await axios.post('http://localhost:5000/user/logout',{} , { withCredentials: true });
          setUserInfo({});
          navigate('/');
     } catch (error) {
@@ -122,7 +138,7 @@ const Navs = () => {
 
   {userInfo && Object.keys(userInfo).length > 0 && (
   <div className="relative w-18">
-     <button className="p-2 rounded-full" onClick={() => setShowUserInfo(!showUserInfo)}>
+     <button className="p-2 rounded-full" onClick={() => setShowUserInfo(true)}>
       {userInfo.image ? (
          <img src={`http://localhost:5000/${userInfo.image}`} alt="" className="w-16 object-cover rounded-full"/>
       ) : (
@@ -134,7 +150,7 @@ const Navs = () => {
 </div>
 
 {showUserInfo && (
-<div className="absolute bg-white top-20 right-4 rounded-xl shadow-xl p-4 w-80">
+<div className="absolute bg-white top-20 right-4 rounded-xl shadow-xl p-4 w-80" ref={menuRef}>
   <div className="border w-16 h-16 rounded-full border-amber-500 flex items-center justify-center overflow-hidden mx-auto mb-3">
     {userInfo?.image ? (
         <img 

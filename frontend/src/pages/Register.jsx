@@ -66,7 +66,7 @@ const RegisterComponent = () => {
             
             <div className="space-y-4">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Full Name</label>
                     <input 
                         type="text" 
                         onChange={(e) => setFull_name(e.target.value)} 
@@ -76,7 +76,7 @@ const RegisterComponent = () => {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Username</label>
                     <input 
                         type="text" 
                         onChange={(e) => setUsername(e.target.value)} 
@@ -86,7 +86,7 @@ const RegisterComponent = () => {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Role</label>
                     <select 
                         onChange={(e) => setRole(e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
@@ -99,7 +99,7 @@ const RegisterComponent = () => {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Password</label>
                     <input 
                         type="password" 
                         onChange={(e) => setPassword(e.target.value)} 
@@ -116,7 +116,7 @@ const RegisterComponent = () => {
                 >
                     {loading ? "Creating Account..." : "Register"}
                 </button>
-                <button onClick={() => navigate('/login')} className="rounded-lg border-2 hover:text-white w-1/2 border-amber-500 ms-13 px-3 py-1 hover:bg-amber-500 transition-colors">Login</button>
+                <button onClick={() => navigate('/login')} className="text-amber-500 rounded-lg border-2 hover:text-white w-1/2 border-amber-500 ms-13 px-3 py-1 hover:bg-amber-500 transition-colors">Login</button>
             </div>
              </div>
         </div>
