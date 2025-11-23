@@ -13,7 +13,7 @@ const MyFavorite = () => {
     const GetMyFavorite = async() => {
         try {
             const res = await axios.get('http://localhost:5000/house/likedProperties', { withCredentials: true });
-            setMyFavorite(res.data.houses);
+            setMyFavorite(res.data.properties);
         } catch(error) { 
             console.error(error.message);
             const errorMessage = error.response?.data?.error || "Failed to load cart"; 
@@ -123,7 +123,7 @@ const LikeProperty = async (_id) => {
                                             Owner: <span className="font-bold">{house.owner.user_name} </span>
                                         </h3>
                                         <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
-                                            Buyer: <span className="font-bold">{house.buyer.user_name} </span>
+                                            Buyer: <span className="font-bold">{house.buyer?.user_name ? house.buyer.user_name : 'None' } </span>
                                         </h3>
                                     </div>
 

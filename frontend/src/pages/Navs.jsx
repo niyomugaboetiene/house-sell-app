@@ -74,7 +74,7 @@ const Navs = () => {
              </Link>
           )}
 
-          <Link to="/liked" className="transition-colors hover:text-amber-500">
+          <Link to="/myFavorite" className="transition-colors hover:text-amber-500">
             Favorite
           </Link>
         </div>
