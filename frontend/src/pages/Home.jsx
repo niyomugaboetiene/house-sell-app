@@ -23,6 +23,7 @@ const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
+    const [userInfo, setUserInfo] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate(0);
     
@@ -93,6 +94,21 @@ const HomePage = () => {
     }
 }
 
+  const GetUserInfo = async() => {
+    try {
+        const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+        setUserInfo(res.data.user)
+        console.log("My session data:", res.data.user.image)
+        console.log("My session data:", res.data.user.user_id)
+    } catch (error) {
+      console.error(error.message);
+    }
+
+  }
+  useEffect(() => {
+         GetUserInfo();
+  }, []);
+
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -150,7 +166,7 @@ const HomePage = () => {
                             className="absolute top-2 right-10 bg-white p-1.5 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition z-10"
                             onClick={() => LikeProperty(house._id)}
                         >
-                            <FaHeart className="text-red-500 text-lg" />
+                            <FaHeart className={`${house.likes.includes(userInfo.user_id) ? "text-red-500" : "text-gray-500"} text-lg`} />
                         </button>
                         <p className="absolute bg-gray-900 px-2 top-3 text-white font-bold rounded-full right-2">{house.likes.length}</p>
                     </div>
