@@ -21,7 +21,7 @@ const AllAddedToCart = () => {
         }
     }
 
-    const LikeProperty = async (_id) => {
+const LikeProperty = async (_id) => {
     try {
         const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, { withCredentials: true });
         const updateLike = res.data.likes;  
@@ -77,7 +77,7 @@ const AllAddedToCart = () => {
                <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
                    <p className="text-white font-medium">{error}</p>
                 </div>
-                )}
+            )}
             <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">All Properties added to cart</p> 
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">

@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 const HouseForRent = () => {
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    const [message, setMessage] = useState("");
+    const [userInfo, setUserInfo] = useState([]);
     const navigate = useNavigate();
     
     const fetchHouses = async () => {
@@ -24,6 +27,47 @@ const HouseForRent = () => {
         fetchHouses();
     }, []);
 
+const LikeProperty = async (_id) => {
+    try {
+        const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, { withCredentials: true });
+        const updateLike = res.data.likes;  
+        setHouses((prev) =>
+            prev.map((h) =>
+                h._id === _id ? { ...h, likes: updateLike } : h
+            )
+        );
+        console.log("console message", res.data.message);
+        setMessage(res.data.message || ""); 
+
+        setTimeout(() => {
+            setMessage("");
+        }, 2000);
+
+    } catch (error) {
+        const errorMessage = error?.response?.data?.error || "Something went wrong";
+        console.error(error);
+        setError(errorMessage);
+        setTimeout(() => {
+            setError("");
+        }, 2000);
+    }
+}
+
+    const GetUserInfo = async() => {
+        try {
+            const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+            setUserInfo(res.data.user)
+            console.log("My session data:", res.data.user.image)
+            console.log("My session data:", res.data.user.user_id)
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    useEffect(() => {
+        GetUserInfo();
+    }, []);
+
 
     if (loading) {
         return (
@@ -35,9 +79,17 @@ const HouseForRent = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 mt-20">
-               <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">Quick Rent </p> 
-
-
+           {message && (
+               <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                   <p className="text-white font-medium">{message}</p>
+                </div>
+                )}
+                {error && (
+               <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                   <p className="text-white font-medium">{error}</p>
+                </div>
+            )}
+            <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">Quick Rent </p> 
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {houses.map((house, idx) => (
@@ -46,8 +98,9 @@ const HouseForRent = () => {
                               <div className="relative">
                                   <button
                                          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                         onClick={() => LikeProperty(house._id)}
                                   >
-                                     <FaHeart className="text-red-500 text-xl" />
+                                     <FaHeart className={house.likes?.includes(userInfo.user_id) ? "text-red-500" : "text-gray-500"} />
                                  </button>
                                 </div>
                                 {house.image && house.image.length > 0 ? (
