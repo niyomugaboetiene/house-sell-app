@@ -24,23 +24,31 @@ const HouseListComponent = () => {
         }
     }
 
-        const LikeProperty = async (_id) => {
-            try {
-                const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true, headers: { 'Content-Type': 'application/json'} });
-                setMessage(res.data.message);
-                setTimeout(() => {
-                   setMessage("");
-                }, 3000);
-            } catch (error) {
-                const errorMessage = error.response?.data?.error || "Something went wrong";
-                console.error(error.message);
-                setError(errorMessage);
-                setTimeout(() => {
-                   setError("");
-                }, 3000);
-            }
-        }
+  const LikeProperty = async (_id) => {
+    try {
+        const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, { withCredentials: true });
+        const updateLike = res.data.likes;  
+        setHouses((prev) =>
+            prev.map((h) =>
+                h._id === _id ? { ...h, likes: updateLike } : h
+            )
+        );
+        console.log("console message", res.data.message);
+        setMessage(res.data.message || ""); 
 
+        setTimeout(() => {
+            setMessage("");
+        }, 2000);
+
+    } catch (error) {
+        const errorMessage = error?.response?.data?.error || "Something went wrong";
+        console.error(error);
+        setError(errorMessage);
+        setTimeout(() => {
+            setError("");
+        }, 2000);
+    }
+}
     useEffect(() => {
         fetchHouses();
     }, []);
@@ -108,11 +116,7 @@ const GetUserInfo = async() => {
                                  className="bg-white p-2 rounded-full shadow-lg hover:bg-red-50 transition-all duration-300 hover:scale-110"
                                  onClick={() => LikeProperty(house._id)}
                                 >
-                                <FaHeart className={`text-lg transition-colors ${
-                                     house.likes && house.likes.length > 0 
-                                     ? 'text-red-500 fill-red-500' 
-                                     : 'text-gray-400'
-                                    }`} />
+                                <FaHeart className={`text-lg transition-colors ${house.likes.includes(UserInfo.user_id) ? 'text-red-500 fill-red-500' : 'text-gray-400'}`} />
                                     </button>
                                      <span className="text-white text-sm font-bold bg-black bg-opacity-70 px-2 py-1 rounded-full min-w-8 text-center">
                                          {house.likes ? house.likes.length : 0}
