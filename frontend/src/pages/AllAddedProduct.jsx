@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const AllAddedToCart = () => {
     const [myCart, setMyCart] = useState([]);
      const [error, setError] = useState("");
+     const [userInfo, setUserInfo] = useState([]);
      const [message, setMessage] = useState("");
      const navigate = useNavigate();
     
@@ -37,6 +38,22 @@ const AllAddedToCart = () => {
             }
         }
 
+
+    const GetUserInfo = async() => {
+    try {
+        const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+        setUserInfo(res.data.user)
+        const userId = res.data.user.user_id;
+        console.log("My session data:", res.data.user.image)
+        console.log("My session data:", res.data.user.user_id)
+    } catch (error) {
+      console.error(error.message);
+    }
+
+  }
+  useEffect(() => {
+         GetUserInfo();
+  }, []);
     useEffect(() => {
        GetMyCart();
     }, [])
@@ -54,7 +71,7 @@ const AllAddedToCart = () => {
                                          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
                                          onClick={() => LikeProperty(house._id)}
                                   >
-                                     <FaHeart className={`${house.likes?.includes()}`} />
+                                     <FaHeart className={`${house.likes?.includes(userId)}`} />
                                  </button>
                                 </div>
                             
