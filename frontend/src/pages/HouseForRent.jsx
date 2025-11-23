@@ -97,11 +97,12 @@ const LikeProperty = async (_id) => {
                             <div className="relative h-80 bg-gray-200">
                               <div className="relative">
                                   <button
-                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                         className="absolute top-3 right-9 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
                                          onClick={() => LikeProperty(house._id)}
                                   >
                                      <FaHeart className={house.likes?.includes(userInfo.user_id) ? "text-red-500" : "text-gray-500"} />
                                  </button>
+                                <p className="absolute bg-gray-900 px-2 top-4 text-white font-bold rounded-full right-2">{house.likes.length}</p>      
                                 </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 
