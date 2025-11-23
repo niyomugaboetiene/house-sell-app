@@ -21,6 +21,8 @@ const HomePage = () => {
     const [imageIndex, setImageIndex] = useState(0)
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    const [message, setMessage] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate(0);
     
@@ -76,14 +78,18 @@ const HomePage = () => {
                 h._id === _id ? { ...h, likes: updateLike } : h
             )
         );
-        console.log("console message", res.data.message);
         setMessage(res.data.message || "");
-        // alert("liked successfully")
+        setTimeout(() => {
+            setMessage("");
+        }, 2000);
 
     } catch (error) {
         const errorMessage = error?.response?.data?.error || "Something went wrong";
         console.error(error);
         setError(errorMessage);
+        setTimeout(() => {
+            setError("");
+        }, 2000);
     }
 }
 
@@ -125,6 +131,16 @@ const HomePage = () => {
             <p className="ms-10 text-2xl font-bold text-amber-500 text-center mt-8">New Houses</p> 
 
 <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    {message && (
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
+                 {message}
+            </div>
+          )}
+          {error && (
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
+                 {error}
+            </div>
+          )}
     <div className="max-w-6xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-auto">
         {houses.map((house, idx) => (
             <div key={idx} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">

@@ -7,6 +7,8 @@ import { useNavigate, useParams } from "react-router-dom";
 const MyProperties = () => {
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [message, setMessage] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
     
     const fetchHouses = async () => {
@@ -36,6 +38,23 @@ const DeleteHouse = async(_id) => {
      console.error(error.message)
     }
 }
+     const LikeProperty = async (_id) => {
+        try {
+           const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true, headers: { 'Content-Type': 'application/json'} });
+           setMessage(res.data.message);
+           setTimeout(() => {
+              setMessage("");
+           }, 3000);
+       } catch (error) {
+           const errorMessage = error.response?.data?.error || "Something went wrong";
+           console.error(error.message);
+           setError(errorMessage);
+           setTimeout(() => {
+               setError("");
+            }, 3000);
+      }
+    }
+
 
     if (loading) {
         return (
@@ -47,6 +66,16 @@ const DeleteHouse = async(_id) => {
 
     return (
         <div className="min-h-screen bg-gray-50 mt-20">
+        {message && (
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
+                 {message}
+            </div>
+          )}
+          {error && (
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
+                 {error}
+            </div>
+          )}
             <div className="ms-10 mt-4 flex justify-between">
             <p className="text-2xl font-bold text-amber-500"> My Properties</p> 
             <button 
