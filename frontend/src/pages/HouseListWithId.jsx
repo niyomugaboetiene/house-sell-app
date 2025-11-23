@@ -8,6 +8,7 @@ const HouseListComponentWithId = () => {
     const [house, setHouse] = useState(null);
     const [watchVideo, setWatchVideo] = useState(false);
     const [message, setMessage] = useState("");
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const navigate = useNavigate();
     
 
@@ -66,15 +67,32 @@ const HouseListComponentWithId = () => {
                     {house.length || house.image.length > 0 ? (
                         <div>
                            <img 
-                               src={`http://localhost:5000/House_Images/${house.image}`} 
+                               src={`http://localhost:5000/House_Images/${house.image[currentImageIndex]}`}
+                               alt={`House Image ${currentImageIndex + 1}`} 
                                className="w-full h-[800px] lg:h-[820px] object-cover rounded-2xl shadow-xl"
                         />
-                        <button className="absolute top-130 left-84 bg-amber-50 p-2 rounded-full hover:bg-amber-100 transition duration-200 hover:scale-105">
-                            <FaChevronLeft className="text-gray-500 text-2xl"/>
-                        </button>
-                        <button className="absolute top-130 left-222 bg-amber-50 p-2 rounded-full  hover:bg-amber-100 transition duration-200 hover:scale-105">
-                            <FaChevronRight className="text-gray-500 text-2xl" />
-                        </button>
+                 <button
+                    className="absolute top-130 left-84 bg-amber-50 p-2 rounded-full hover:bg-amber-100 transition duration-200 hover:scale-105"
+                      onClick={() =>
+                      setCurrentImageIndex(
+                      currentImageIndex === 0 ? house.image.length - 1 : currentImageIndex - 1
+                     )
+                     }
+                   >
+                       <FaChevronLeft className="text-gray-500 text-2xl"/>
+                    </button>
+
+                       <button
+                            className="absolute top-130 left-222 bg-amber-50 p-2 rounded-full hover:bg-amber-100 transition duration-200 hover:scale-105"
+                            onClick={() =>
+                            setCurrentImageIndex(
+                            currentImageIndex === house.image.length - 1 ? 0 : currentImageIndex + 1
+                            )
+                           }
+                        >
+                           <FaChevronRight className="text-gray-500 text-2xl" />
+                         </button>
+
                         </div>
 
                     ) : (

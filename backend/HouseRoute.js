@@ -220,10 +220,6 @@ route.put('/update/:_id', uploads.fields([
             return res.status(404).json({ error: "House not found" });
         }
 
-        if (house.owner.toString() !== userId) {
-            return res.status(403).json({ error: "You are not the owner of this house" });
-        }
-
         let updateData = {};
 
         for (let key in req.body) {
