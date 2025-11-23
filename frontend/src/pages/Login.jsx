@@ -38,7 +38,7 @@ const LoginComponent = () => {
     }
 
     return (
-        <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md mt-24">
+        <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md mt-24  border-amber-500 border-2">
                 {success && (
                 <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-green-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
                    <p className="text-white font-medium">{success}</p>

@@ -108,7 +108,7 @@ const HouseComponent = () => {
     }
 
     return (
-        <div className="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+        <div className="max-w-2xl mx-auto mt-20 p-6 bg-white rounded-lg shadow-md  border-amber-500 border-2">
            {error && (
                 <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-red-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
                    <p className="text-white font-medium">{error}</p>

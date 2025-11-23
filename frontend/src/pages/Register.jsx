@@ -14,7 +14,10 @@ const RegisterComponent = () => {
 
     const Register = async() => {
         if (!full_name || !user_name || !password || !role) {
-            alert("Please fill out all fields");
+            setError("Please fill out all fields");
+            setError(() => {
+                setError("");
+            }, 2000);
             return;
         } 
 
@@ -32,6 +35,7 @@ const RegisterComponent = () => {
                 setSuccess("");
                 navigate("/login");
             }, 2000);
+
             setError("");
         } catch (error) {
             console.error(error);
@@ -49,12 +53,12 @@ const RegisterComponent = () => {
     return (
         <div className="max-w-md mx-auto mt-14 p-6 bg-white rounded-lg shadow-md border border-amber-500">
               {success && (
-                <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-green-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                <div className="fixed top-27 left-1/2 transform -translate-x-1/2 bg-green-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
                    <p className="text-white font-medium">{success}</p>
                 </div>
                 )}     
                 {error && (
-                <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-red-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                <div className="fixed top-27 left-1/2 transform -translate-x-1/2 bg-red-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
                    <p className="text-white font-medium">{error}</p>
                 </div>
                 )}
