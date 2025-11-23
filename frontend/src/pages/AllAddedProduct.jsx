@@ -54,7 +54,7 @@ const AllAddedToCart = () => {
                                          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
                                          onClick={() => LikeProperty(house._id)}
                                   >
-                                     <FaHeart className={`${house.likes}`} />
+                                     <FaHeart className={`${house.likes?.includes()}`} />
                                  </button>
                                 </div>
                             
