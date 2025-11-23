@@ -420,7 +420,14 @@ route.get('/likedProperties', async(req, res) => {
         if (!userId) {
             return res.status(401).json({ message: 'Unauthorized' });
         }
-        const LikedProperties = await HouseSchema.find({likes: userId }).populate("owner buyer", "full_name user_name role");
+        const LikedProperties = await HouseSchema.find({ likes: userId }).populate("owner buyer", "full_name user_name role");
+        if (LikedProperties.length > 0) {
+            return res.status(200).json({ message: 'Your favorite properties', properties: LikedProperties });
+        } else {
+            return res.status(404).json({ message: 'No your favorite property found' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
     }
 })
 export default route;
