@@ -159,9 +159,6 @@ const GetUserInfo = async() => {
                     </div>
                 )}
             </div>
-            {error && (
-                <p>{error}</p>
-            )}
         </div>
     )
 }
