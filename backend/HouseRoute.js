@@ -369,11 +369,14 @@ route.get('/allAddedToCart', async(req ,res) => {
         return res.status(500).json({ error: error.message })
     }
 })
-
 route.post('/like/:_id', async (req, res) => {
     const { _id } = req.params;
 
     try {
+        if (!req.session || !req.session.userInfo) {
+            return res.status(401).json({ error: 'Unauthorized - Please log in' });
+        }
+
         const UserId = req.session.userInfo.user_id;
         console.log("Session data", UserId);
 
@@ -390,9 +393,9 @@ route.post('/like/:_id', async (req, res) => {
         const isAlreadyLiked = house.likes.includes(UserId);
 
         if (isAlreadyLiked) {
-           house.likes = house.likes.filter(id => id.toString() !== userId);
+            house.likes = house.likes.filter(id => id.toString() !== UserId.toString());
         } else {
-           house.likes.push(UserId);            
+            house.likes.push(UserId);            
         }
 
         await house.save();
@@ -400,9 +403,8 @@ route.post('/like/:_id', async (req, res) => {
         res.status(200).json({ likes: house.likes });
 
     } catch (error) {
+        console.error("Like error:", error);
         return res.status(500).json({ error: error.message });
     }
 });
-
-
 export default route;

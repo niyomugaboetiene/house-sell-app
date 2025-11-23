@@ -5,74 +5,72 @@ import { useNavigate } from "react-router-dom";
 
 const AllAddedToCart = () => {
     const [myCart, setMyCart] = useState([]);
-     const [error, setError] = useState("");
-     const [userInfo, setUserInfo] = useState([]);
-     const [message, setMessage] = useState("");
-     const navigate = useNavigate();
+    const [error, setError] = useState("");
+    const [userInfo, setUserInfo] = useState([]);
+    const [message, setMessage] = useState("");
+    const navigate = useNavigate();
     
-     const GetMyCart = async() => {
-            try {
-               const res = await axios.get('http://localhost:5000/house/allAddedToCart', { withCredentials: true });
-               setMyCart(res.data.houses);
-            } catch(error) {
-                console.error(error.message);
-                const errorMessage = err.response?.data?.error || "Failed login";
-                setError(errorMessage);
-            }
+    const GetMyCart = async() => {
+        try {
+            const res = await axios.get('http://localhost:5000/house/allAddedToCart', { withCredentials: true });
+            setMyCart(res.data.houses);
+        } catch(error) { 
+            console.error(error.message);
+            const errorMessage = error.response?.data?.error || "Failed to load cart"; 
+            setError(errorMessage);
         }
-
-        const LikeProperty = async (_id) => {
-            try {
-                const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, { withCredentials: true });
-                const updateLike = res.data.likes;
-                setMyCart((prev) =>
-                    prev.map((h) =>
-                      h._id === _id ? { ...h, likes: updateLike } : h
-                    )
-                );
-
-            } catch (error) {
-                const errorMessage = error?.response?.data?.error || "Something went wrong";
-                console.error(error);
-                setError(errorMessage);
-            }
-        }
-
-
-    const GetUserInfo = async() => {
-    try {
-        const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
-        setUserInfo(res.data.user)
-        const userId = res.data.user.user_id;
-        console.log("My session data:", res.data.user.image)
-        console.log("My session data:", res.data.user.user_id)
-    } catch (error) {
-      console.error(error.message);
     }
 
-  }
-  useEffect(() => {
-         GetUserInfo();
-  }, []);
+    const LikeProperty = async (_id) => {
+        try {
+            const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, { withCredentials: true });
+            const updateLike = res.data.likes;
+            setMyCart((prev) =>
+                prev.map((h) =>
+                    h._id === _id ? { ...h, likes: updateLike } : h
+                )
+            );
+        } catch (error) {
+            const errorMessage = error?.response?.data?.error || "Something went wrong";
+            console.error(error);
+            setError(errorMessage);
+        }
+    }
+
+    const GetUserInfo = async() => {
+        try {
+            const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+            setUserInfo(res.data.user)
+            console.log("My session data:", res.data.user.image)
+            console.log("My session data:", res.data.user.user_id)
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     useEffect(() => {
-       GetMyCart();
+        GetUserInfo();
+    }, []);
+
+    useEffect(() => {
+        GetMyCart();
     }, [])
 
     return (
- <div className="min-h-screen bg-gray-50 mt-20">
+        <div className="min-h-screen bg-gray-50 mt-20">
             <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">All Properties added to cart</p> 
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {myCart.map((house, idx) => (
                         <div key={idx} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
                             <div className="relative h-80 bg-gray-200">
-                              <div className="relative">
-                                  <button
-                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
-                                         onClick={() => LikeProperty(house._id)}
-                                  >
-                                     <FaHeart className={`${house.likes?.includes(userId)}`} />
-                                 </button>
+                                <div className="relative">
+                                    <button
+                                        className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                        onClick={() => LikeProperty(house._id)}
+                                    >
+                                        <FaHeart className={house.likes?.includes(userInfo.user_id) ? "text-red-500" : "text-gray-500"} />
+                                    </button>
                                 </div>
                             
                                 {house.image && house.image.length > 0 ? (
@@ -90,20 +88,20 @@ const AllAddedToCart = () => {
 
                             <div className="p-6">
                                 <div className="mb-4">
-                                       <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
-                                           {house.title}
-                                        </h3>
-                                    <div className="flex  space-x-2">
+                                    <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
+                                        {house.title}
+                                    </h3>
+                                    <div className="flex space-x-2">
                                         <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
-                                           bath: <span className="font-bold">{house.bathrooms}</span>
-                                        </h3>
-                                        <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
-                                           bed: <span className="font-bold">{house.bedrooms} </span>
+                                            bath: <span className="font-bold">{house.bathrooms}</span>
                                         </h3>
                                         <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
-                                           Owner: <span className="font-bold">{house.owner.full_name} </span>
+                                            bed: <span className="font-bold">{house.bedrooms} </span>
                                         </h3>
-                                       </div>
+                                        <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
+                                            Owner: <span className="font-bold">{house.owner.full_name} </span>
+                                        </h3>
+                                    </div>
 
                                     <p className="text-2xl font-bold text-amber-500">
                                         ${(house.price)}
@@ -113,9 +111,9 @@ const AllAddedToCart = () => {
 
                             <div>
                                 <button 
-                                   className="bg-amber-500 px-10 py-2 ms-3 text-white rounded-lg hover:bg-amber-600 transition-colors mb-4"
-                                   onClick={() => navigate(`/allHouse/${house._id}`)}
-                                   >
+                                    className="bg-amber-500 px-10 py-2 ms-3 text-white rounded-lg hover:bg-amber-600 transition-colors mb-4"
+                                    onClick={() => navigate(`/allHouse/${house._id}`)}
+                                >
                                     View Details
                                 </button>
                             </div>
@@ -140,4 +138,4 @@ const AllAddedToCart = () => {
     )
 }
 
-export default AllAddedToCart
+export default AllAddedToCart;
