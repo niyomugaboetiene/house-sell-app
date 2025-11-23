@@ -91,7 +91,7 @@ const HouseListComponent = () => {
             </div>
           )}
             <div className="flex items-center justify-between">
-            <p className="ms-10 mt-4 underline text-2xl font-bold text-amber-500">All Houses </p> 
+            <p className="ms-10 mt-4 underline text-2xl font-bold text-amber-500">All Houses</p> 
             {UserInfo.role === "admin" && (
                 <button className="me-8 bg-amber-500 px-6 py-2 text-white rounded-lg hover:bg-amber-600 transition-colors" onClick={() => navigate('/addHouse')}>+ Add Product</button>
             )}

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const MyCart = () => {
     const [myCart, setMyCart] = useState([]);
     const [error, setError] = useState("");
+    const [message, setMessage] = useState("");
     const [userInfo, setUserInfo] = useState([]);
     
      const GetMyCart = async() => {
@@ -34,8 +35,35 @@ const MyCart = () => {
        GetMyCart();
     }, [])
 
+          const LikeProperty = async (_id) => {
+                try {
+                    const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true, headers: { 'Content-Type': 'application/json'} });
+                    setMessage(res.data.message);
+                    setTimeout(() => {
+                       setMessage("");
+                    }, 3000);
+                } catch (error) {
+                    const errorMessage = error.response?.data?.error || "Something went wrong";
+                    console.error(error.message);
+                    setError(errorMessage);
+                    setTimeout(() => {
+                       setError("");
+                    }, 3000);
+                }
+            }
+
     return (
  <div className="min-h-screen bg-gray-50 mt-20">
+     {message && (
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
+                 {message}
+            </div>
+          )}
+          {error && (
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
+                 {error}
+            </div>
+          )}
     <div className="ms-10 mt-4 flex justify-between">
           <p className="text-2xl font-bold text-amber-500">My Cart</p> 
            {userInfo.role === "admin" && (
@@ -53,6 +81,7 @@ const MyCart = () => {
                               <div className="relative">
                                   <button
                                          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                         onClick={() => LikeProperty(house._id)}
                                   >
                                      <FaHeart className="text-red-500 text-xl" />
                                  </button>
