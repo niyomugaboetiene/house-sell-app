@@ -21,11 +21,17 @@ const LoginComponent = () => {
             }, { withCredentials: true });
             
             setSuccess("Logged in successfully");
-            navigate('/');
+            setTimeout(() => {
+                setSuccess("");
+                navigate('/');
+            }, 2000);
         } catch (error) {
             console.error(error);
             const errorMessage = error.response?.data?.error || "Failed login";
             setError(errorMessage);
+            setTimeout(() => {
+                setError("");
+            }, 2000);
         } finally {
             setLoading(false);
         }
@@ -33,8 +39,17 @@ const LoginComponent = () => {
 
     return (
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md mt-24">
-            <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h1>
-            
+                {success && (
+                <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-green-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                   <p className="text-white font-medium">{success}</p>
+                </div>
+                )}     
+                {error && (
+                <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-red-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                   <p className="text-white font-medium">{error}</p>
+                </div>
+                )}
+            <h1 className="text-2xl font-bold text-amber-500 mb-6 text-center">Login</h1>
             <div className="space-y-4">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
@@ -63,18 +78,6 @@ const LoginComponent = () => {
                 >
                     {loading ? "Logging in..." : "Login"}
                 </button>
-
-                {success && (
-                    <div className="p-3 bg-green-50 border border-green-200 text-green-700 rounded-md">
-                        {success}
-                    </div>
-                )}
-                
-                {error && (
-                    <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-md">
-                        {error}
-                    </div>
-                )}
             </div>
         </div>
     )
