@@ -375,7 +375,7 @@ route.post('/like/:_id', async(req, res) => {
 
     try {
        const UserId = req.session?.userInfo?.user_id;
-       console.log("Session data". UserId);
+       console.log("Session data", UserId);
        if (!UserId) {
         return res.status(401).json({ error: 'Unauthorized '})
        }
