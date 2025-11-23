@@ -81,12 +81,12 @@ const HouseListComponent = () => {
     return (
         <div className="min-h-screen bg-gray-50 mt-20">
           {message && (
-             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-green-500 text-gray-700 px-6 py-2 rounded-lg shadow-lg z-50">
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
                  {message}
             </div>
           )}
           {error && (
-             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-red-200 text-gray-700 px-6 py-2 rounded-lg shadow-lg z-50">
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
                  {error}
             </div>
           )}

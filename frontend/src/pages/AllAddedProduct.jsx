@@ -33,10 +33,17 @@ const AllAddedToCart = () => {
         console.log("console message", res.data.message);
         setMessage(res.data.message || ""); 
 
+        setTimeout(() => {
+            setMessage("");
+        }, 2000);
+
     } catch (error) {
         const errorMessage = error?.response?.data?.error || "Something went wrong";
         console.error(error);
         setError(errorMessage);
+        setTimeout(() => {
+            setError("");
+        }, 2000);
     }
 }
 
