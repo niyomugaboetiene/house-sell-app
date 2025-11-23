@@ -1,7 +1,25 @@
+import { useState, useEffect } from "react";
 import { FaFacebook, FaInstagram, FaTwitter, FaTwitch, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Footer = () => {
+    const [userInfo, setUserInfo] = useState([]);  
+
+  const GetUserInfo = async() => {
+    try {
+        const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+        setUserInfo(res.data.user)
+        console.log("My session data:", res.data.user.image)
+        console.log("My session data:", res.data.user.user_id)
+    } catch (error) {
+      console.error(error.message);
+    }
+
+  }
+  useEffect(() => {
+         GetUserInfo();
+  }, []);
     return (
         <footer className="bg-white border-t border-gray-200">
             <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -33,9 +51,11 @@ const Footer = () => {
                         <Link className="block hover:text-amber-500 transition-colors" to="/buy">
                             Buy
                         </Link>
+                        {userInfo?.role === "seller" || userInfo?.role === "admin" && (
                         <Link className="block hover:text-amber-500 transition-colors" to="/sell">
                             Sell
                         </Link>
+                        )}
                         <Link className="block hover:text-amber-500 transition-colors" to="/rent">
                             Rent
                         </Link>
