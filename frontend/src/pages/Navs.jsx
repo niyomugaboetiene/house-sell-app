@@ -119,7 +119,7 @@ const Navs = () => {
     <FaShoppingCart className="text-gray-700" />
   </button>
 
-  <Link className="hover:underline transition-colors hover:text-amber-500">Get Help</Link>
+  <Link className="hover:underline transition-colors hover:text-amber-500" to='help'>Get Help</Link>
   
   <div className="flex items-center">
     <Link 

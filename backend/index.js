@@ -29,6 +29,32 @@ app.use(session({
 app.use('/user', userRoute);
 app.use('/house', HouseRoute);
 
+app.post("/send", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.APP_PASS,
+    },
+  });
+
+  const mailOptions = {
+    from: email,
+    to: process.env.EMAIL_USER,
+    subject: `Message from ${name}`,
+    text: message,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).send("Message sent successfully!");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Failed to send message.");
+  }
+});
 
 mongoose.connect('mongodb://127.0.0.1:27017/house-selling', {})
 .then(() => {
