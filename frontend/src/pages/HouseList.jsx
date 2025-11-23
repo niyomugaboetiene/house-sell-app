@@ -45,7 +45,7 @@ const HouseListComponent = () => {
         fetchHouses();
     }, []);
 
-      const GetUserInfo = async() => {
+const GetUserInfo = async() => {
     try {
         const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
         setUserInfo(res.data.user)

@@ -20,7 +20,7 @@ const MyCart = () => {
             }
         }
 
-     const GetUserInfo = async() => {
+const GetUserInfo = async() => {
     try {
         const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
         setUserInfo(res.data.user)
@@ -52,6 +52,7 @@ const MyCart = () => {
                 }
             }
 
+            
     return (
  <div className="min-h-screen bg-gray-50 mt-20">
      {message && (
@@ -83,8 +84,8 @@ const MyCart = () => {
                                          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
                                          onClick={() => LikeProperty(house._id)}
                                   >
-                                     <FaHeart className="text-red-500 text-xl" />
-                                 </button>
+                                     <FaHeart className={house.likes.includes(userInfo.user_id) ? "text-red-500" : "text-gray-500"} />
+                           </button>
                                 </div>
                                 {house.image && house.image.length > 0 ? (
                                     <img 

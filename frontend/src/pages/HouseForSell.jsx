@@ -8,6 +8,7 @@ const HouseForSell = () => {
     const [houses, setHouses] = useState([]);
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+    const [userInfo, setUserInfo] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     
@@ -24,6 +25,21 @@ const HouseForSell = () => {
 
     useEffect(() => {
         fetchHouses();
+    }, []);
+
+        const GetUserInfo = async() => {
+        try {
+            const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+            setUserInfo(res.data.user)
+            console.log("My session data:", res.data.user.image)
+            console.log("My session data:", res.data.user.user_id)
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    useEffect(() => {
+        GetUserInfo();
     }, []);
 
     const LikeProperty = async (_id) => {
@@ -82,10 +98,10 @@ const HouseForSell = () => {
                             <div className="relative h-80 bg-gray-200">
                               <div className="relative">
                                   <button
-                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                         className="absolute top-3 right-9 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
                                          onClick={() => LikeProperty(house._id)}
                                   >
-                                     <FaHeart className="text-red-500 text-xl" />
+                                     <FaHeart className={house.likes?.includes(userInfo.user_id) ? "text-red-500" : "text-gray-500"} />
                                  </button>
                                  <p className="absolute bg-gray-900 px-2 top-4 text-white font-bold rounded-full right-2">{house.likes.length}</p>      
                                 </div>
