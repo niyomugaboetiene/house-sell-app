@@ -147,11 +147,12 @@ const HomePage = () => {
                 <div className="relative bg-gray-200">
                     <div className="relative">
                         <button
-                            className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition z-10"
+                            className="absolute top-2 right-10 bg-white p-1.5 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition z-10"
                             onClick={() => LikeProperty(house._id)}
                         >
                             <FaHeart className="text-red-500 text-lg" />
                         </button>
+                        <p className="absolute bg-gray-900 px-2 top-2 text-white font-bold rounded-full right-2">{house.likes.length}</p>
                     </div>
                     {house.image && house.image.length > 0 ? (
                         <img 
