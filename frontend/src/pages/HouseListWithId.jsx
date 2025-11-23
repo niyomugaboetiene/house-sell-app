@@ -96,7 +96,6 @@ const HouseListComponentWithId = () => {
                         )}
                     </div>
 
-                    {/* House Details */}
                     <div className="lg:w-1/2 bg-white rounded-2xl shadow-xl p-8">
                         <div className="mb-8">
                             <h2 className="text-2xl font-bold text-gray-900 mb-2">{house.title}</h2>
@@ -108,12 +107,20 @@ const HouseListComponentWithId = () => {
                             <div className="mb-8 p-6 bg-gray-100 shadow-inner rounded-xl hover:-translate-y-1 transition duration-200">
                                 <h3 className="text-xl font-serif text-amber-500 mb-4 text-center">Location Details</h3>
                                 <div className="space-y-2">
-                                    <p className="text-gray-700"><span className="font-medium">Country:</span> {house.location.country}</p>
-                                    <p className="text-gray-700"><span className="font-medium">City:</span> {house.location.city}</p>
-                                    <p className="text-gray-700"><span className="font-medium">District:</span> {house.location.district}</p>
-                                    <p className="text-gray-700"><span className="font-medium">Sector:</span> {house.location.sector}</p>
-                                    <p className="text-gray-700"><span className="font-medium">Street:</span> {house.location.street}</p>
-                                    <p className="text-gray-700"><span className="font-medium">Owner:</span> {house.owner.full_name}</p>
+                                    <div className="flex justify-between">
+                                       <p className="text-gray-700"><span className="font-medium">Country:</span> {house.location.country}</p>
+                                       <p className="text-gray-700"><span className="font-medium">City:</span> {house.location.city}</p>
+                                    </div>
+
+                                    <div className="flex justify-between">
+                                        <p className="text-gray-700"><span className="font-medium">District:</span> {house.location.district}</p>
+                                        <p className="text-gray-700"><span className="font-medium">Sector:</span> {house.location.sector}</p>
+                                    </div>
+
+                                    <div className="flex justify-between">
+                                         <p className="text-gray-700"><span className="font-medium">Street:</span> {house.location.street}</p>
+                                         <p className="text-gray-700"><span className="font-medium">Owner:</span> {house.owner.full_name}</p>
+                                    </div>
                                 </div>
                             </div>
                         )}
@@ -148,7 +155,10 @@ const HouseListComponentWithId = () => {
                             </div>
                         </div>
 
-                        <div className="flex justify-between mb-8">
+                        <div className="w-40">
+                            <p className={`${house.isAvailable ? 'bg-green-500' : 'bg-red-500'} px-5 py-2 mb-6 rounded-full text-white text-center font-bold`}>Avaliable: {house.isAvailable ? 'Yes' : 'No'}</p>
+                        </div>
+                        <div className="flex justify-between">
                             <button
                                 onClick={() => setWatchVideo(true)}
                                 className="bg-red-500 px-6 py-4 text-white text-lg font-semibold rounded-xl hover:bg-red-400 transition duration-200 hover:scale-105 shadow-lg"
