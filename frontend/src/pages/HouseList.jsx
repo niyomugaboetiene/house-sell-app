@@ -98,6 +98,7 @@ const GetUserInfo = async() => {
                  {error}
             </div>
           )}
+             <button onClick={() => navigate(-1)} className="bg-gray-200 ms-13 px-3 py-1 hover:bg-gray-300 transition-colors">&larr; Back</button>
             <div className="flex items-center justify-between">
             <p className="ms-10 mt-4 underline text-2xl font-bold text-amber-500">All Houses</p> 
             {UserInfo.role === "admin" && (

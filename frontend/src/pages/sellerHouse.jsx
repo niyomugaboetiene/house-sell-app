@@ -78,6 +78,7 @@ const DeleteHouse = async(_id) => {
           )}
             <div className="ms-10 mt-4 flex justify-between">
             <p className="text-2xl font-bold text-amber-500"> My Properties</p> 
+
             <button 
                className="me-8 bg-amber-500 px-6 py-2 text-white rounded-lg hover:bg-amber-600 transition-colors"
                onClick={() => navigate('/addHouse')}
@@ -93,9 +94,11 @@ const DeleteHouse = async(_id) => {
                               <div className="relative">
                                   <button
                                          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                         onClick={() => LikeProperty(house._id)}
                                   >
-                                     <FaHeart className="text-red-500 text-xl" />
+                                     <FaHeart className={house.likes?.includes(userInfo.user_id) ? "text-red-500" : "text-gray-500"} />
                                  </button>
+                                 <p className="absolute bg-gray-900 px-2 top-4 text-white font-bold rounded-full right-2">{house.likes.length}</p>      
                                  <button
                                          className="absolute top-13 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
                                          onClick={() => navigate(`/update/${house._id}`)}

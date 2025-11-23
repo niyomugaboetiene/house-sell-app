@@ -88,9 +88,8 @@ const HouseForSell = () => {
                  {error}
             </div>
           )}
+            <button onClick={() => navigate(-1)} className="bg-gray-200 ms-13 px-3 py-1 hover:bg-gray-300 transition-colors">&larr; Back</button>
             <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">Quick Buy </p> 
-
-
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {houses.map((house, idx) => (
