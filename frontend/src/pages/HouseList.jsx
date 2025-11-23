@@ -35,6 +35,9 @@ const HouseListComponent = () => {
                 const errorMessage = error.response?.data?.error || "Something went wrong";
                 console.error(error.message);
                 setError(errorMessage);
+                setTimeout(() => {
+                   setError("");
+                }, 3000);
             }
         }
 
@@ -80,6 +83,11 @@ const HouseListComponent = () => {
           {message && (
              <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-green-200 text-gray-700 px-6 py-2 rounded-lg shadow-lg z-50">
                  {message}
+            </div>
+          )}
+          {error && (
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-red-200 text-gray-700 px-6 py-2 rounded-lg shadow-lg z-50">
+                 {error}
             </div>
           )}
             <div className="flex items-center justify-between">
