@@ -413,4 +413,14 @@ route.post('/like/:_id', async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 });
+
+route.get('/likedProperties', async(req, res) => {
+    try {
+        const userId = req.session.userInfo.user_id;
+        if (!userId) {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+        const LikedProperties = await HouseSchema.find({likes: userId }).populate("owner buyer", "full_name user_name role");
+    }
+})
 export default route;
