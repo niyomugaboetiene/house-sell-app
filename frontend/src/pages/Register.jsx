@@ -51,7 +51,7 @@ const RegisterComponent = () => {
     }
 
     return (
-        <div className="max-w-md mx-auto mt-14 p-6 bg-white rounded-lg shadow-md border border-amber-500">
+        <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded-lg shadow-md border border-amber-500">
               {success && (
                 <div className="fixed top-27 left-1/2 transform -translate-x-1/2 bg-green-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
                    <p className="text-white font-medium">{success}</p>
@@ -91,6 +91,7 @@ const RegisterComponent = () => {
                         onChange={(e) => setRole(e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     >
+                        <option value="" disabled>Choose account type</option>
                         <option value="customer">Customer</option>
                         <option value="seller">Seller</option>
                         {/* <option value="admin">Admin</option> */}
@@ -107,14 +108,17 @@ const RegisterComponent = () => {
                     />
                 </div>
 
+             <div className="flex justify-between">
                 <button 
                     onClick={Register} 
                     disabled={loading}
-                    className="w-full bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="w-1/2 bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                     {loading ? "Creating Account..." : "Register"}
                 </button>
+                <button onClick={() => navigate(-1)} className="rounded-lg border-2 hover:text-white w-1/2 border-amber-500 ms-13 px-3 py-1 hover:bg-amber-500 transition-colors">&larr; Back</button>
             </div>
+             </div>
         </div>
     )
 }

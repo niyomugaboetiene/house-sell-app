@@ -280,7 +280,7 @@ const HomePage = () => {
         </p>
         <div className="p-5">
             <button className="bg-amber-500 px-6 py-3 text-white rounded-lg hover:bg-amber-600 transition-colors ms-24"
-                onClick={() => navigate('/sell')}
+                onClick={() => navigate('/addHouse')}
             >
                 Sell House</button>
         </div>

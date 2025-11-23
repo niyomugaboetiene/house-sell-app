@@ -120,7 +120,6 @@ const HouseComponent = () => {
                    <p className="text-white font-medium">{success}</p>
                 </div>
              )}
-
             <h1 className="text-2xl font-bold text-amber-500 mb-6">Sell New Property</h1>
             
             <div className="space-y-4">
@@ -325,13 +324,16 @@ const HouseComponent = () => {
                     </div>
                 </div>
 
+             <div className="flex justify-between">
                 <button 
                     onClick={AddHouse} 
                     disabled={loading}
-                    className="w-full bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="w-1/2 bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                     {loading ? "Adding..." : "Add House"}
                 </button>
+               <button onClick={() => navigate(-1)} className="rounded-lg border-2 hover:text-white w-1/2 border-amber-500 ms-13 px-3 py-1 hover:bg-amber-500 transition-colors">&larr; Back</button>
+             </div>
             </div>
         </div>
     )
