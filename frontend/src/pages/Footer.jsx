@@ -106,7 +106,7 @@ const Footer = () => {
                             <FaInstagram className="text-xl group-hover:scale-110 transition-transform" />
                         </Link>
                         <Link 
-                            className="p-3 bg-gray-100 rounded-md hover:bg-amber-400 hover:text-white transition-colors group flex justify-center" 
+                            className="p-3 bg-gray-100 rounded-md hover:bg-sky-500 hover:text-white transition-colors group flex justify-center" 
                             to="https://x.com/Niyomugabo_250" 
                             rel="noopener noreferrer" 
                             target="_blank"
@@ -130,7 +130,7 @@ const Footer = () => {
                             <FaWhatsapp className="text-xl group-hover:scale-110 transition-transform" />
                         </Link>
                         <Link 
-                            className="p-3 bg-gray-100 rounded-md hover:bg-amber-600 hover:text-white transition-colors group flex justify-center" 
+                            className="p-3 bg-gray-100 rounded-md hover:bg-blue-600 hover:text-white transition-colors group flex justify-center" 
                             to="https://www.linkedin.com" 
                             rel="noopener noreferrer" 
                             target="_blank"
