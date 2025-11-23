@@ -25,6 +25,7 @@ const AllAddedToCart = () => {
                 const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, { withCredentials: true });
                 const successMessage = res.data.message;
                 setMessage(successMessage);
+                
             } catch (error) {
                 const errorMessage = error?.response?.data?.error || "Something went wrong";
                 console.error(error.message);
