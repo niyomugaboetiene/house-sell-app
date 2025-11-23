@@ -30,9 +30,9 @@ const AllAddedToCart = () => {
                 h._id === _id ? { ...h, likes: updateLike } : h
             )
         );
-        const message = res.data.message;
-        console.log(message);
-        setMessage(message || "");
+        console.log("console message", res.data.message);
+        setMessage(res.data.message || "");
+        // alert("liked successfully")
 
     } catch (error) {
         const errorMessage = error?.response?.data?.error || "Something went wrong";
