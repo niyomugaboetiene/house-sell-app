@@ -28,6 +28,9 @@ const HouseListComponent = () => {
             try {
                 const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true, headers: { 'Content-Type': 'application/json'} });
                 setMessage(res.data.message);
+                setTimeout(() => {
+                   setMessage("");
+                }, 3000);
             } catch (error) {
                 const errorMessage = error.response?.data?.error || "Something went wrong";
                 console.error(error.message);
@@ -58,8 +61,6 @@ const HouseListComponent = () => {
         const confirm = window.confirm("Are you sure you want to delete this property");
         if (!confirm) return;
         await axios.post(`http://localhost:5000/house/delete/${_id}`, {}, {withCredentials: true});
-        alert("House deleted successfully");
-
         fetchHouses();
     } catch (error) {
      console.error(error.message)
@@ -76,11 +77,11 @@ const HouseListComponent = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 mt-20">
-            <div className="">
-                {message && (
-                    <div className="">{message}</div>
-                )}
+          {message && (
+             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-green-200 text-gray-700 px-6 py-2 rounded-lg shadow-lg z-50">
+                 {message}
             </div>
+          )}
             <div className="flex items-center justify-between">
             <p className="ms-10 mt-4 underline text-2xl font-bold text-amber-500">All Houses </p> 
             {UserInfo.role === "admin" && (
