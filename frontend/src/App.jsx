@@ -2,7 +2,7 @@ import LoginComponent from "./pages/Login"
 import RegisterComponent from "./pages/Register"
 import HouseComponent from "./pages/AddHouse"
 import HouseListComponent from "./pages/HouseList"
-import { Link, BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import HomePage from "./pages/Home"
 import Navs from "./pages/Navs"
 import HouseListComponentWithId from "./pages/HouseListWithId"
@@ -20,6 +20,7 @@ import TermsOfUse from "./pages/TermsOfUse"
 import PrivacyPolicy from "./pages/PrivancyPolicy"
 import GetHelp from "./pages/getHelp"
 import Contact from "./pages/Contact"
+import AboutUs from "./pages/About"
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
               <Route path="/privancy" element={<PrivacyPolicy />}/>
               <Route path="/help" element={<GetHelp />}/>
               <Route path="/contact" element={<Contact />}/>
+              <Route path="/about" element={<AboutUs />}/>
           </Route>
          </Routes>
         <Footer />
