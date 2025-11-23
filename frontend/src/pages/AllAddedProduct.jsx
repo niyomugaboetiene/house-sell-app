@@ -22,7 +22,7 @@ const AllAddedToCart = () => {
 
         const LikeProperty = async (_id) => {
             try {
-                const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true, headers: { 'Content-Type': 'application/json'} });
+                const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, { withCredentials: true });
                 const successMessage = res.data.message;
                 setMessage(successMessage);
             } catch (error) {
@@ -52,6 +52,7 @@ const AllAddedToCart = () => {
                                      <FaHeart className="text-red-500 text-xl" />
                                  </button>
                                 </div>
+                            
                                 {house.image && house.image.length > 0 ? (
                                     <img 
                                         src={`http://localhost:5000/House_Images/${house.image}`} 

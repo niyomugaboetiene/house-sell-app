@@ -370,35 +370,39 @@ route.get('/allAddedToCart', async(req ,res) => {
     }
 })
 
-route.post('/like/:_id', async(req, res) => {
+route.post('/like/:_id', async (req, res) => {
     const { _id } = req.params;
 
     try {
-       const UserId = req.session?.userInfo?.user_id;
-       console.log("Session data", UserId);
-       if (!UserId) {
-        return res.status(401).json({ error: 'Unauthorized '})
-       }
+        const UserId = req.session.userInfo.user_id;
+        console.log("Session data", UserId);
 
-       const IsHouseExist = await HouseSchema.findById(_id);
-       
-       if (!IsHouseExist) {
-        return res.status(404).json({ error: 'House not exist' });
-       }
+        if (!UserId) {
+            return res.status(401).json({ error: 'Unauthorized' });
+        }
 
-       const isAlreadyLiked = IsHouseExist.likes.includes(UserId);
-       if (isAlreadyLiked) {
-        return res.status(400).json({ message: 'Aready liked' });
-       }
+        const house = await HouseSchema.findById(_id);
 
-       IsHouseExist.likes.push(UserId);
-       await IsHouseExist.save();
+        if (!house) {
+            return res.status(404).json({ error: 'House not exist' });
+        }
 
-       return res.status(200).json({ message: 'Liked successfully', totalLikes: IsHouseExist.likes.length });
-       
+        const isAlreadyLiked = house.likes.includes(UserId);
+
+        if (isAlreadyLiked) {
+           house.likes = house.likes.filter(id => id.toString() !== userId);
+        } else {
+           house.likes.push(UserId);            
+        }
+
+        await house.save();
+
+        res.status(200).json({ likes: house.likes.length });
+
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
 });
+
 
 export default route;
