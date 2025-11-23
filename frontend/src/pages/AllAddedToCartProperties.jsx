@@ -109,7 +109,7 @@ const LikeProperty = async (_id) => {
 
                             <div className="p-6">
                                 <div className="mb-4">
-                                    <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
+                                    <h3 className="text-xl font-semibold text-gray-900 line-clamp-3 mb-2">
                                         {house.title}
                                     </h3>
                                     <div className="flex space-x-2">
@@ -120,7 +120,10 @@ const LikeProperty = async (_id) => {
                                             bed: <span className="font-bold">{house.bedrooms} </span>
                                         </h3>
                                         <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
-                                            Owner: <span className="font-bold">{house.owner.full_name} </span>
+                                            Owner: <span className="font-bold">{house.owner.user_name} </span>
+                                        </h3>
+                                        <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
+                                            Buyer: <span className="font-bold">{house.buyer.user_name} </span>
                                         </h3>
                                     </div>
 

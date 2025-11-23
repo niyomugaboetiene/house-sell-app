@@ -38,7 +38,7 @@ const HouseListComponentWithId = () => {
             setTimeout(() => {
                 setMessage("");
             }, 3000);
-            
+
         } catch (error) {
             console.error(error.message);
         }
@@ -54,7 +54,7 @@ const HouseListComponentWithId = () => {
         <div className="min-h-screen bg-amber-50 py-8 mt-10">
             <div>
                {message && (
-                    <p className="fixed top-25 left-200 bg-green-400 text-white px-6 py-2 rounded-lg font-bold">{message}</p>
+                    <p className="fixed top-25 left-200 bg-green-400 text-white px-6 py-2 rounded-lg font-bold translate-y-2">{message}</p>
                )}
             </div>
            <button onClick={() => navigate(-1)} className="bg-gray-200 ms-13 px-3 py-1 hover:bg-gray-300 transition-colors">&larr; Back</button>

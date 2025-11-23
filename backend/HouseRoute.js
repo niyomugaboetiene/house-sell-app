@@ -361,7 +361,7 @@ route.get('/allAddedToCart', async(req ,res) => {
         if (req.session.userInfo.role !== "admin") {
             return res.status(401).json({ message: 'You are not admin' });
         }
-        const AllProperties = await HouseSchema.find({ AddedToCart: true}).populate("owner", "full_name user_name role");
+        const AllProperties = await HouseSchema.find({ AddedToCart: true}).populate("owner buyer", "full_name user_name role");
         if (AllProperties.length > 0) {
             return res.status(200).json({ houses: AllProperties});
         }
