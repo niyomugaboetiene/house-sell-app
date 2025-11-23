@@ -152,7 +152,7 @@ const HomePage = () => {
                         >
                             <FaHeart className="text-red-500 text-lg" />
                         </button>
-                        <p className="absolute bg-gray-900 px-2 top-2 text-white font-bold rounded-full right-2">{house.likes.length}</p>
+                        <p className="absolute bg-gray-900 px-2 top-3 text-white font-bold rounded-full right-2">{house.likes.length}</p>
                     </div>
                     {house.image && house.image.length > 0 ? (
                         <img 
