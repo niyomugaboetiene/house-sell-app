@@ -118,7 +118,7 @@ const RegisterComponent = () => {
                 </button>
                 <button onClick={() => navigate('/login')} className="text-amber-500 rounded-lg border-2 hover:text-white w-1/2 border-amber-500 ms-13 px-3 py-1 hover:bg-amber-500 transition-colors">Login</button>
             </div>
-             </div>
+          </div>
         </div>
     )
 }

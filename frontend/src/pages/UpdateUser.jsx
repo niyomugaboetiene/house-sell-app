@@ -67,24 +67,43 @@ const UpdateUserComponent = () => {
             });
 
             setSuccess("User updated successfully");
-            navigate('/');
+            setTimeout(() => {
+                setSuccess("");
+                navigate('/');
+            }, 2000);
             
         } catch (err) {
             console.error("Update Error:", err.response?.data || err.message);
             const errorMessage = err.response?.data?.error || "Failed to update user";
-            setError(errorMessage);
+            if (err.response?.status === 403) {
+                setError(errorMessage);
+                setTimeout(() => {
+                  setError("");
+                  navigate('/login');
+                }, 2000);
+            }
         } finally {
             setLoading(false);
         }
     }
 
     return (
-       <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded-lg shadow-md ">
-            <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Update Your Account</h1>
+       <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded-lg shadow-md border-2 border-amber-500">
+             {success && (
+                <div className="fixed top-27 left-1/2 transform -translate-x-1/2 bg-green-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                   <p className="text-white font-medium">{success}</p>
+                </div>
+                )}     
+                {error && (
+                <div className="fixed top-27 left-1/2 transform -translate-x-1/2 bg-red-500 font-bold text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                   <p className="text-white font-medium">{error}</p>
+                </div>
+                )}
+            <h1 className="text-2xl font-bold text-amber-500 mb-6 text-center">Update Your Account</h1>
             
             <div className="space-y-4">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Full Name</label>
                     <input 
                         type="text" 
                         value={full_name}
@@ -95,7 +114,7 @@ const UpdateUserComponent = () => {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Username</label>
                     <input 
                         type="text" 
                         value={user_name}
@@ -106,7 +125,7 @@ const UpdateUserComponent = () => {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Role</label>
                     <select 
                          value={role}
                         onChange={(e) => setRole(e.target.value)}
@@ -118,7 +137,7 @@ const UpdateUserComponent = () => {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">New Password (Optional)</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">New Password (Optional)</label>
                     <input 
                         type="password"
                         onChange={(e) => setNewPassword(e.target.value)} 
@@ -127,7 +146,7 @@ const UpdateUserComponent = () => {
                     />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Type old Password to apply changes</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Type old Password to apply changes</label>
                     <input 
                         type="password"
                         onChange={(e) => setOldPassword(e.target.value)} 
@@ -137,31 +156,22 @@ const UpdateUserComponent = () => {
                 </div>
                 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Choose your profile image (Optional)</label>
+                    <label className="block text-sm font-medium text-amber-500 mb-1">Choose your profile image (Optional)</label>
                     <input type="file"  onChange={(e) => setImage(e.target.files[0])} accept="image/*" 
                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     />
                 </div>
+        <div className="flex justify-between">
                 <button 
-                    onClick={UpdateUser}
+                    onClick={UpdateUser} 
                     disabled={loading}
-                    className="w-full bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="w-1/2 bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
-                    {loading ? "Creating Account..." : "Register"}
+                    {loading ? "Updaing Account..." : "Update"}
                 </button>
-
-                {success && (
-                    <div className="p-3 bg-green-50 border border-green-200 text-green-700 rounded-md">
-                        {success}
-                    </div>
-                )}
-                
-                {error && (
-                    <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-md">
-                        {error}
-                    </div>
-                )}
+                <button onClick={() => navigate(-1)} className="text-amber-500 rounded-lg border-2 hover:text-white w-1/2 border-amber-500 ms-13 px-3 py-1 hover:bg-amber-500 transition-colors">&larr; Back</button>
             </div>
+         </div>
         </div>
     );
 }

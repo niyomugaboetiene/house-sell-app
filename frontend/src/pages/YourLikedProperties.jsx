@@ -155,9 +155,6 @@ const LikeProperty = async (_id) => {
                     </div>
                 )}
             </div>
-            {error && (
-                <p>{error}</p>
-            )}
         </div>
     )
 }

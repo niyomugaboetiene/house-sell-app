@@ -95,16 +95,16 @@ router.put('/updateProfile', uploads.single("image"), async(req, res) => {
     const userId = req.session?.userInfo?.user_id;
     
     if (!userId) {
-        return res.status(401).json({ error: 'Unauthorized login to customize your info.'})
+        return res.status(403).json({ error: 'Unauthorized login to customize your info.'})
     }
        if (!oldPassword) {
-            return res.status(500).json({error: "Missing fields"});
+            return res.status(400).json({error: "Missing fields"});
        } 
 
        const OldData = await UserSchema.findById(userId);
        const isPasswordTrue = await bcrypt.compare(OldData.password, oldPassword);
        if (!isPasswordTrue) {
-               return res.status(200).json({ error: 'Password does not match'})
+               return res.status(400).json({ error: 'Password does not match'})
        }
        const hashedPassword = newPassword.trim() ? await bcrypt.hash(newPassword, 10) : OldData.password;
        

@@ -127,7 +127,7 @@ const HomePage = () => {
                 />
 
                 <div className="absolute top-50 left-11">
-                    <h1 className=" text-white font-medium text-[50px]">Search your desired House</h1>
+                    <h1 className=" text-white   font-medium text-[50px]">Search your desired House</h1>
                     <div className="flex justify-between w-110 bg-gray-50 rounded-xl">
                         <input type="text" 
                            onChange={(e) => setSearchQuery(e.target.value)}
