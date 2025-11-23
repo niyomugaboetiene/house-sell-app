@@ -76,6 +76,11 @@ const HouseListComponent = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 mt-20">
+            <div className="">
+                {message && (
+                    <div className="">{message}</div>
+                )}
+            </div>
             <div className="flex items-center justify-between">
             <p className="ms-10 mt-4 underline text-2xl font-bold text-amber-500">All Houses </p> 
             {UserInfo.role === "admin" && (

@@ -67,6 +67,26 @@ const HomePage = () => {
         }
     }
 
+    const LikeProperty = async (_id) => {
+    try {
+        const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, { withCredentials: true });
+        const updateLike = res.data.likes;  
+        setHouses((prev) =>
+            prev.map((h) =>
+                h._id === _id ? { ...h, likes: updateLike } : h
+            )
+        );
+        console.log("console message", res.data.message);
+        setMessage(res.data.message || "");
+        // alert("liked successfully")
+
+    } catch (error) {
+        const errorMessage = error?.response?.data?.error || "Something went wrong";
+        console.error(error);
+        setError(errorMessage);
+    }
+}
+
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -112,6 +132,7 @@ const HomePage = () => {
                     <div className="relative">
                         <button
                             className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition z-10"
+                            onClick={() => LikeProperty(house._id)}
                         >
                             <FaHeart className="text-red-500 text-lg" />
                         </button>
