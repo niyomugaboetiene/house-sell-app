@@ -31,8 +31,7 @@ const AllAddedToCart = () => {
             )
         );
         console.log("console message", res.data.message);
-        setMessage(res.data.message || "");
-        // alert("liked successfully")
+        setMessage(res.data.message || ""); 
 
     } catch (error) {
         const errorMessage = error?.response?.data?.error || "Something went wrong";
@@ -63,8 +62,13 @@ const AllAddedToCart = () => {
     return (
         <div className="min-h-screen bg-gray-50 mt-20">
            {message && (
-               <div className="absolute top-24 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+               <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
                    <p className="text-white font-medium">{message}</p>
+                </div>
+                )}
+                {error && (
+               <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+                   <p className="text-white font-medium">{error}</p>
                 </div>
                 )}
             <p className="ms-10 mt-4 text-2xl font-bold text-amber-500">All Properties added to cart</p> 
