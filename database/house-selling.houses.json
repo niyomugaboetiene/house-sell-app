@@ -15,7 +15,13 @@
   "bathrooms": 4,
   "size": 6,
   "image": [
-    "1763477008947-images.jpeg"
+    "1763912897842-house2.jpg",
+    "1763912897862-house3.jpg",
+    "1763912897867-house4.jpg",
+    "1763912897874-house5.jpg",
+    "1763912897901-house-1.jpg",
+    "1763912897910-images.jpeg",
+    "1763912897910-logo.png"
   ],
   "video": [],
   "isAvailable": true,
@@ -53,7 +59,12 @@
   "bathrooms": 2,
   "bedrooms": 4,
   "size": 2000,
-  "image": [],
+  "image": [
+    "1763912271404-house2.jpg",
+    "1763912271425-house3.jpg",
+    "1763912271433-house4.jpg",
+    "1763912271469-house5.jpg"
+  ],
   "video": [],
   "isAvailable": true,
   "createdAt": {
@@ -89,7 +100,11 @@
   "bathrooms": 2,
   "bedrooms": 5,
   "size": 200,
-  "image": [],
+  "image": [
+    "1763914784712-lottie3.png",
+    "1763914784712-lottie4.png",
+    "1763914784714-lottie5.png"
+  ],
   "video": [],
   "isAvailable": true,
   "createdAt": {
@@ -101,14 +116,19 @@
   "AddedToCart": true,
   "Activity": "Rent",
   "buyer": {
-    "$oid": "691c434dd2a9391dc7da1d00"
+    "$oid": "6920630140d1fa43178bdc63"
   },
   "isBuyed": false,
   "PropertyType": "House",
   "owner": {
     "$oid": "691c434dd2a9391dc7da1d00"
   },
-  "__v": 0
+  "__v": 161,
+  "likes": [
+    {
+      "$oid": "6920630140d1fa43178bdc63"
+    }
+  ]
 },
 {
   "_id": {
@@ -141,14 +161,15 @@
   "AddedToCart": true,
   "Activity": "Rent",
   "buyer": {
-    "$oid": "691c434dd2a9391dc7da1d00"
+    "$oid": "6920630140d1fa43178bdc63"
   },
   "isBuyed": false,
   "PropertyType": "Office",
   "owner": {
     "$oid": "691c434dd2a9391dc7da1d00"
   },
-  "__v": 0
+  "__v": 24,
+  "likes": []
 },
 {
   "_id": {
@@ -190,7 +211,15 @@
   "owner": {
     "$oid": "691c434dd2a9391dc7da1d00"
   },
-  "__v": 0
+  "__v": 24,
+  "likes": [
+    {
+      "$oid": "6920630140d1fa43178bdc63"
+    },
+    {
+      "$oid": "691c434dd2a9391dc7da1d00"
+    }
+  ]
 },
 {
   "_id": {
@@ -228,7 +257,15 @@
   "owner": {
     "$oid": "6920630140d1fa43178bdc63"
   },
-  "__v": 0
+  "__v": 36,
+  "likes": [
+    {
+      "$oid": "6920630140d1fa43178bdc63"
+    },
+    {
+      "$oid": "691c434dd2a9391dc7da1d00"
+    }
+  ]
 },
 {
   "_id": {
@@ -266,7 +303,12 @@
   "owner": {
     "$oid": "6920630140d1fa43178bdc63"
   },
-  "__v": 0
+  "__v": 13,
+  "likes": [
+    {
+      "$oid": "6920630140d1fa43178bdc63"
+    }
+  ]
 },
 {
   "_id": {
@@ -304,5 +346,102 @@
   "owner": {
     "$oid": "69207d7c7becf717673889b3"
   },
-  "__v": 0
+  "__v": 18,
+  "likes": [
+    {
+      "$oid": "6920630140d1fa43178bdc63"
+    },
+    {
+      "$oid": "691c434dd2a9391dc7da1d00"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6922c3b505957d6efaf7d7dc"
+  },
+  "title": "testing",
+  "description": "for testing",
+  "price": 20,
+  "location": {
+    "country": "Rwanda",
+    "city": "Bugesera",
+    "district": "Bugesera",
+    "sector": "nyamata",
+    "street": "bg 201"
+  },
+  "bathrooms": 3,
+  "bedrooms": 2,
+  "size": 2000,
+  "image": [
+    "1763886005608-house5.jpg"
+  ],
+  "video": [],
+  "isAvailable": true,
+  "createdAt": {
+    "$date": "2025-11-23T08:15:11.275Z"
+  },
+  "yearBuilt": 2000,
+  "parkingSpace": 0,
+  "hasGarden": false,
+  "AddedToCart": false,
+  "Activity": "Sell",
+  "buyer": null,
+  "isBuyed": false,
+  "PropertyType": "Apartment",
+  "owner": {
+    "$oid": "6920630140d1fa43178bdc63"
+  },
+  "likes": [
+    {
+      "$oid": "691c434dd2a9391dc7da1d00"
+    }
+  ],
+  "__v": 11
+},
+{
+  "_id": {
+    "$oid": "69230e6b9ee999727388bf68"
+  },
+  "title": "testing",
+  "description": "this one is for testing",
+  "price": 20,
+  "location": {
+    "country": "Rwanda",
+    "city": "Bugesera",
+    "district": "Bugesera",
+    "sector": "Rilima",
+    "street": "bg 201"
+  },
+  "bathrooms": 3,
+  "bedrooms": 2,
+  "size": 1000,
+  "image": [
+    "1763905131125-house2.jpg"
+  ],
+  "video": [],
+  "isAvailable": true,
+  "createdAt": {
+    "$date": "2025-11-23T13:34:23.209Z"
+  },
+  "yearBuilt": 2000,
+  "parkingSpace": 0,
+  "hasGarden": false,
+  "AddedToCart": false,
+  "Activity": "Rent",
+  "buyer": null,
+  "isBuyed": false,
+  "PropertyType": "Apartment",
+  "owner": {
+    "$oid": "6920630140d1fa43178bdc63"
+  },
+  "likes": [
+    {
+      "$oid": "691c434dd2a9391dc7da1d00"
+    },
+    {
+      "$oid": "6920630140d1fa43178bdc63"
+    }
+  ],
+  "__v": 4
 }]
