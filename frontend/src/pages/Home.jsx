@@ -5,8 +5,6 @@ import { FaHeart } from "react-icons/fa"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { searchProducts } from "./SearchedApi";
-import House1 from "../assets/House_Images/house-1.jpg"
-import House2 from "../assets/House_Images/house2.jpg"
 import House3 from "../assets/House_Images/house3.jpg"
 import House4 from "../assets/House_Images/house4.jpg"
 import House5 from "../assets/House_Images/house5.jpg"
@@ -15,7 +13,7 @@ import Lottien1 from "../assets/House_Images/lottie1.png"
 import Lottien2 from "../assets/House_Images/lottie2.png"
 import Lottien3 from "../assets/House_Images/lottie3.png"
 
-const Images = [House1, House2, House3, House4, House5];
+const Images = [House3, House4, House5];
 
 const HomePage = () => {
     const [imageIndex, setImageIndex] = useState(0)
