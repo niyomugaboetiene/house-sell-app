@@ -16,7 +16,7 @@ const HouseListComponent = () => {
 
     const fetchHouses = async () => {
         try {
-            const res = await axios.get('BACKEND_URL/house/houses', { withCredentials: true });
+            const res = await axios.get(`${BACKEND_URL}/house/houses`, { withCredentials: true });
             setHouses(res.data.houses);
             const indexes = {};
             res.data.houses.forEach(house => {
@@ -33,7 +33,7 @@ const HouseListComponent = () => {
 
     const LikeProperty = async (_id) => {
         try {
-            const res = await axios.post(`BACKEND_URL/house/like/${_id}`, {}, { withCredentials: true });
+            const res = await axios.post(`${BACKEND_UR}L/house/like/${_id}`, {}, { withCredentials: true });
             const updateLike = res.data.likes;
 
             setHouses((prev) =>
@@ -66,7 +66,7 @@ const HouseListComponent = () => {
 
     const GetUserInfo = async () => {
         try {
-            const res = await axios.get('BACKEND_URL/user/userInfo', { withCredentials: true });
+            const res = await axios.get(`${BACKEND_URL}/user/userInfo`, { withCredentials: true });
             setUserInfo(res.data.user);
             console.log("My session data:", res.data.user.image);
         } catch (error) {
@@ -83,7 +83,7 @@ const HouseListComponent = () => {
             const confirm = window.confirm("Are you sure you want to delete this property");
             if (!confirm) return;
 
-            await axios.post(`BACKEND_URL/house/delete/${_id}`, {}, { withCredentials: true });
+            await axios.post(`${BACKEND_URL}/house/delete/${_id}`, {}, { withCredentials: true });
             fetchHouses();
         } catch (error) {
             console.error(error.message);
@@ -183,7 +183,7 @@ const HouseListComponent = () => {
 
                                 {house.image && house.image.length > 0 ? (
                                     <img
-                                        src={`BACKEND_URL/House_Images/${house.image[0]}`}
+                                        src={`${BACKEND_URL}/House_Images/${house.image[0]}`}
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />

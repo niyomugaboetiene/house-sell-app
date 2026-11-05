@@ -15,7 +15,7 @@ const HouseListComponentWithId = () => {
     const fetchHouse = async () => {
         try {
             const res = await axios.get(
-                `BACKEND_URL/house/houses/${_id}`,
+                `${BACKEND_URL}/house/houses/${_id}`,
                 { withCredentials: true }
             );
             setHouse(res.data.houses);
@@ -30,7 +30,7 @@ const HouseListComponentWithId = () => {
 
     const AddToCart = async (_id) => {
         try {
-            await axios.post(`BACKEND_URL/house/AddToCart/${_id}`, {}, { withCredentials: true });
+            await axios.post(`${BACKEND_URL}/house/AddToCart/${_id}`, {}, { withCredentials: true });
             setMessage("House Added to cart successfully");
             setTimeout(() => setMessage(""), 3000);
         } catch (error) {
@@ -73,7 +73,7 @@ const HouseListComponentWithId = () => {
                         {hasImages ? (
                             <div className="relative w-full h-[350px] sm:h-[500px] lg:h-[700px] xl:h-[820px] overflow-hidden rounded-2xl shadow-xl bg-gray-200">
                                 <img
-                                    src={`BACKEND_URL/House_Images/${house.image[currentImageIndex]}`}
+                                    src={`${BACKEND_URL}/House_Images/${house.image[currentImageIndex]}`}
                                     alt={`House Image ${currentImageIndex + 1}`}
                                     className="w-full h-full object-cover"
                                 />
@@ -248,7 +248,7 @@ const HouseListComponentWithId = () => {
 
                             {house.video && house.video.length !== 0 ? (
                                 <video controls className="w-full max-h-[70vh] rounded-lg">
-                                    <source src={`BACKEND_URL/House_Images/${house.video}`} />
+                                    <source src={`${BACKEND_URL}/House_Images/${house.video}`} />
                                     Your browser does not support the video tag.
                                 </video>
                             ) : (

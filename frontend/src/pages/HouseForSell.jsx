@@ -143,7 +143,7 @@ const HouseForSell = () => {
 
                                 {house.image && house.image.length > 0 ? (
                                     <img
-                                        src={`BACKEND_URL/House_Images/${house.image[0]}`}
+                                        src={`${BACKEND_URL}/House_Images/${house.image[0]}`}
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />

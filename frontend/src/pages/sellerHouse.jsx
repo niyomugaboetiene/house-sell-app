@@ -64,7 +64,7 @@ const MyProperties = () => {
             if (!confirmDelete) return;
 
             await axios.post(
-                `BACKEND_URL/house/delete/${_id}`,
+                `${BACKEND_URL}/house/delete/${_id}`,
                 {},
                 { withCredentials: true }
             );
@@ -80,7 +80,7 @@ const MyProperties = () => {
     const LikeProperty = async (_id) => {
         try {
             const res = await axios.post(
-                `BACKEND_URL/house/like/${_id}`,
+                `${BACKEND_URL}/house/like/${_id}`,
                 {},
                 {
                     withCredentials: true,
