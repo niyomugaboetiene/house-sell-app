@@ -33,6 +33,9 @@ app.use(session({
 app.use('/user', userRoute);
 app.use('/house', HouseRoute);
 
+app.get('/', async(req, res) => {
+  return res.status(200).json({ message: "I'm working, keep going"})
+})
 app.post("/send", async (req, res) => {
   const { name, email, message } = req.body;
 
