@@ -95,7 +95,7 @@ const Footer = () => {
 
                         <div className="flex items-center gap-3">
                             <span className="w-2 h-2 bg-amber-500 rounded-full shrink-0"></span>
-                            <span className="break-all">I'll enter email here later</span>
+                            <span className="break-all">niyomugaboetiene53@gmail.com</span>
                         </div>
                     </div>
                 </div>

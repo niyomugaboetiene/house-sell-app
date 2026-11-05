@@ -155,8 +155,8 @@ const GetHelp = () => {
               <p className="text-sm sm:text-base text-gray-600 mb-4">
                 Get immediate help with property issues
               </p>
-              <a href="tel:+" className="text-amber-600 font-semibold hover:text-amber-700">
-                later
+              <a href="tel:+0728184299" className="text-amber-600 font-semibold hover:text-amber-700">
+                0728184299
               </a>
             </div>
 
@@ -166,8 +166,8 @@ const GetHelp = () => {
               <p className="text-sm sm:text-base text-gray-600 mb-4">
                 Detailed help within 24 hours
               </p>
-              <a href="mailto:support@homefinder.com" className="text-amber-600 font-semibold hover:text-amber-700 break-all">
-                later
+              <a href="mailto:niyomugaboetiene53@gmail.com" className="text-amber-600 font-semibold hover:text-amber-700 break-all">
+                niyomugaboetiene53@gmail.com
               </a>
             </div>
           </div>
@@ -311,13 +311,10 @@ const GetHelp = () => {
                   Contact Information
                 </h4>
                 <p className="text-amber-100 text-sm mb-2">
-                  <strong>Phone:</strong> later
+                  <strong>Phone:</strong> 0728184299
                 </p>
                 <p className="text-amber-100 text-sm mb-2 break-all">
-                  <strong>Email:</strong> later
-                </p>
-                <p className="text-amber-100 text-sm">
-                  <strong>Hours:</strong> later
+                  <strong>Email:</strong> niyomugaboetiene53@gmail.com
                 </p>
               </div>
 
