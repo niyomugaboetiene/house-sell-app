@@ -90,6 +90,10 @@ const Navs = () => {
              </Link>
           )}
 
+          <Link to="/about" className="transition-colors hover:text-amber-500">
+             About
+          </Link>
+          
           <Link to="/myFavorite" className="transition-colors hover:text-amber-500">
             Favorite
           </Link>
@@ -190,6 +194,9 @@ const Navs = () => {
           )}
           <Link to="/allHouse" className="transition-colors hover:text-amber-500">
              Properties
+          </Link>
+          <Link to="/about" className="transition-colors hover:text-amber-500">
+             About
           </Link>
           <Link to="/liked" className="transition-colors hover:text-amber-500">
             Favorite

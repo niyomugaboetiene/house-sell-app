@@ -91,7 +91,7 @@ const AboutUs = () => {
                   buyers, sellers, and agents seamlessly.
                 </p>
                 <p>
-                  Founded in 2024, we started with a mission to digitize Rwanda's property market 
+                  Founded in 2024 by <a href="https://niyomugaboetiene.vercel.app" className="hover:underline font-bold" rel="noopener noreferer" target="_blank">NIYOMUGABO Etiene</a> , we started with a mission to digitize Rwanda's property market 
                   and make home searching an enjoyable experience. From our humble beginnings in Kigali, 
                   we've grown to become one of Rwanda's most trusted property platforms.
                 </p>
