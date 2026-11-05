@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaSearch, FaPhone, FaEnvelope, FaQuestionCircle, FaHome, FaUser, FaHeart, FaShoppingCart, FaKey, FaComments } from "react-icons/fa";
+import { FaSearch, FaPhone, FaEnvelope, FaQuestionCircle, FaHome, FaUser, FaHeart, FaShoppingCart, FaKey } from "react-icons/fa";
 
 const GetHelp = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -8,7 +8,7 @@ const GetHelp = () => {
   const helpCategories = [
     {
       id: "buying",
-      icon: <FaHome className="text-2xl" />,
+      icon: <FaHome className="text-xl sm:text-2xl" />,
       title: "Buying & Renting",
       questions: [
         {
@@ -27,7 +27,7 @@ const GetHelp = () => {
     },
     {
       id: "selling",
-      icon: <FaKey className="text-2xl" />,
+      icon: <FaKey className="text-xl sm:text-2xl" />,
       title: "Selling Properties",
       questions: [
         {
@@ -46,7 +46,7 @@ const GetHelp = () => {
     },
     {
       id: "account",
-      icon: <FaUser className="text-2xl" />,
+      icon: <FaUser className="text-xl sm:text-2xl" />,
       title: "Account & Profile",
       questions: [
         {
@@ -65,7 +65,7 @@ const GetHelp = () => {
     },
     {
       id: "favorites",
-      icon: <FaHeart className="text-2xl" />,
+      icon: <FaHeart className="text-xl sm:text-2xl" />,
       title: "Favorites & Likes",
       questions: [
         {
@@ -84,7 +84,7 @@ const GetHelp = () => {
     },
     {
       id: "cart",
-      icon: <FaShoppingCart className="text-2xl" />,
+      icon: <FaShoppingCart className="text-xl sm:text-2xl" />,
       title: "Property Cart",
       questions: [
         {
@@ -103,70 +103,70 @@ const GetHelp = () => {
     }
   ];
 
-  const popularArticles = [
-    "How to filter property searches effectively",
-    "Understanding property pricing in different areas",
-    "Tips for taking great property photos",
-    "How to contact sellers directly",
-    "Managing your property notifications",
-    "Understanding the verification process"
-  ];
-
-  const filteredQuestions = helpCategories.flatMap(category => 
-    category.questions.filter(q => 
+  const filteredQuestions = helpCategories.flatMap(category =>
+    category.questions.filter(q =>
       q.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
       q.answer.toLowerCase().includes(searchQuery.toLowerCase())
     )
   );
 
-  const filteredCategories = activeCategory === "all" 
-    ? helpCategories 
+  const filteredCategories = activeCategory === "all"
+    ? helpCategories
     : helpCategories.filter(cat => cat.id === activeCategory);
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
-      <section className="bg-linear-to-r from-amber-500 to-amber-600 text-white py-16">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-black mb-6">
+    <div className="min-h-screen bg-gray-50 pt-16 sm:pt-20 overflow-x-hidden">
+      <section className="bg-gradient-to-r from-amber-500 to-amber-600 text-white py-12 sm:py-16 lg:py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 leading-tight">
             Get Help with HomeFinder
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed text-amber-100">
+
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed text-amber-100">
             Find answers about buying, selling, and managing properties
           </p>
-          
+
           <div className="max-w-2xl mx-auto relative">
             <div className="relative">
-              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-xl" />
+              <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-lg sm:text-xl" />
+
               <input
                 type="text"
                 placeholder="Search for help with properties, accounts, favorites..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-6 py-4 rounded-2xl border-2 text-white placeholder:text-white text-lg focus:ring-2 focus:ring-amber-300 focus:outline-none"
+                className="w-full pl-11 sm:pl-12 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl border-2 text-white placeholder:text-white text-sm sm:text-base lg:text-lg focus:ring-2 focus:ring-amber-300 focus:outline-none"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-12 bg-white border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-black text-gray-900 mb-8 text-center">Quick Support Options</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="text-center p-6 rounded-2xl bg-amber-50 border border-amber-200 hover:shadow-md transition-all duration-300">
-              <FaPhone className="text-3xl text-amber-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Call Us</h3>
-              <p className="text-gray-600 mb-4">Get immediate help with property issues</p>
+      <section className="py-8 sm:py-12 bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-6 sm:mb-8 text-center">
+            Quick Support Options
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="text-center p-5 sm:p-6 rounded-2xl bg-amber-50 border border-amber-200 hover:shadow-md transition-all duration-300">
+              <FaPhone className="text-2xl sm:text-3xl text-amber-600 mx-auto mb-4" />
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Call Us</h3>
+              <p className="text-sm sm:text-base text-gray-600 mb-4">
+                Get immediate help with property issues
+              </p>
               <a href="tel:+" className="text-amber-600 font-semibold hover:text-amber-700">
                 later
               </a>
             </div>
 
-            <div className="text-center p-6 rounded-2xl bg-amber-50 border border-amber-200 hover:shadow-md transition-all duration-300">
-              <FaEnvelope className="text-3xl text-amber-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Email Support</h3>
-              <p className="text-gray-600 mb-4">Detailed help within 24 hours</p>
-              <a href="mailto:support@homefinder.com" className="text-amber-600 font-semibold hover:text-amber-700">
+            <div className="text-center p-5 sm:p-6 rounded-2xl bg-amber-50 border border-amber-200 hover:shadow-md transition-all duration-300">
+              <FaEnvelope className="text-2xl sm:text-3xl text-amber-600 mx-auto mb-4" />
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Email Support</h3>
+              <p className="text-sm sm:text-base text-gray-600 mb-4">
+                Detailed help within 24 hours
+              </p>
+              <a href="mailto:support@homefinder.com" className="text-amber-600 font-semibold hover:text-amber-700 break-all">
                 later
               </a>
             </div>
@@ -174,33 +174,37 @@ const GetHelp = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <section className="py-10 sm:py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
             <div className="lg:col-span-1">
-              <div className="sticky top-28 space-y-2 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Help Topics</h3>
+              <div className="lg:sticky lg:top-28 space-y-2 bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                  Help Topics
+                </h3>
+
                 <button
                   onClick={() => setActiveCategory("all")}
-                  className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 font-medium ${
+                  className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 font-medium text-sm sm:text-base ${
                     activeCategory === "all"
-                      ? 'bg-amber-500 text-white shadow-md'
-                      : 'text-gray-700 hover:bg-amber-50 hover:text-amber-600'
+                      ? "bg-amber-500 text-white shadow-md"
+                      : "text-gray-700 hover:bg-amber-50 hover:text-amber-600"
                   }`}
                 >
                   All Topics
                 </button>
+
                 {helpCategories.map((category) => (
                   <button
                     key={category.id}
                     onClick={() => setActiveCategory(category.id)}
-                    className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 font-medium ${
+                    className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 font-medium text-sm sm:text-base ${
                       activeCategory === category.id
-                        ? 'bg-amber-500 text-white shadow-md'
-                        : 'text-gray-700 hover:bg-amber-50 hover:text-amber-600'
+                        ? "bg-amber-500 text-white shadow-md"
+                        : "text-gray-700 hover:bg-amber-50 hover:text-amber-600"
                     }`}
                   >
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center gap-3">
                       {category.icon}
                       <span>{category.title}</span>
                     </div>
@@ -209,45 +213,69 @@ const GetHelp = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3 min-w-0">
               {searchQuery ? (
                 <div>
-                  <h2 className="text-2xl font-black text-gray-900 mb-6">
+                  <h2 className="text-xl sm:text-2xl font-black text-gray-900 mb-6 break-words">
                     Search Results for "{searchQuery}"
                   </h2>
+
                   {filteredQuestions.length > 0 ? (
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                       {filteredQuestions.map((item, index) => (
-                        <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
-                          <h3 className="text-xl font-bold text-gray-900 mb-3">{item.question}</h3>
-                          <p className="text-gray-700 leading-relaxed">{item.answer}</p>
+                        <div
+                          key={index}
+                          className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-200"
+                        >
+                          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
+                            {item.question}
+                          </h3>
+                          <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                            {item.answer}
+                          </p>
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <div className="text-center py-12 bg-white rounded-2xl">
+                    <div className="text-center py-10 sm:py-12 px-4 bg-white rounded-2xl">
                       <FaQuestionCircle className="text-4xl text-gray-400 mx-auto mb-4" />
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">No results found</h3>
-                      <p className="text-gray-600">Try different keywords or browse our help topics</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                        No results found
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-600">
+                        Try different keywords or browse our help topics
+                      </p>
                     </div>
                   )}
                 </div>
               ) : (
-                <div className="space-y-8">
+                <div className="space-y-6 sm:space-y-8">
                   {filteredCategories.map((category) => (
-                    <div key={category.id} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center text-white">
+                    <div
+                      key={category.id}
+                      className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-200"
+                    >
+                      <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 bg-amber-500 rounded-xl flex items-center justify-center text-white">
                           {category.icon}
                         </div>
-                        <h2 className="text-3xl font-black text-gray-900">{category.title}</h2>
+                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-gray-900">
+                          {category.title}
+                        </h2>
                       </div>
-                      
-                      <div className="space-y-6">
+
+                      <div className="space-y-5 sm:space-y-6">
                         {category.questions.map((item, index) => (
-                          <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0">
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">{item.question}</h3>
-                            <p className="text-gray-700 leading-relaxed">{item.answer}</p>
+                          <div
+                            key={index}
+                            className="border-b border-gray-200 pb-5 sm:pb-6 last:border-b-0 last:pb-0"
+                          >
+                            <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-3">
+                              {item.question}
+                            </h3>
+                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                              {item.answer}
+                            </p>
                           </div>
                         ))}
                       </div>
@@ -260,37 +288,46 @@ const GetHelp = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-r from-amber-500 to-amber-600 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-black mb-6">Need More Help?</h2>
-          <p className="text-xl text-amber-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+      <section className="py-10 sm:py-16 bg-gradient-to-r from-amber-500 to-amber-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-3xl sm:text-4xl font-black mb-4 sm:mb-6">
+            Need More Help?
+          </h2>
+
+          <p className="text-base sm:text-lg lg:text-xl text-amber-100 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
             Our Rwanda-based support team understands the local property market and is here to help you.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-amber-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-amber-50 transition-colors">
+            <button className="w-full sm:w-auto bg-white text-amber-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg hover:bg-amber-50 transition-colors">
               Contact Support Team
             </button>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-amber-400 border-opacity-30">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-3xl mx-auto">
+          <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-amber-400 border-opacity-30">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left max-w-3xl mx-auto">
               <div>
-                <h4 className="text-lg font-bold mb-3 text-white">Contact Information</h4>
+                <h4 className="text-lg font-bold mb-3 text-white">
+                  Contact Information
+                </h4>
                 <p className="text-amber-100 text-sm mb-2">
                   <strong>Phone:</strong> later
                 </p>
-                <p className="text-amber-100 text-sm mb-2">
+                <p className="text-amber-100 text-sm mb-2 break-all">
                   <strong>Email:</strong> later
                 </p>
                 <p className="text-amber-100 text-sm">
                   <strong>Hours:</strong> later
                 </p>
               </div>
+
               <div>
-                <h4 className="text-lg font-bold mb-3 text-white">Office Location</h4>
-                <p className="text-amber-100 text-sm">
-                  Kigali, Rwanda<br />
+                <h4 className="text-lg font-bold mb-3 text-white">
+                  Office Location
+                </h4>
+                <p className="text-amber-100 text-sm leading-relaxed">
+                  Kigali, Rwanda
+                  <br />
                   Visit us for in-person property consultation and support
                 </p>
               </div>
