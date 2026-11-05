@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { FaHeart, FaTrash, FaEdit } from "react-icons/fa"
+import { FaHeart, FaTrash, FaEdit } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MyProperties = () => {
     const [houses, setHouses] = useState([]);
@@ -10,16 +10,23 @@ const MyProperties = () => {
     const [message, setMessage] = useState("");
     const [currentImageIndex, setCurrentImageIndex] = useState({});
     const [error, setError] = useState("");
+    const [userInfo, setUserInfo] = useState(null);
     const navigate = useNavigate();
-    
+
     const fetchHouses = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/house/myProperties', { withCredentials: true });
+            const res = await axios.get(
+                "http://localhost:5000/house/myProperties",
+                { withCredentials: true }
+            );
+
             setHouses(res.data.houses);
+
             const indexes = {};
-            res.data.houses.forEach(house => {
+            res.data.houses.forEach((house) => {
                 indexes[house._id] = 0;
             });
+
             setCurrentImageIndex(indexes);
 
         } catch (error) {
@@ -27,41 +34,77 @@ const MyProperties = () => {
         } finally {
             setLoading(false);
         }
-    }
+    };
+
+    const GetUserInfo = async () => {
+        try {
+            const res = await axios.get(
+                "http://localhost:5000/user/userInfo",
+                { withCredentials: true }
+            );
+
+            setUserInfo(res.data.userInfo);
+        } catch (error) {
+            console.error("Error fetching user information:", error);
+        }
+    };
 
     useEffect(() => {
         fetchHouses();
+        GetUserInfo();
     }, []);
 
-const DeleteHouse = async(_id) => {
-    try {
-        const confirm = window.confirm("Are you sure you want to delete this property");
-        if (!confirm) return;
-        await axios.post(`http://localhost:5000/house/delete/${_id}`, {}, {withCredentials: true});
-        alert("House deleted successfully");
-
-        fetchHouses();
-    } catch (error) {
-     console.error(error.message)
-    }
-}
-     const LikeProperty = async (_id) => {
+    const DeleteHouse = async (_id) => {
         try {
-           const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, {withCredentials: true, headers: { 'Content-Type': 'application/json'} });
-           setMessage(res.data.message);
-           setTimeout(() => {
-              setMessage("");
-           }, 3000);
-       } catch (error) {
-           const errorMessage = error.response?.data?.error || "Something went wrong";
-           console.error(error.message);
-           setError(errorMessage);
-           setTimeout(() => {
-               setError("");
-            }, 3000);
-      }
-    }
+            const confirmDelete = window.confirm(
+                "Are you sure you want to delete this property"
+            );
 
+            if (!confirmDelete) return;
+
+            await axios.post(
+                `http://localhost:5000/house/delete/${_id}`,
+                {},
+                { withCredentials: true }
+            );
+
+            alert("House deleted successfully");
+
+            fetchHouses();
+        } catch (error) {
+            console.error(error.message);
+        }
+    };
+
+    const LikeProperty = async (_id) => {
+        try {
+            const res = await axios.post(
+                `http://localhost:5000/house/like/${_id}`,
+                {},
+                {
+                    withCredentials: true,
+                    headers: { "Content-Type": "application/json" }
+                }
+            );
+
+            setMessage(res.data.message);
+
+            setTimeout(() => {
+                setMessage("");
+            }, 3000);
+
+        } catch (error) {
+            const errorMessage =
+                error.response?.data?.error || "Something went wrong";
+
+            console.error(error.message);
+            setError(errorMessage);
+
+            setTimeout(() => {
+                setError("");
+            }, 3000);
+        }
+    };
 
     if (loading) {
         return (
@@ -72,107 +115,172 @@ const DeleteHouse = async(_id) => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 mt-20">
-        {message && (
-             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
-                 {message}
-            </div>
-          )}
-          {error && (
-             <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-2 rounded-lg shadow-lg z-50">
-                 {error}
-            </div>
-          )}
-            <div className="ms-10 mt-4 flex justify-between">
-            <p className="text-2xl font-bold text-amber-500"> My Properties</p> 
+        <div className="min-h-screen bg-gray-50 pt-20 pb-8">
 
-            <button 
-               className="me-8 bg-amber-500 px-6 py-2 text-white rounded-lg hover:bg-amber-600 transition-colors"
-               onClick={() => navigate('/addHouse')}
-            >
-                + Add Property
-            </button>
+            {message && (
+                <div className="fixed top-24 sm:top-28 left-1/2 -translate-x-1/2 w-[90%] sm:w-auto max-w-md bg-green-500 text-white px-4 sm:px-6 py-3 rounded-lg shadow-lg z-50 text-center">
+                    {message}
+                </div>
+            )}
+
+            {error && (
+                <div className="fixed top-24 sm:top-28 left-1/2 -translate-x-1/2 w-[90%] sm:w-auto max-w-md bg-red-500 text-white px-4 sm:px-6 py-3 rounded-lg shadow-lg z-50 text-center">
+                    {error}
+                </div>
+            )}
+
+            <div className="px-4 sm:px-6 lg:px-8 mt-4 mb-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+
+                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-500">
+                        My Properties
+                    </p>
+
+                    <button
+                        className="w-full sm:w-auto bg-amber-500 px-5 sm:px-6 py-2.5 text-white rounded-lg hover:bg-amber-600 transition-colors"
+                        onClick={() => navigate("/addHouse")}
+                    >
+                        + Add Property
+                    </button>
+
+                </div>
             </div>
-            <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+            <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
+
                     {houses.map((house, idx) => (
-                        <div key={idx} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
-                            <div className="relative h-80 bg-gray-200">
-                              <div className="relative">
-                                  <button
-                                         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
-                                         onClick={() => LikeProperty(house._id)}
-                                  >
-                                     <FaHeart className={house.likes?.includes(userInfo.user_id) ? "text-red-500" : "text-gray-500"} />
-                                 </button>
-                                 <p className="absolute bg-gray-900 px-2 top-4 text-white font-bold rounded-full right-2">{house.likes.length}</p>      
-                                 <button
-                                         className="absolute top-13 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
-                                         onClick={() => navigate(`/update/${house._id}`)}
-                                  >
-                                     <FaEdit className="text-amber-500 text-xl" />
-                                 </button>
-                                 <button
-                                         className="absolute top-23 right-3 bg-white p-2 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
-                                         onClick={() => DeleteHouse(`${house._id}`)}
-                                  >
-                                     <FaTrash className="text-green-500 text-xl" />
-                                 </button>
-                                </div>
+                        <div
+                            key={house._id || idx}
+                            className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
+                        >
+
+                            <div className="relative h-60 sm:h-64 lg:h-72 xl:h-80 bg-gray-200">
+
                                 {house.image && house.image.length > 0 ? (
-                                    <img 
-                                        src={`http://localhost:5000/House_Images/${house.image[0]}`} 
+                                    <img
+                                        src={`http://localhost:5000/House_Images/${house.image[0]}`}
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center bg-gray-100">
-                                        <p className="text-gray-500 text-sm">No Image Available</p>
+                                        <p className="text-gray-500 text-sm">
+                                            No Image Available
+                                        </p>
                                     </div>
                                 )}
-                            </div>
 
-                            <div className="p-6">
-                                <div className="mb-4">
-                                       <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 mb-2">
-                                           {house.title}
-                                        </h3>
-                                    <div className="flex  space-x-2">
-                                        <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
-                                           bath: <span className="font-bold">{house.bathrooms}</span>
-                                        </h3>
-                                        <h3 className="text-sm font-light text-gray-900 line-clamp-2 mb-2">
-                                           bed: <span className="font-bold">{house.bedrooms} </span>
-                                        </h3>
-                                       </div>
+                                <div className="absolute top-3 right-3 flex flex-col gap-2">
 
-                                    <p className="text-2xl font-bold text-amber-500">
-                                        ${(house.price)}
-                                    </p>
+                                    <div className="flex items-center justify-end gap-2">
+                                        <span className="bg-gray-900 px-2.5 py-1 text-white text-xs font-bold rounded-full">
+                                            {house.likes?.length || 0}
+                                        </span>
+
+                                        <button
+                                            className="bg-white p-2.5 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                            onClick={() => LikeProperty(house._id)}
+                                        >
+                                            <FaHeart
+                                                className={
+                                                    house.likes?.includes(userInfo?.user_id)
+                                                        ? "text-red-500 text-lg"
+                                                        : "text-gray-500 text-lg"
+                                                }
+                                            />
+                                        </button>
+                                    </div>
+
+                                    <button
+                                        className="self-end bg-white p-2.5 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                        onClick={() => navigate(`/update/${house._id}`)}
+                                    >
+                                        <FaEdit className="text-amber-500 text-lg" />
+                                    </button>
+
+                                    <button
+                                        className="self-end bg-white p-2.5 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition"
+                                        onClick={() => DeleteHouse(house._id)}
+                                    >
+                                        <FaTrash className="text-green-500 text-lg" />
+                                    </button>
+
                                 </div>
 
-                                <button className="w-full bg-amber-500 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-amber-600 transition-colors"
-                                   onClick={() => navigate(`/allHouse/${house._id}`)}
+                            </div>
+
+                            <div className="p-4 sm:p-5 lg:p-6">
+
+                                <div className="mb-4">
+
+                                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 line-clamp-2 mb-3">
+                                        {house.title}
+                                    </h3>
+
+                                    <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-700 mb-3">
+
+                                        <h3 className="font-light">
+                                            Bath: <span className="font-bold">{house.bathrooms}</span>
+                                        </h3>
+
+                                        <h3 className="font-light">
+                                            Bed: <span className="font-bold">{house.bedrooms}</span>
+                                        </h3>
+
+                                    </div>
+
+                                    <p className="text-xl sm:text-2xl font-bold text-amber-500">
+                                        ${house.price}
+                                    </p>
+
+                                </div>
+
+                                <button
+                                    className="w-full bg-amber-500 text-white py-2.5 sm:py-3 px-4 rounded-lg text-sm sm:text-base font-medium hover:bg-amber-600 transition-colors"
+                                    onClick={() => navigate(`/allHouse/${house._id}`)}
                                 >
                                     View Details
                                 </button>
+
                             </div>
                         </div>
                     ))}
+
                 </div>
 
                 {houses.length === 0 && (
-                    <div className="text-center py-12">
-                        <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    <div className="text-center py-12 px-4">
+
+                        <svg
+                            className="mx-auto h-12 w-12 text-gray-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                            />
                         </svg>
-                        <h3 className="mt-2 text-sm font-medium text-gray-900">No properties found</h3>
-                        <p className="mt-1 text-sm text-gray-500">Get started by adding a new property listing.</p>
+
+                        <h3 className="mt-2 text-base sm:text-lg font-medium text-gray-900">
+                            No properties found
+                        </h3>
+
+                        <p className="mt-1 text-sm sm:text-base text-gray-500">
+                            Get started by adding a new property listing.
+                        </p>
+
                     </div>
                 )}
+
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default MyProperties;
