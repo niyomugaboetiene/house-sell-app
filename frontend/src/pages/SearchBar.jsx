@@ -15,7 +15,7 @@ const SearchResults = () => {
     const LikeProperty = async (_id) => {
         try {
             const res = await axios.post(
-                `http://localhost:5000/house/like/${_id}`,
+                `BACKEND_URL/house/like/${_id}`,
                 {},
                 {
                     withCredentials: true,
@@ -75,7 +75,7 @@ const SearchResults = () => {
 
                                     {house.image && house.image.length > 0 ? (
                                         <img
-                                            src={`http://localhost:5000/House_Images/${house.image}`}
+                                            src={`BACKEND_URL/House_Images/${house.image}`}
                                             alt={house.title}
                                             className="w-full h-full object-cover"
                                         />

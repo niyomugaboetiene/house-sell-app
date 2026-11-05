@@ -30,7 +30,7 @@ const RegisterComponent = () => {
             setSuccess("");
 
             await axios.post(
-                "http://localhost:5000/user/register",
+                "BACKEND_URL/user/register",
                 {
                     full_name,
                     user_name,

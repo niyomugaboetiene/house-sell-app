@@ -29,7 +29,7 @@ const Navs = () => {
     const GetUserInfo = async () => {
         try {
             const res = await axios.get(
-                "http://localhost:5000/user/userInfo",
+                "BACKEND_URL/user/userInfo",
                 { withCredentials: true }
             );
 
@@ -46,7 +46,7 @@ const Navs = () => {
     const Logout = async () => {
         try {
             await axios.post(
-                "http://localhost:5000/user/logout",
+                "BACKEND_URL/user/logout",
                 {},
                 { withCredentials: true }
             );
@@ -177,7 +177,7 @@ const Navs = () => {
                                 >
                                     {userInfo.image ? (
                                         <img
-                                            src={`http://localhost:5000/${userInfo.image}`}
+                                            src={`BACKEND_URL/${userInfo.image}`}
                                             alt="Profile"
                                             className="w-9 h-9 sm:w-11 sm:h-11 object-cover rounded-full"
                                         />
@@ -191,7 +191,7 @@ const Navs = () => {
                                         <div className="border w-16 h-16 rounded-full border-amber-500 flex items-center justify-center overflow-hidden mx-auto mb-3">
                                             {userInfo?.image ? (
                                                 <img
-                                                    src={`http://localhost:5000/${userInfo.image}`}
+                                                    src={`BACKEND_URL/${userInfo.image}`}
                                                     className="w-16 h-16 object-cover"
                                                     alt="User profile"
                                                 />

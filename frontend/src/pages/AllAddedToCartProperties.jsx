@@ -14,7 +14,7 @@ const AllAddedToCart = () => {
 
     const GetMyCart = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/house/allAddedToCart', { withCredentials: true });
+            const res = await axios.get('BACKEND_URL/house/allAddedToCart', { withCredentials: true });
             setMyCart(res.data.houses);
             const indexes = {};
             res.data.houses.forEach(house => {
@@ -30,7 +30,7 @@ const AllAddedToCart = () => {
 
     const LikeProperty = async (_id) => {
         try {
-            const res = await axios.post(`http://localhost:5000/house/like/${_id}`, {}, { withCredentials: true });
+            const res = await axios.post(`BACKEND_URL/house/like/${_id}`, {}, { withCredentials: true });
             const updateLike = res.data.likes;
             setMyCart((prev) =>
                 prev.map((h) =>
@@ -55,7 +55,7 @@ const AllAddedToCart = () => {
 
     const GetUserInfo = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+            const res = await axios.get('BACKEND_URL/user/userInfo', { withCredentials: true });
             setUserInfo(res.data.user);
             console.log("My session data:", res.data.user.image);
             console.log("My session data:", res.data.user.user_id);
@@ -110,7 +110,7 @@ const AllAddedToCart = () => {
 
                                 {house.image && house.image.length > 0 ? (
                                     <img
-                                        src={`http://localhost:5000/House_Images/${house.image[0]}`}
+                                        src={`BACKEND_URL/House_Images/${house.image[0]}`}
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />

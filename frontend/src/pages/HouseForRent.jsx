@@ -16,7 +16,7 @@ const HouseForRent = () => {
 
     const fetchHouses = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/house/rent", {
+            const res = await axios.get("BACKEND_URL/house/rent", {
                 withCredentials: true
             });
 
@@ -43,7 +43,7 @@ const HouseForRent = () => {
     const LikeProperty = async (_id) => {
         try {
             const res = await axios.post(
-                `http://localhost:5000/house/like/${_id}`,
+                `BACKEND_URL/house/like/${_id}`,
                 {},
                 { withCredentials: true }
             );
@@ -77,7 +77,7 @@ const HouseForRent = () => {
     const GetUserInfo = async () => {
         try {
             const res = await axios.get(
-                "http://localhost:5000/user/userInfo",
+                "BACKEND_URL/user/userInfo",
                 { withCredentials: true }
             );
 
@@ -159,7 +159,7 @@ const HouseForRent = () => {
 
                                 {house.image && house.image.length > 0 ? (
                                     <img
-                                        src={`http://localhost:5000/House_Images/${house.image[0]}`}
+                                        src={`BACKEND_URL/House_Images/${house.image[0]}`}
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />

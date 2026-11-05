@@ -23,7 +23,7 @@ const Contact = () => {
         setIsSubmitting(true);
 
         try {
-            await axios.post("http://localhost:5000/send", formData);
+            await axios.post("BACKEND_URL/send", formData);
             setSubmitStatus("success");
             setFormData({ name: "", email: "", message: "" });
         } catch (err) {

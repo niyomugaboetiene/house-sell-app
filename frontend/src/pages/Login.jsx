@@ -17,7 +17,7 @@ const LoginComponent = () => {
             setError("");
             setSuccess("");
 
-            await axios.post('http://localhost:5000/user/login', {
+            await axios.post('BACKEND_URL/user/login', {
                 user_name, password
             }, { withCredentials: true });
 
