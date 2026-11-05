@@ -11,6 +11,7 @@ const RegisterComponent = () => {
     const [success, setSuccess] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const Register = async () => {
         if (!full_name || !user_name || !password || !role) {

@@ -14,6 +14,7 @@ const UpdateUserComponent = () => {
     const [error, setError] = useState("");
     const [userInfo, setUserInfo] = useState(null);
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const FetchUserInfo = async () => {
         try {

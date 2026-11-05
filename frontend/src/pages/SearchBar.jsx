@@ -10,6 +10,7 @@ const SearchResults = () => {
     const houses = state?.results || [];
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const LikeProperty = async (_id) => {
         try {

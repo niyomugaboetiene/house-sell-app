@@ -12,6 +12,7 @@ const Contact = () => {
 
     const [submitStatus, setSubmitStatus] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const handleChange = (e) => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));

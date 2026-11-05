@@ -10,6 +10,7 @@ const HouseListComponentWithId = () => {
     const [message, setMessage] = useState("");
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const fetchHouse = async () => {
         try {

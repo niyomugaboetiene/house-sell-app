@@ -29,6 +29,7 @@ const UpdateHouseComponent = () => {
     const [propertyInfo, setPropertyInfo] = useState({});
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const { _id } = useParams();
 

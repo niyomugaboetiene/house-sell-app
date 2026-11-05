@@ -10,6 +10,7 @@ const MyFavorite = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState({});
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const GetMyFavorite = async () => {
         try {

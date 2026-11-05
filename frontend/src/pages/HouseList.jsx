@@ -12,6 +12,7 @@ const HouseListComponent = () => {
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const fetchHouses = async () => {
         try {

@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Footer = () => {
     const [userInfo, setUserInfo] = useState([]);
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const GetUserInfo = async () => {
         try {

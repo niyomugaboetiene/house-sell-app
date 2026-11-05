@@ -23,6 +23,7 @@ const HomePage = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const fetchHouses = async () => {
         try {

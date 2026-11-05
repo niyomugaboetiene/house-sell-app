@@ -10,6 +10,7 @@ const Navs = () => {
     const [showUserInfo, setShowUserInfo] = useState(false);
     const navigate = useNavigate();
     const menuRef = useRef(null);
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
         const HandleClickOutSide = (event) => {

@@ -9,6 +9,7 @@ const MyCart = () => {
     const [message, setMessage] = useState("");
     const [currentImageIndex, setCurrentImageIndex] = useState({});
     const [userInfo, setUserInfo] = useState([]);
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const GetMyCart = async () => {
         try {

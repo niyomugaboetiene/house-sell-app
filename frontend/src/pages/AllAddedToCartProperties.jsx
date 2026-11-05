@@ -10,6 +10,7 @@ const AllAddedToCart = () => {
     const [message, setMessage] = useState("");
     const [currentImageIndex, setCurrentImageIndex] = useState({});
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const GetMyCart = async () => {
         try {

@@ -12,6 +12,7 @@ const HouseForRent = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [currentImageIndex, setCurrentImageIndex] = useState({});
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const fetchHouses = async () => {
         try {

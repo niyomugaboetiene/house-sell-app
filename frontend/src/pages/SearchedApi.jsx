@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/house";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const searchProducts = async (
   query = "",
@@ -12,7 +12,7 @@ export const searchProducts = async (
   PropertyType = ""
 ) => {
   try {
-    const response = await axios.get(`${BASE_URL}/search`, {
+    const response = await axios.get(`${BACKEND_URL}/search`, {
       params: {
         query,
         country,
