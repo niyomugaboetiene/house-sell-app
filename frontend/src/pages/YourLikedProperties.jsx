@@ -18,7 +18,7 @@ const MyFavorite = () => {
                 { withCredentials: true }
             );
 
-            const properties = res.data.properties || [];
+            const properties = res.data?.properties || [];
             setMyFavorite(properties);
 
             const indexes = {};
@@ -28,7 +28,7 @@ const MyFavorite = () => {
 
             setCurrentImageIndex(indexes);
         } catch (error) {
-            console.error(error.message);
+            console.error(error?.message);
             const errorMessage =
                 error.response?.data?.error || "Failed to load favorites";
             setError(errorMessage);
@@ -43,7 +43,7 @@ const MyFavorite = () => {
                 { withCredentials: true }
             );
 
-            const updateLike = res.data.likes;
+            const updateLike = res.data?.likes;
 
             setMyFavorite((prev) =>
                 prev.map((h) =>
@@ -51,7 +51,7 @@ const MyFavorite = () => {
                 )
             );
 
-            setMessage(res.data.message || "");
+            setMessage(res.data?.message || "");
 
             setTimeout(() => {
                 setMessage("");
@@ -81,7 +81,7 @@ const MyFavorite = () => {
                 { withCredentials: true }
             );
 
-            setUserInfo(res.data.user);
+            setUserInfo(res.data?.user);
             console.log("My session data:", res.data.user?.image);
             console.log("My session data:", res.data.user?.user_id);
         } catch (error) {
@@ -143,7 +143,7 @@ const MyFavorite = () => {
 
                                 {house.image && house.image.length > 0 ? (
                                     <img
-                                        src={`http://localhost:5000/House_Images/${house.image[0]}`}
+                                        src={`http://localhost:5000/House_Images/${house?.image[0]}`}
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />
