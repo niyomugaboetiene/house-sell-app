@@ -16,7 +16,7 @@ const HouseForSell = () => {
 
     const fetchHouses = async () => {
         try {
-            const res = await axios.get('BACKEND_URL/house/buy', { withCredentials: true });
+            const res = await axios.get(`${BACKEND_URL}/house/buy`, { withCredentials: true });
             setHouses(res.data.houses);
             const indexes = {};
             res.data.houses.forEach(house => {
@@ -37,7 +37,7 @@ const HouseForSell = () => {
 
     const GetUserInfo = async () => {
         try {
-            const res = await axios.get('BACKEND_URL/user/userInfo', { withCredentials: true });
+            const res = await axios.get(`${BACKEND_URL}/user/userInfo`, { withCredentials: true });
             setUserInfo(res.data.user);
             console.log("My session data:", res.data.user.image);
             console.log("My session data:", res.data.user.user_id);
@@ -52,7 +52,7 @@ const HouseForSell = () => {
 
     const LikeProperty = async (_id) => {
         try {
-            const res = await axios.post(`BACKEND_URL/house/like/${_id}`, {}, { withCredentials: true });
+            const res = await axios.post(`${BACKEND_URL}/house/like/${_id}`, {}, { withCredentials: true });
             const updateLike = res.data.likes;
 
             setHouses((prev) =>
