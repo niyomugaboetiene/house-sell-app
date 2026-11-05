@@ -17,7 +17,7 @@ const MyProperties = () => {
     const fetchHouses = async () => {
         try {
             const res = await axios.get(
-                "BACKEND_URL/house/myProperties",
+                `${BACKEND_URL}/house/myProperties`,
                 { withCredentials: true }
             );
 
@@ -40,7 +40,7 @@ const MyProperties = () => {
     const GetUserInfo = async () => {
         try {
             const res = await axios.get(
-                "BACKEND_URL/user/userInfo",
+                `${BACKEND_URL}/user/userInfo`,
                 { withCredentials: true }
             );
 
@@ -161,7 +161,7 @@ const MyProperties = () => {
 
                                 {house.image && house.image.length > 0 ? (
                                     <img
-                                        src={`BACKEND_URL/House_Images/${house.image[0]}`}
+                                        src={`${BACKEND_URL}/House_Images/${house.image[0]}`}
                                         alt={house.title}
                                         className="w-full h-full object-cover"
                                     />

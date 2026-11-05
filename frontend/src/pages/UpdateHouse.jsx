@@ -36,7 +36,7 @@ const UpdateHouseComponent = () => {
     const FetchProperyInfo = async () => {
         try {
             const res = await axios.get(
-                `BACKEND_URL/house/houses/${_id}`,
+                `${BACKEND_URL}/house/houses/${_id}`,
                 { withCredentials: true }
             );
 
@@ -113,7 +113,7 @@ const UpdateHouseComponent = () => {
             }
 
             const response = await axios.put(
-                `BACKEND_URL/house/update/${_id}`,
+                `${BACKEND_URL}/house/update/${_id}`,
                 formData,
                 {
                     withCredentials: true,

@@ -19,7 +19,7 @@ const UpdateUserComponent = () => {
     const FetchUserInfo = async () => {
         try {
             const res = await axios.get(
-                `BACKEND_URL/user/userInfo`,
+                `${BACKEND_URL}/user/userInfo`,
                 { withCredentials: true }
             );
 
@@ -62,7 +62,7 @@ const UpdateUserComponent = () => {
             }
 
             await axios.put(
-                `BACKEND_URL/user/updateProfile`,
+                `${BACKEND_URL}/user/updateProfile`,
                 formData,
                 {
                     withCredentials: true,
